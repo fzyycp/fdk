@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="fdk-common" pattern="src[fdk-common]:cn.faury.fdk.common..*" />
+</component>
