@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="fdk-common" />
+        <module name="fdk-http-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="fdk" target="1.5" />
       <module name="fdk-common" target="1.8" />
+      <module name="fdk-http-client" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -5,6 +5,7 @@
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/fdk-common/target/" />
+    <ignored path="$PROJECT_DIR$/fdk-http-client/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,14 +13,58 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="fdk" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitattributes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fdk-common/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="579">
+              <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fdk-http-client/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
         <option value="JUnit4 Test Class" />
       </list>
     </option>
@@ -27,7 +72,20 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>UTF_8</find>
+      <find>rootClassPath</find>
+      <find>TypeUtils</find>
+      <find>SIG_ENCODING</find>
+      <find>HttpProxyKit</find>
+      <find>proxy</find>
+      <find>coo</find>
+      <find>expectContinueEnabled</find>
+      <find>createHttpClient</find>
+      <find>resetHeaderCookie</find>
+      <find>fdk.http.client.proxy.enable</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -37,22 +95,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/fdk-common/pom.xml" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/beans/TreeNodeBean.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/beans/ComboBoxBean.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/util/StringUtils.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/StringUtils.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/ComboBoxBean.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/NullAble.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/Nullable.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/NonNull.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/ComboBoxEntry.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/TreeNodeEntry.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/PathUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/PathUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/resources/pro.properties" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/PropertyConfigUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/PropertyUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/PropertyConfigUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/PropertyUtil.java" />
         <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/StringUtil.java" />
         <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/StringUtilTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/RandomUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/RandomUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/SigRSAUtils.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/SerializeUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/SerializeUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/SigAESUtils.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/exception/TipsException.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/HttpProxyKit.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/HttpUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/PropertiesUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpResultType.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpEntityCreator.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/DateUtil.java" />
-        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/DateUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/ValidUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/ValidUtil.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/resources/bean.properties" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/BeanUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/BeanUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/PropertiesUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/Properties.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/conf/HttpConfigTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/LoggerUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpConsts.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpConfiguration.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/resources/log4j.properties" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpProxyConfig.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/RequestEntry.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpRequest.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/HttpUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/AssertsUtil.java" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/AssertsUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpConfig.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/HttpUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/test/resources/http.properties" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpResponse.java" />
+        <option value="$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/HttpClient.java" />
+        <option value="$PROJECT_DIR$/fdk-common/pom.xml" />
+        <option value="$PROJECT_DIR$/fdk-http-client/pom.xml" />
+        <option value="$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/AssertUtilTest.java" />
+        <option value="$PROJECT_DIR$/fdk-common/.gitignore" />
       </list>
     </option>
   </component>
@@ -62,17 +155,32 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="NamedScopeManager">
     <order>
       <scope name="fdk-common" />
+      <scope name="fdk-http-client" />
     </order>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1" />
     <option name="y" value="1" />
     <option name="width" value="1438" />
     <option name="height" value="858" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -88,10 +196,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,34 +204,60 @@
               <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
               <item name="fdk" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fdk" type="462c0819:PsiDirectoryNode" />
+              <item name="fdk-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fdk" type="462c0819:PsiDirectoryNode" />
+              <item name="fdk-http-client" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="template.copyright.formatting" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="cn.faury.fdk.common.utils" />
+      <recent name="cn.faury.fdk.http.client.conf" />
+      <recent name="cn.faury.fdk.http.client" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.faury.fdk.http.client" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.faury.fdk.http.client.core" />
+      <recent name="cn.faury.fdk.http.client.conf" />
+      <recent name="cn.faury.fdk.http.client" />
+      <recent name="cn.faury.fdk.common.exception" />
+      <recent name="cn.faury.fdk.common.utils" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="cn.faury.fdk.common.utils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\faury\github\fdk\fdk-common\src\main\java\cn\faury\fdk\common\beans" />
+      <recent name="D:\faury\github\fdk\fdk-http-client" />
+      <recent name="D:\faury\github\fdk\fdk-common" />
+      <recent name="D:\faury\github\fdk\fdk-http-client\src\test\resources" />
+      <recent name="D:\faury\github\fdk\fdk-common\src\test\resources" />
+      <recent name="D:\faury\github\fdk\fdk-http-client\src\main\java\cn\faury\fdk\http\client\core" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,8 +272,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DateUtilTest">
-    <configuration name="DateUtilTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AssertUtilTest.notNull">
+    <configuration name="AssertUtilTest.check" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="cn.faury.fdk.common.utils.*" />
@@ -153,33 +284,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cn.faury.fdk.common.utils" />
-      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.DateUtilTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="DateUtilTest.descTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cn.faury.fdk.common.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="fdk-common" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cn.faury.fdk.common.utils" />
-      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.DateUtilTest" />
-      <option name="METHOD_NAME" value="descTime" />
+      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.AssertUtilTest" />
+      <option name="METHOD_NAME" value="check" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -192,7 +298,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="DateUtilTest.getCurrentTimestamp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AssertUtilTest.check1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="cn.faury.fdk.common.utils.*" />
@@ -203,8 +309,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cn.faury.fdk.common.utils" />
-      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.DateUtilTest" />
-      <option name="METHOD_NAME" value="getCurrentTimestamp" />
+      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.AssertUtilTest" />
+      <option name="METHOD_NAME" value="check1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -217,7 +323,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="DateUtilTest.isDateClose" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AssertUtilTest.notEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="cn.faury.fdk.common.utils.*" />
@@ -228,8 +334,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cn.faury.fdk.common.utils" />
-      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.DateUtilTest" />
-      <option name="METHOD_NAME" value="isDateClose" />
+      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.AssertUtilTest" />
+      <option name="METHOD_NAME" value="notEmpty" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -242,7 +348,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="DateUtilTest.toCalendar" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AssertUtilTest.notNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="cn.faury.fdk.common.utils.*" />
@@ -253,8 +359,33 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cn.faury.fdk.common.utils" />
-      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.DateUtilTest" />
-      <option name="METHOD_NAME" value="toCalendar" />
+      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.common.utils.AssertUtilTest" />
+      <option name="METHOD_NAME" value="notNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="HttpUtilTest.getByProxy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cn.faury.fdk.http.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="fdk-http-client" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cn.faury.fdk.http.client" />
+      <option name="MAIN_CLASS_NAME" value="cn.faury.fdk.http.client.HttpUtilTest" />
+      <option name="METHOD_NAME" value="getByProxy" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -349,24 +480,27 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.DateUtilTest.getCurrentTimestamp" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DateUtilTest.descTime" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.DateUtilTest.toCalendar" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DateUtilTest.isDateClose" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.DateUtilTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.HttpUtilTest.getByProxy" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.check" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.check1" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.notNull" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.notEmpty" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DateUtilTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DateUtilTest.isDateClose" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.DateUtilTest.toCalendar" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DateUtilTest.descTime" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.DateUtilTest.getCurrentTimestamp" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.notNull" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.check1" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.check" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HttpUtilTest.getByProxy" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.AssertUtilTest.notEmpty" />
       </list>
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_NON_PUBLIC,SHOW_FIELDS,SHOW_PROPERTIES,ALPHA_COMPARATOR,VISIBILITY_SORTER" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -376,71 +510,84 @@
       <option name="presentableId" value="Default" />
       <updated>1527212935307</updated>
       <workItem from="1527212936583" duration="3088000" />
-      <workItem from="1527240513027" duration="14047000" />
+      <workItem from="1527240513027" duration="32409000" />
+      <workItem from="1527468410661" duration="16728000" />
+      <workItem from="1527668839205" duration="5393000" />
+      <workItem from="1527755449027" duration="9011000" />
+      <workItem from="1527811062939" duration="23824000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DateUtilTest - 2018.05.25 at 23h 06m 56s.xml">
-      <configuration name="DateUtilTest" configurationId="JUnit" />
+    <history-entry file="AssertUtilTest_check - 2018.06.01 at 16h 38m 32s.xml">
+      <configuration name="AssertUtilTest.check" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_descTime - 2018.05.25 at 22h 56m 47s.xml">
-      <configuration name="DateUtilTest.descTime" configurationId="JUnit" />
+    <history-entry file="AssertUtilTest_check1 - 2018.06.01 at 16h 38m 51s.xml">
+      <configuration name="AssertUtilTest.check1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_descTime - 2018.05.25 at 22h 56m 48s.xml">
-      <configuration name="DateUtilTest.descTime" configurationId="JUnit" />
+    <history-entry file="AssertUtilTest_notNull - 2018.06.01 at 16h 38m 54s.xml">
+      <configuration name="AssertUtilTest.notNull" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_isDateClose - 2018.05.25 at 23h 05m 21s.xml">
-      <configuration name="DateUtilTest.isDateClose" configurationId="JUnit" />
+    <history-entry file="AssertUtilTest_notNull - 2018.06.01 at 16h 39m 19s.xml">
+      <configuration name="AssertUtilTest.notNull" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_isDateClose - 2018.05.25 at 23h 05m 46s.xml">
-      <configuration name="DateUtilTest.isDateClose" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 13m 00s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_isDateClose - 2018.05.25 at 23h 05m 56s.xml">
-      <configuration name="DateUtilTest.isDateClose" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 19m 20s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_isDateClose - 2018.05.25 at 23h 06m 02s.xml">
-      <configuration name="DateUtilTest.isDateClose" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 22m 51s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_isDateClose - 2018.05.25 at 23h 06m 48s.xml">
-      <configuration name="DateUtilTest.isDateClose" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 22m 56s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_toCalendar - 2018.05.25 at 23h 00m 17s.xml">
-      <configuration name="DateUtilTest.toCalendar" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 29m 50s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DateUtilTest_toCalendar - 2018.05.25 at 23h 03m 52s.xml">
-      <configuration name="DateUtilTest.toCalendar" configurationId="JUnit" />
+    <history-entry file="HttpUtilTest_getByProxy - 2018.06.01 at 16h 30m 18s.xml">
+      <configuration name="HttpUtilTest.getByProxy" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17135000" />
+    <option name="totallyTimeSpent" value="90453000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243607" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4640523" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36473754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26938775" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19555874" sideWeight="0.49528936" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20916906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39300135" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20487106" sideWeight="0.5047106" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -453,28 +600,28 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20916906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39300135" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243607" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25653595" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29795918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55181694" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23567335" sideWeight="0.49528936" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243607" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20487106" sideWeight="0.5047106" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,455 +632,580 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/HttpUtilTest.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="date.getTime()" language="JAVA" />
-        <watch expression="calendar.getTime().getTime()" language="JAVA" />
+        <watch expression="&quot;set&quot; + StringUtil.firstCharToUpperCase(field.getName())" language="JAVA" />
+        <watch expression="field.getType()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="n#repositories#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#pluginRepositories#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#snapshots#0;n#pluginRepository#0;n#pluginRepositories#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#build#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#plugins#0;n#pluginManagement#0;n#build#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#plugins#0;n#build#0;n#project#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;field#EMPTY_STR#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#CR#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#LF#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#SP#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#HT#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#UTF8_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ASCII_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ISO8859_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#UTF_8#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ASCII#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ISO_8859_1#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#StringUtil#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#StringUtil#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#dealNull#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toInt#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toInt#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toFloat#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toFloat#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toBoolean#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toBoolean#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#mergeDuplicateArray#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#mergeDuplicateArray#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#firstCharToLowerCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#firstCharToLowerCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#firstCharToUpperCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#firstCharToUpperCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isEmpty#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isNotEmpty#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isNotEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="method#isNotEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="e#5510#5511#0" expanded="false" />
-            <element signature="e#5564#5565#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/ComboBoxEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#1887#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$MAVEN_REPOSITORY$/org/apache/maven/plugins/maven-clean-plugin/3.0.0/maven-clean-plugin-3.0.0.pom">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="682" column="42" lean-forward="false" selection-start-line="682" selection-start-column="42" selection-end-line="682" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="531" column="22" lean-forward="false" selection-start-line="531" selection-start-column="22" selection-end-line="531" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/Boolean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="121" column="32" lean-forward="false" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="32" />
-          <folding>
-            <element signature="e#3553#3554#0" expanded="false" />
-            <element signature="e#3619#3620#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="200" column="24" lean-forward="false" selection-start-line="200" selection-start-column="24" selection-end-line="200" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="3812" column="30" lean-forward="true" selection-start-line="3812" selection-start-column="30" selection-end-line="3812" selection-end-column="30" />
-          <folding>
-            <element signature="e#177013#177014#0" expanded="false" />
-            <element signature="e#177054#177055#0" expanded="false" />
-            <element signature="e#177353#177354#0" expanded="false" />
-            <element signature="e#177410#177411#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/jre/lib/rt.jar!/com/sun/istack/internal/NotNull.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/annotation/RetentionPolicy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="38" column="38" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/jre/lib/rt.jar!/com/sun/istack/internal/Nullable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/annotation/ElementType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
-          <folding>
-            <element signature="docComment;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#TYPE#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#FIELD#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#METHOD#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#PARAMETER#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#CONSTRUCTOR#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#LOCAL_VARIABLE#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#ANNOTATION_TYPE#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#PACKAGE#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#TYPE_PARAMETER#0;class#ElementType#0" expanded="false" />
-            <element signature="docComment;field#TYPE_USE#0;class#ElementType#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/NonNull.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="26" column="18" lean-forward="false" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#941#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/anotation/Nullable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#941#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="914" column="45" lean-forward="false" selection-start-line="914" selection-start-column="34" selection-end-line="914" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/nio/charset/Charset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="621" column="25" lean-forward="false" selection-start-line="621" selection-start-column="25" selection-end-line="621" selection-end-column="25" />
-          <folding>
-            <element signature="e#26078#26079#0" expanded="false" />
-            <element signature="e#26105#26106#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/sql/Timestamp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="109" column="11" lean-forward="false" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/ComboBoxEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-513">
-          <caret line="18" column="26" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/jre/lib/deploy.jar!/com/sun/deploy/util/StringUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/StringUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="64" column="16" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="64" selection-end-column="16" />
-          <folding>
-            <element signature="method#dealNull#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#toInt#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#toFloat#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#toBoolean#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#mergeDuplicateArray#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#firstCharToLowerCase#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#firstCharToUpperCase#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#isNotEmpty#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#isEmpty1#0;class#StringUtilTest#0" expanded="false" />
-            <element signature="method#emptyReplace#0;class#StringUtilTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/entry/TreeNodeEntry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="174" column="36" lean-forward="false" selection-start-line="174" selection-start-column="36" selection-end-line="174" selection-end-column="36" />
-          <folding>
-            <element signature="docComment;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#id#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#text#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#iconCls#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#checked#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#state#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#leaf#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="docComment;field#attributes#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="e#976#992#0" expanded="false" />
-            <element signature="docComment;field#children#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="e#1086#1101#0" expanded="false" />
-            <element signature="docComment;method#TreeNodeEntry#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="method#addChildren#0;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="method#addChildren#1;class#TreeNodeEntry#0" expanded="false" />
-            <element signature="e#3722#3723#0" expanded="false" />
-            <element signature="e#3762#3763#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/StringUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1971">
-          <caret line="229" column="4" lean-forward="false" selection-start-line="229" selection-start-column="4" selection-end-line="229" selection-end-column="4" />
-          <folding>
-            <element signature="docComment;field#EMPTY_STR#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#CR#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#LF#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#SP#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#HT#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#UTF8_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ASCII_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ISO8859_NAME#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#UTF_8#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ASCII#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;field#ISO_8859_1#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#StringUtil#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#StringUtil#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#dealNull#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toInt#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toInt#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toFloat#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toFloat#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#toBoolean#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#toBoolean#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#mergeDuplicateArray#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#mergeDuplicateArray#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#firstCharToLowerCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#firstCharToLowerCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#firstCharToUpperCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#firstCharToUpperCase#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isEmpty#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isNotEmpty#0;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isNotEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="method#isNotEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#isEmpty#1;class#StringUtil#0" expanded="false" />
-            <element signature="docComment;method#emptyReplace#0;class#StringUtil#0" expanded="false" />
-            <element signature="method#emptyReplace#0;class#StringUtil#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/util/Calendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1762">
-          <caret line="620" column="28" lean-forward="false" selection-start-line="620" selection-start-column="28" selection-end-line="620" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/text/DateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="363" column="0" lean-forward="false" selection-start-line="363" selection-start-column="0" selection-end-line="363" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="1438" column="0" lean-forward="false" selection-start-line="1438" selection-start-column="0" selection-end-line="1438" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/util/Date.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-263">
-          <caret line="163" column="11" lean-forward="false" selection-start-line="163" selection-start-column="11" selection-end-line="163" selection-end-column="11" />
-          <folding>
-            <element signature="e#6390#6391#0" expanded="false" />
-            <element signature="e#6438#6439#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/DateUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1161">
-          <caret line="108" column="47" lean-forward="false" selection-start-line="108" selection-start-column="47" selection-end-line="108" selection-end-column="47" />
-          <folding>
-            <element signature="method#parse#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#parse1#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#format#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#formatDate#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#formatDateTime#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#getCurrentDate#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#getCurrentDateStr#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#getCurrentDateStr1#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#getCurrentDateTimeStr#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#getCurrentTimestamp#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#descTime#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#toCalendar#0;class#DateUtilTest#0" expanded="false" />
-            <element signature="method#isDateClose#0;class#DateUtilTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="n#dependencies#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#dependencyManagement#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#repositories#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#pluginRepositories#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#snapshots#0;n#pluginRepository#0;n#pluginRepositories#0;n#project#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/DateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="217" column="77" lean-forward="false" selection-start-line="217" selection-start-column="77" selection-end-line="217" selection-end-column="77" />
+        <state relative-caret-position="238">
+          <caret line="137" column="27" lean-forward="false" selection-start-line="137" selection-start-column="27" selection-end-line="137" selection-end-column="27" />
           <folding>
-            <element signature="docComment;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;field#FORMAT_DATE#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;field#FORMAT_DATE_TIME#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#parse#0;class#DateUtil#0" expanded="false" />
-            <element signature="method#parse#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#parse#1;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#format#0;class#DateUtil#0" expanded="false" />
-            <element signature="method#format#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#formatDate#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#formatDateTime#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#getCurrentDate#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#getCurrentDateStr#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#getCurrentDateStr#1;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#getCurrentDateTimeStr#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#getCurrentTimestamp#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#descDateTime#0;class#DateUtil#0" expanded="false" />
-            <element signature="method#descDateTime#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#toCalendar#0;class#DateUtil#0" expanded="false" />
-            <element signature="method#toCalendar#0;class#DateUtil#0" expanded="false" />
-            <element signature="docComment;method#isDateClose#0;class#DateUtil#0" expanded="false" />
-            <element signature="method#isDateClose#0;class#DateUtil#0" expanded="false" />
+            <element signature="e#3281#3282#0" expanded="true" />
+            <element signature="e#3326#3327#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/HttpStatus.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/message/AbstractHttpMessage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="51" column="16" lean-forward="false" selection-start-line="51" selection-start-column="16" selection-end-line="51" selection-end-column="16" />
+          <folding>
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1417#1418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/message/BasicHeader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/methods/HttpRequestBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/entity/ContentType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="60" column="36" lean-forward="false" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/methods/HttpGet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/methods/HttpOptions.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/methods/HttpHead.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/CookieStore.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/CookieOrigin.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/CookieSpec.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/SetCookie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/SetCookie2.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/CookieSpecProvider.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/ClientCookie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/CommonCookieAttributeHandler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/Cookie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/client/HttpClient.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="4787" column="30" lean-forward="false" selection-start-line="4787" selection-start-column="30" selection-end-line="4787" selection-end-column="30" />
+          <folding>
+            <element signature="e#186747#186748#0" expanded="false" />
+            <element signature="e#186792#186793#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar!/org/apache/http/cookie/SM.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/Log4jLoggerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar!/org/slf4j/Logger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/test/resources/log4j.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="77" lean-forward="true" selection-start-line="3" selection-start-column="77" selection-end-line="3" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpProxyConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/conf/HttpConfigTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/util/Asserts.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/dev/jdk1.8.0_91/src.zip!/java/lang/IllegalStateException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="53" column="11" lean-forward="false" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+          <folding>
+            <element signature="e#1073#1074#0" expanded="false" />
+            <element signature="e#1097#1098#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/AssertUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="21" column="23" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="e#1095#1096#0" expanded="true" />
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1355#1356#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/src/main/java/cn/faury/fdk/common/utils/BeanUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-265">
+          <caret line="32" column="27" lean-forward="false" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#3447#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar!/org/apache/http/HttpMessage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="12" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/test/resources/http.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/test/java/cn/faury/fdk/http/client/HttpUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="45" column="17" lean-forward="false" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/HttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="111" column="4" lean-forward="false" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#12067#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;field#STATUS_CODE_ERROR#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#STATUS_CODE_ERROR_SOTIMEOUT#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#STATUS_CODE_ERROR_COTIMEOUT#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#STATUS_CODE_ERROR_HOSTCONNECT#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#STATUS_CODE_ERROR_URISYNTAX#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#defaultMaxTotalConn#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#defaultMaxConnPerHost#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#cm#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;field#httpClient#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#HttpClient#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;method#doRequest#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#doRequest#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#createHttpClient#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;method#addHeader#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#addHeader#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;method#retryWait#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#retryWait#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;method#createSSLSocketFactory#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#createSSLSocketFactory#0;class#HttpClient#0" expanded="false" />
+            <element signature="docComment;method#getLenientOrDefault#0;class#HttpClient#0" expanded="false" />
+            <element signature="method#getLenientOrDefault#0;class#HttpClient#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/HttpUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;field#logger#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#HttpUtil#0;class#HttpUtil#0" expanded="false" />
+            <element signature="method#HttpUtil#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#init#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#init#1;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#execute#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#execute#1;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#get#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#get#1;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#get#2;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#get#3;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#post#0;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#post#1;class#HttpUtil#0" expanded="false" />
+            <element signature="method#post#1;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#post#2;class#HttpUtil#0" expanded="false" />
+            <element signature="method#post#2;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#post#3;class#HttpUtil#0" expanded="false" />
+            <element signature="method#post#3;class#HttpUtil#0" expanded="false" />
+            <element signature="docComment;method#checkInit#0;class#HttpUtil#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+          <folding>
+            <element signature="docComment;field#uri#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#method#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#parameters#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#cookie#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#resultType#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#lastRequest#0;class#HttpRequest#0" expanded="false" />
+            <element signature="docComment;field#httpConfig#0;class#HttpRequest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;field#serialVersionUID#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#success#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#lastStatusCode#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#lastRequestTime#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#retryCnt#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#stringResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#byteResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#contentType#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;field#headers#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#getByteResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="method#getByteResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#getContentType#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#getResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="method#getResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#getStringResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="method#getStringResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#setByteResult#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#setContentType#0;class#HttpResponse#0" expanded="false" />
+            <element signature="docComment;method#setStringResult#0;class#HttpResponse#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/core/HttpResultType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/src/main/java/cn/faury/fdk/http/client/conf/HttpConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;field#encoding#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#socketTimeout#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#connectTimeout#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#connectRetry#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#redirectsEnabled#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyHost#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyPort#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyProtocol#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyUsername#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyPassword#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyEnable#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslClientCertification#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystorePath#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystorePassword#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystoreFormat#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#HttpConfig#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#encoding#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#socketTimeout#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#connectTimeout#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#connectRetry#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#retryWait#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#redirectsEnabled#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyHost#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyPort#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyProtocol#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyUsername#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyPassword#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#proxyEnable#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslClientCertification#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystorePath#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystorePassword#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;field#sslKeystoreFormat#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;method#build#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#build#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="docComment;method#buildFromFile#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyHost#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setEncoding#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setSocketTimeout#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setConnectTimeout#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setConnectRetry#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setRetryWait#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setRedirectsEnabled#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyPort#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyProtocol#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyUsername#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyPassword#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setProxyEnable#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setSslClientCertification#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setSslKeystorePath#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setSslKeystorePassword#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+            <element signature="method#setSslKeystoreFormat#0;class#Builder#0;class#HttpConfig#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="53" column="72" lean-forward="false" selection-start-line="53" selection-start-column="72" selection-end-line="53" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2469">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#dependencyManagement#0;n#project#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="999">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/src/test/java/cn/faury/fdk/common/utils/AssertUtilTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-486">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-http-client/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -954,7 +1226,7 @@
       </state>
       <state key="Copyright.UI">
         <settings>
-          <last-edited>fdk-common</last-edited>
+          <last-edited>fdk-http-client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1001,7 +1273,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>fdk</last-edited>
+          <last-edited>fdk-http-client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1038,7 +1310,7 @@
       </state>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
-          <last-edited>fdk-common</last-edited>
+          <last-edited>fdk-http-client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1048,9 +1320,13 @@
           </splitter-proportions>
           <order>
             <scope name="fdk-common" />
+            <scope name="fdk-http-client" />
           </order>
         </settings>
       </state>
     </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="" />
   </component>
 </project>

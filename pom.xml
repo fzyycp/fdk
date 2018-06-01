@@ -7,9 +7,10 @@
     <groupId>cn.faury</groupId>
     <artifactId>fdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <modules>
         <module>fdk-common</module>
+        <module>fdk-http-client</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>
@@ -53,6 +54,12 @@
             <id>nexus</id>
             <name>Team Nexus Repository</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+        <!-- fdk私服 -->
+        <repository>
+            <id>fdk</id>
+            <name>FDK Repository</name>
+            <url>https://dl.bintray.com/faury/fdk</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -109,4 +116,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk/;publish=1</url>
+        </repository>
+    </distributionManagement>
 </project>

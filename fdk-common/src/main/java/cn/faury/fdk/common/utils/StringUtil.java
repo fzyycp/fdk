@@ -6,7 +6,9 @@
  #############################################################################*/
 package cn.faury.fdk.common.utils;
 
+import cn.faury.fdk.common.anotation.NonNull;
 import cn.faury.fdk.common.anotation.Nullable;
+import org.apache.commons.codec.binary.Base64;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -14,7 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public final class StringUtil {
+public class StringUtil {
     /**
      * 空字符串
      */
@@ -67,7 +69,7 @@ public final class StringUtil {
     /**
      * 全静态方法
      */
-    private StringUtil() {
+    protected StringUtil() {
     }
 
     /**
@@ -190,6 +192,23 @@ public final class StringUtil {
     }
 
     /**
+     * 字符字节取得默认"UTF-8"
+     *
+     * @param str 输入字符串
+     */
+    public static byte[] getBytes(@NonNull String str) {
+        return str == null ? new byte[0] : str.getBytes(UTF_8);
+    }
+    /**
+     * 字节转字符串，默认"UTF-8"
+     *
+     * @param bytes 输入字符串
+     */
+    public static String getString(@NonNull byte[] bytes) {
+        return bytes == null ? null : new String(bytes,UTF_8);
+    }
+
+    /**
      * 字符串为 null 或者为 "" 时返回 true
      *
      * @param str 输入字符串
@@ -245,7 +264,40 @@ public final class StringUtil {
      * @return 检查后字符串
      */
     @Nullable
-    public static String emptyReplace(@Nullable String str, @Nullable String defaultStr) {
+    public static String emptyDefault(@Nullable String str, @Nullable String defaultStr) {
         return isEmpty(str) ? defaultStr : str;
     }
+
+    /**
+     * 字节转化为16进制字符串
+     * @param bs 字节
+     * @return 16进制字符串
+     */
+    public static String byteToHexString(@NonNull byte[] bs) {
+        StringBuilder sb = new StringBuilder(bs.length * 2);
+        for (byte b : bs) {
+            sb.append(Character.forDigit((b & 0xf0) >> 4, 16));
+            sb.append(Character.forDigit((b & 0x0f), 16));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 字节转base64码
+     * @param bs 字节
+     * @return base64码
+     */
+    public static String byteToBase64(byte[] bs) {
+        return new String(Base64.encodeBase64(bs), StringUtil.UTF_8);
+    }
+
+    /**
+     * base64码转字节
+     * @param base base64码
+     * @return 字节
+     */
+    public static byte[] base64ToByte(String base) {
+        return Base64.decodeBase64(StringUtil.getBytes(base));
+    }
+
 }

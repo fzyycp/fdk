@@ -8,6 +8,8 @@ package cn.faury.fdk.common.utils;
 
 import cn.faury.fdk.common.anotation.NonNull;
 import cn.faury.fdk.common.anotation.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -23,12 +25,46 @@ public class DateUtil {
     /**
      * 年月日格式化
      */
-    public static String FORMAT_DATE = "yyyy-MM-dd";
+    public static final String FORMAT_DATE = "yyyy-MM-dd";
+
+    /**
+     * 年月日格式化短格式
+     */
+    public static final String FORMAT_DATE_SHORT = "yyyyMMdd";
 
     /**
      * 年月日时分秒格式化
      */
-    public static String FORMAT_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMAT_DATE_TIME = "yyyy-MM-dd HH:mm:ss";
+
+    // 日志记录器
+    private static final Logger logger = LoggerFactory.getLogger(DateUtil.class);
+
+    /**
+     * 字符串格式化为日期
+     *
+     * @param dateStr 日期字符串
+     * @param format  格式化模式
+     * @param lenient 是否宽松匹配(即2018年13月转换为2019年1月)
+     * @return 日期对象
+     */
+    @Nullable
+    public static Date parse(@NonNull String dateStr, @NonNull String format, boolean lenient) {
+        if (StringUtil.isEmpty(dateStr)) {
+            return null;
+        }
+        Date date = null;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(StringUtil.emptyDefault(format, FORMAT_DATE));
+            sdf.setLenient(lenient);
+            date = sdf.parse(dateStr);
+        } catch (RuntimeException | ParseException e) {
+            if (logger.isTraceEnabled()) {
+                logger.trace(e.getMessage(), e);
+            }
+        }
+        return date;
+    }
 
     /**
      * 字符串格式化为日期
@@ -39,16 +75,7 @@ public class DateUtil {
      */
     @Nullable
     public static Date parse(@NonNull String dateStr, @NonNull String format) {
-        if (StringUtil.isEmpty(dateStr)) {
-            return null;
-        }
-        Date date = null;
-        try {
-            date = new SimpleDateFormat(StringUtil.emptyReplace(format, FORMAT_DATE)).parse(dateStr);
-        } catch (RuntimeException | ParseException e) {
-            e.printStackTrace();
-        }
-        return date;
+        return parse(dateStr, format, false);
     }
 
     /**
@@ -59,6 +86,9 @@ public class DateUtil {
      */
     @Nullable
     public static Date parse(@NonNull String dateStr) {
+        if (StringUtil.isNotEmpty(dateStr) && FORMAT_DATE.length() < dateStr.length()) {
+            return parse(dateStr, FORMAT_DATE_TIME);
+        }
         return parse(dateStr, FORMAT_DATE);
     }
 
@@ -74,7 +104,7 @@ public class DateUtil {
         if (date == null) {
             return null;
         }
-        return new SimpleDateFormat(StringUtil.emptyReplace(format, FORMAT_DATE)).format(date);
+        return new SimpleDateFormat(StringUtil.emptyDefault(format, FORMAT_DATE)).format(date);
     }
 
     /**
@@ -100,13 +130,23 @@ public class DateUtil {
     }
 
     /**
+     * 获取当前日历
+     *
+     * @return 当前日历
+     */
+    @NonNull
+    public static Calendar getCurrentCalendar() {
+        return Calendar.getInstance();
+    }
+
+    /**
      * 获取当前日期
      *
      * @return 当前日期
      */
     @NonNull
     public static Date getCurrentDate() {
-        return Calendar.getInstance().getTime();
+        return getCurrentCalendar().getTime();
     }
 
     /**

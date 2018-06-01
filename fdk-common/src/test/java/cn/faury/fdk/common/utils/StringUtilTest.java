@@ -5,6 +5,31 @@ import org.junit.Test;
 
 public class StringUtilTest {
     @Test
+    public void byteToBase64() throws Exception {
+        byte[] str = StringUtil.getBytes("abcd");
+        System.out.println(StringUtil.byteToBase64(str));
+        Assert.assertTrue("YWJjZA==".equals(StringUtil.byteToBase64(str)));
+    }
+
+    @Test
+    public void base64ToByte() throws Exception {
+        byte[] str = StringUtil.base64ToByte("YWJjZA==");
+        Assert.assertTrue("abcd".equals(StringUtil.getString(str)));
+    }
+
+    @Test
+    public void byteToHexString() throws Exception {
+        byte[] str = StringUtil.getBytes("abcd");
+        System.out.println(StringUtil.byteToHexString(str));
+        Assert.assertTrue("61626364".equals(StringUtil.byteToHexString(str)));
+    }
+
+    @Test
+    public void getBytes() throws Exception {
+        System.out.println(StringUtil.getBytes("abcd"));
+    }
+
+    @Test
     public void dealNull() throws Exception {
         Assert.assertTrue("fail:dealNull with null",StringUtil.EMPTY_STR.equals(StringUtil.dealNull((String)null)));
         Assert.assertTrue("fail:dealNull with string","abc".equals(StringUtil.dealNull("abc")));
@@ -76,9 +101,9 @@ public class StringUtilTest {
 
     @Test
     public void emptyReplace() throws Exception {
-        Assert.assertTrue("fail:emptyReplace with null","faury".equals(StringUtil.emptyReplace((String)null,"faury")));
-        Assert.assertTrue("fail:emptyReplace with \"\"","faury".equals(StringUtil.emptyReplace("","faury")));
-        Assert.assertTrue("fail:emptyReplace with abc","abc".equals(StringUtil.emptyReplace("abc","faury")));
+        Assert.assertTrue("fail:emptyDefault with null","faury".equals(StringUtil.emptyDefault((String)null,"faury")));
+        Assert.assertTrue("fail:emptyDefault with \"\"","faury".equals(StringUtil.emptyDefault("","faury")));
+        Assert.assertTrue("fail:emptyDefault with abc","abc".equals(StringUtil.emptyDefault("abc","faury")));
     }
 
 }

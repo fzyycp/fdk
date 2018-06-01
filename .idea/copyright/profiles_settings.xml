@@ -2,6 +2,7 @@
   <settings>
     <module2copyright>
       <element module="fdk-common" copyright="fdk-common" />
+      <element module="fdk-http-client" copyright="fdk-http-client" />
     </module2copyright>
     <LanguageOptions name="__TEMPLATE__">
       <option name="addBlankAfter" value="false" />
