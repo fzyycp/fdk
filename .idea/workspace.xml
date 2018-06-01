@@ -21,8 +21,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+            <state relative-caret-position="552">
+              <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -41,7 +41,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fdk-common/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
+            <state relative-caret-position="552">
               <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
               <folding />
             </state>
@@ -203,16 +203,6 @@
             <path>
               <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
               <item name="fdk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fdk" type="462c0819:PsiDirectoryNode" />
-              <item name="fdk-common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fdk" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fdk" type="462c0819:PsiDirectoryNode" />
-              <item name="fdk-http-client" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -514,7 +504,7 @@
       <workItem from="1527468410661" duration="16728000" />
       <workItem from="1527668839205" duration="5393000" />
       <workItem from="1527755449027" duration="9011000" />
-      <workItem from="1527811062939" duration="24017000" />
+      <workItem from="1527811062939" duration="24168000" />
     </task>
     <servers />
   </component>
@@ -551,7 +541,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90646000" />
+    <option name="totallyTimeSpent" value="90797000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1185,14 +1175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fdk-common/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fdk-http-client/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1201,10 +1183,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fdk-common/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="24" column="6" lean-forward="false" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+        <state relative-caret-position="552">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding />
         </state>
       </provider>
