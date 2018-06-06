@@ -1,0 +1,21 @@
+fdk:
+  mybatis:
+    databaseType: mysql
+    basePackage: cn.faury
+  datasource:
+    dbcp:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/fdk-test
+      username: root
+      password: 123456
+      initialSize: 5
+      maxTotal: 10
+      minIdle: 5
+      maxIdle: 5
+      maxWait: 8000
+      removeAbandoned: true
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      numTestsPerEvictionRun: 10
+      validationQuery: select 1
+      validationQueryTimeout: 1

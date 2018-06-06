@@ -1,0 +1,14 @@
+fdk:
+  shiro:
+    saCode: faury
+    session:
+      timeout:1800000
+    filter:
+      loginUrl: /login
+      successUrl: /index
+      unauthorizedUrl: /unauth
+      chain:
+        /logout: logout
+        /static/**: anon
+        /login: anon
+        /**: authc

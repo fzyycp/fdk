@@ -1,0 +1,4 @@
+fdk:
+  mybatis:
+    databaseType: mysql
+    basePackage: cn.faury

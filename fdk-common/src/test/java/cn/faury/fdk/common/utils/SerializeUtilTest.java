@@ -5,8 +5,6 @@ import org.junit.Test;
 
 import java.io.Serializable;
 
-import static org.junit.Assert.*;
-
 public class SerializeUtilTest implements Serializable {
     @Test
     public void serialize() throws Exception {

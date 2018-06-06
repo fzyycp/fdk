@@ -6,13 +6,14 @@
  #############################################################################*/
 package cn.faury.fdk.common.utils;
 
-import cn.faury.fdk.common.anotation.*;
+import cn.faury.fdk.common.anotation.Nullable;
+import cn.faury.fdk.common.anotation.serialize.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.Map;
 
 /**
  * JSON工具

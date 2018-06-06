@@ -11,6 +11,10 @@
     <modules>
         <module>fdk-common</module>
         <module>fdk-http-client</module>
+        <module>fdk-shiro</module>
+        <module>fdk-shiro-repository-mongodb</module>
+        <module>fdk-datasource-dbcp</module>
+        <module>fdk-mybatis</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>
@@ -28,6 +32,18 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -1,9 +1,9 @@
 package cn.faury.fdk.common.utils;
 
-import cn.faury.fdk.common.anotation.SerializeDate;
-import cn.faury.fdk.common.anotation.SerializeExpose;
-import cn.faury.fdk.common.anotation.SerializeHtmlEscaping;
-import cn.faury.fdk.common.anotation.SerializeNulls;
+import cn.faury.fdk.common.anotation.serialize.SerializeDate;
+import cn.faury.fdk.common.anotation.serialize.SerializeExpose;
+import cn.faury.fdk.common.anotation.serialize.SerializeHtmlEscaping;
+import cn.faury.fdk.common.anotation.serialize.SerializeNulls;
 import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Assert;

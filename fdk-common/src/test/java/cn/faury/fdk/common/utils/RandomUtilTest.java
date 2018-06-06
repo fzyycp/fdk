@@ -3,10 +3,6 @@ package cn.faury.fdk.common.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.annotation.processing.SupportedSourceVersion;
-
-import static org.junit.Assert.*;
-
 public class RandomUtilTest {
     @Test
     public void getUUIDString() throws Exception {

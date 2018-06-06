@@ -3,8 +3,6 @@ package cn.faury.fdk.common.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class ValidUtilTest {
     @Test
     public void isValidIDNo() throws Exception {

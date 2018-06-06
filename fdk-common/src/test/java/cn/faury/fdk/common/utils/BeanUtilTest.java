@@ -3,8 +3,6 @@ package cn.faury.fdk.common.utils;
 import cn.faury.fdk.common.anotation.Properties;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class BeanUtilTest {
     @Test
     public void initFields() throws Exception {

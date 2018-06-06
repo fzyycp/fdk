@@ -14,7 +14,7 @@
     <version>0.0.1</version>
 
     <properties>
-        <fdk.common.version>0.0.4</fdk.common.version>
+        <fdk.common.version>0.0.7</fdk.common.version>
     </properties>
 
     <dependencies>
@@ -33,18 +33,6 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.5</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.25</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
     <distributionManagement>

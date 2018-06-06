@@ -3,7 +3,6 @@ package cn.faury.fdk.common.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.Set;
 
 public class PropertiesUtilTest {
