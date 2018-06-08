@@ -3,13 +3,14 @@ package cn.faury.fdk.common.utils;
 import cn.faury.fdk.common.anotation.serialize.SerializeDate;
 import cn.faury.fdk.common.anotation.serialize.SerializeExpose;
 import cn.faury.fdk.common.anotation.serialize.SerializeHtmlEscaping;
-import cn.faury.fdk.common.anotation.serialize.SerializeNulls;
+import cn.faury.fdk.common.anotation.serialize.SerializeWithoutNulls;
 import com.google.gson.annotations.Expose;
 import com.google.gson.reflect.TypeToken;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.util.*;
 
@@ -111,6 +112,8 @@ public class JsonUtilTest {
         UserNullDate user = new UserNullDate("faury", 18);
         System.out.println(JsonUtil.objectToJson(user));
         Assert.assertTrue("fail: json not equal user", "{\"name\":\"faury\",\"age\":18,\"date\":null}".equals(JsonUtil.objectToJson(user)));
+        System.out.println(JsonUtil.objectToJson(user,true,"",false,true,false));
+        Assert.assertTrue("fail: json not equal user", "{\"name\":\"faury\",\"age\":18}".equals(JsonUtil.objectToJson(user,true,"",false,true,false)));
         user.date = DateUtil.parse("2018-01-02");
         System.out.println(JsonUtil.objectToJson(user));
         Assert.assertTrue("fail: json not equal user", "{\"name\":\"faury\",\"age\":18,\"date\":\"2018-01-02\"}".equals(JsonUtil.objectToJson(user)));
@@ -138,7 +141,6 @@ public class JsonUtilTest {
             this.date = null;
         }
     }
-    @SerializeNulls
     @SerializeDate(DateUtil.FORMAT_DATE)
     class UserNullDate implements Serializable {
         String name;

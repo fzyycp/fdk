@@ -1,7 +1,7 @@
 package cn.faury.fdk.mybatis.dao;
 
-import cn.faury.fdk.common.db.Page;
-import cn.faury.fdk.mybatis.page.PageBounds;
+import cn.faury.fdk.common.db.PageParam;
+import cn.faury.fdk.mybatis.page.PageInfo;
 import org.apache.ibatis.session.SqlSession;
 
 /**
@@ -14,18 +14,18 @@ public interface CommonDao extends BaseDao,SqlSession {
      *
      * @param statement  sql语句
      * @param parameter  sql占位参数
-     * @param pageBounds 分页参数
+     * @param pageParam 分页参数
      * @return 分页结果
      */
-    <T> Page<T> selectPage(String statement, Object parameter, PageBounds pageBounds);
+    <T> PageInfo<T> selectPage(String statement, Object parameter, PageParam pageParam);
 
     /**
      * 分页检索
      *
      * @param statement  sql语句
-     * @param pageBounds 分页参数
+     * @param pageParam 分页参数
      * @return 分页结果
      */
-    <T> Page<T> selectPage(String statement, PageBounds pageBounds);
+    <T> PageInfo<T> selectPage(String statement, PageParam pageParam);
 	
 }

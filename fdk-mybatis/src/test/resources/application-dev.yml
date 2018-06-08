@@ -1,21 +1,21 @@
-fdk:
-  mybatis:
-    databaseType: mysql
-    basePackage: cn.faury
+# 数据源配置
+spring:
   datasource:
-    dbcp:
-      driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/fdk-test
-      username: root
-      password: 123456
-      initialSize: 5
-      maxTotal: 10
-      minIdle: 5
-      maxIdle: 5
-      maxWait: 8000
-      removeAbandoned: true
-      testWhileIdle: true
-      timeBetweenEvictionRunsMillis: 60000
-      numTestsPerEvictionRun: 10
-      validationQuery: select 1
-      validationQueryTimeout: 1
+    url: jdbc:mysql://128.0.9.252:3306/jlpt
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 888888
+#    type: org.apache.commons.dbcp2.BasicDataSource     #连接池配置
+
+#mybatis
+#entity扫描的包名
+mybatis:
+  type-aliases-package: cn.faury
+  mapper-locations: classpath*:/mybaits/*Mapper.xml  #Mapper.xml所在的位置
+
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

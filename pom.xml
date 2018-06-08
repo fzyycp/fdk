@@ -13,7 +13,6 @@
         <module>fdk-http-client</module>
         <module>fdk-shiro</module>
         <module>fdk-shiro-repository-mongodb</module>
-        <module>fdk-datasource-dbcp</module>
         <module>fdk-mybatis</module>
     </modules>
     <name>fdk</name>

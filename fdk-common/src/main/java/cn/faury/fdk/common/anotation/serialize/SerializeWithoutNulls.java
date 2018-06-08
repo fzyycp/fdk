@@ -21,11 +21,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * JSON序列化包含null值
+ * JSON序列化排除null值
  */
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.TYPE})
-public @interface SerializeNulls {
+@SerializeTag
+public @interface SerializeWithoutNulls {
     boolean value() default true;
 }

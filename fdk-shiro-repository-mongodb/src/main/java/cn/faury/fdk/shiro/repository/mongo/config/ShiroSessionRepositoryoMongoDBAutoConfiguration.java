@@ -5,10 +5,16 @@ import cn.faury.fdk.shiro.repository.mongo.MongoDBShiroSessionRepository;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
+@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class})
+@Order(1)
 public class ShiroSessionRepositoryoMongoDBAutoConfiguration {
 
     // 服务器地址
@@ -33,8 +39,8 @@ public class ShiroSessionRepositoryoMongoDBAutoConfiguration {
     @Bean
     public MongoDBShiroSessionRepository shiroSessionRepository() {
         MongoClient mongoClient;
-        if(StringUtil.isEmpty(username,password)){
-            mongoClient = new MongoClient(host,port);
+        if (StringUtil.isEmpty(username, password)) {
+            mongoClient = new MongoClient(host, port);
         } else {
             String uri = String.format("mongodb://%s:%s@%s:%s", username, password, host, port);
             mongoClient = new MongoClient(new MongoClientURI(uri));

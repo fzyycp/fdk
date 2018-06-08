@@ -21,6 +21,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.TYPE})
+@SerializeTag
 public @interface SerializeDate {
     String value() default DateUtil.FORMAT_DATE_TIME;
 }

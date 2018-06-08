@@ -26,6 +26,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.TYPE})
+@SerializeTag
 public @interface SerializeWithoutInnerClass {
     boolean value() default true;
 }

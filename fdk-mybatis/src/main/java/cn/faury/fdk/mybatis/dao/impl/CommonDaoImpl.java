@@ -1,8 +1,10 @@
 package cn.faury.fdk.mybatis.dao.impl;
 
-import cn.faury.fdk.common.db.Page;
+import cn.faury.fdk.common.db.PageParam;
 import cn.faury.fdk.mybatis.dao.CommonDao;
-import cn.faury.fdk.mybatis.page.PageBounds;
+import cn.faury.fdk.mybatis.page.PageInfo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageRowBounds;
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.executor.BatchResult;
 import org.apache.ibatis.session.Configuration;
@@ -15,10 +17,6 @@ import java.util.Map;
 
 /**
  * 通用Dao操作类
- * 
- * <pre>
- * spring扫描会自动注册到commonDao对象
- * </pre>
  */
 public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 
@@ -256,32 +254,30 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 		return this.sqlSessionTemplate.getConnection();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cn.wassk.mybatis.support.dao.CommonDao#selectPage(java.lang.String,
-	 * java.lang.Object, cn.wassk.mybatis.support.page.PageBounds)
+	/**
+	 * 分页检索
+	 *
+	 * @param statement sql语句
+	 * @param parameter sql占位参数
+	 * @param pageParam 分页参数
+	 * @return 分页结果
 	 */
 	@Override
-	public <T> Page<T> selectPage(String statement, Object parameter, PageBounds pageBounds) {
-		List<T> list = selectList(statement, parameter, pageBounds);
-		Page<T> page = pageBounds.getPage();
-		page.setResults(list);
-//		page.setTotalPage(pageBounds.getPage().getTotalPage());
-//		page.setTotalRecord(pageBounds.getPage().getTotalRecord());
-//		page.setPageNo(pageBounds.getPageNumber());
-//		page.setPageSize(pageBounds.getPageSize());
-		return page;
+	public <T> PageInfo<T> selectPage(String statement, Object parameter, PageParam pageParam) {
+		PageHelper.startPage(pageParam.getPageNo(),pageParam.getPageSize());
+		List<T> list = selectList(statement, parameter, new PageRowBounds(pageParam.getPageNo(),pageParam.getPageSize()));
+		return new PageInfo<>(list);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see cn.wassk.mybatis.support.dao.CommonDao#selectPage(java.lang.String,
-	 * cn.wassk.mybatis.support.page.PageBounds)
+	/**
+	 * 分页检索
+	 *
+	 * @param statement sql语句
+	 * @param pageParam 分页参数
+	 * @return 分页结果
 	 */
 	@Override
-	public <T> Page<T> selectPage(String statement, PageBounds pageBounds) {
-		return selectPage(statement, null, pageBounds);
+	public <T> PageInfo<T> selectPage(String statement, PageParam pageParam) {
+		return selectPage(statement, null, pageParam);
 	}
 }

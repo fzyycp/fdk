@@ -7,8 +7,10 @@
 package cn.faury.fdk.common.db;
 
 import cn.faury.fdk.common.utils.JsonUtil;
+import cn.faury.fdk.common.utils.StringUtil;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * 分页参数
@@ -51,6 +53,29 @@ public class PageParam implements Serializable {
     }
 
     /**
+     * 根据默认参数构造分页对象
+     * @param param 参数map
+     * @return 分页结果
+     */
+    public static PageParam buildDefaultIns(Map<String, Object> param) {
+        PageParam pageBounds = new PageParam();
+        if (param != null) {
+            String pageNo = (String)param.get("pageNo");
+            String pageSize = (String)param.get("pageSize");
+            if (StringUtil.isEmpty(pageNo)) {
+                pageNo = "1";
+            }
+            if (StringUtil.isEmpty(pageSize)) {
+                pageSize = "20";
+            }
+            pageBounds.setPageNo(Integer.parseInt(pageNo));
+            pageBounds.setPageSize(Integer.parseInt(pageSize));
+        }
+
+        return pageBounds;
+    }
+
+    /**
      * 拷贝构造函数
      *
      * @param pageParam 分页参数
@@ -84,21 +109,15 @@ public class PageParam implements Serializable {
     /**
      * 参数名常量
      */
-    public class KEY {
+    public interface KEY {
         /**
          * 分页参数名：页码
          */
-        public static final String KEY_PAGE_NO = "pageNo";
+        String KEY_PAGE_NO = "pageNo";
         /**
          * 分页参数名：分页大小
          */
-        public static final String KEY_PAGE_SIZE = "pageSize";
-
-        /**
-         * 构造函数
-         */
-        public KEY() {
-        }
+        String KEY_PAGE_SIZE = "pageSize";
     }
 
     /**

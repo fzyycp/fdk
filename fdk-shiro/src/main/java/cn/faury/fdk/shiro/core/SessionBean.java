@@ -1,16 +1,11 @@
 package cn.faury.fdk.shiro.core;
 
-import cn.faury.fdk.common.anotation.serialize.SerializeDate;
-import cn.faury.fdk.common.anotation.serialize.SerializeNulls;
-
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Session实体
  */
-@SerializeDate
-@SerializeNulls
 public class SessionBean implements Serializable {
 
     /**

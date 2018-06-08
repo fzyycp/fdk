@@ -12,7 +12,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -29,39 +31,79 @@ public class JsonUtil {
     /**
      * 对象转换为JSON字符串
      *
+     * @param object                     被转换对象
+     * @param serializeWithoutNulls      不序列化null对象
+     * @param serializeDateFormat        日期格式
+     * @param serializeExpose            只序列化有Expose注解的字段
+     * @param serializeHtmlEscaping      转义HTML
+     * @param serializeWithoutInnerClass 不序列化内部类
+     * @return json字符串
+     */
+    public static String objectToJson(@Nullable Object object, boolean serializeWithoutNulls, String serializeDateFormat
+            , boolean serializeExpose, boolean serializeHtmlEscaping, boolean serializeWithoutInnerClass) {
+        GsonBuilder builder = new GsonBuilder();
+        // 序列化null值
+        if (!serializeWithoutNulls) {
+            builder.serializeNulls();
+        }
+        // 日期格式化
+        builder.setDateFormat(StringUtil.emptyDefault(serializeDateFormat, DateUtil.FORMAT_DATE_TIME));
+        // 启用只注解有Expose的字段
+        if (serializeExpose) {
+            builder.excludeFieldsWithoutExposeAnnotation();
+        }
+        // 转义HTML
+        if (!serializeHtmlEscaping) {
+            builder.disableHtmlEscaping();
+        }
+        // 禁止序列化内部类
+        if (serializeWithoutInnerClass) {
+            builder.disableInnerClassSerialization();
+        }
+
+        return builder.create().toJson(object);
+    }
+
+    /**
+     * 对象转换为JSON字符串
+     *
+     * @param object  被转换对象
+     * @param configs 序列化配置
+     * @return json字符串
+     */
+    public static String objectToJson(@Nullable Object object, @Nullable Annotation[] configs) {
+        GsonBuilder builder = new GsonBuilder();
+        builder.setDateFormat(DateUtil.FORMAT_DATE_TIME);
+        final boolean[] withoutNulls = {false};
+        Arrays.stream(configs).forEach(annotation -> {
+            if (annotation instanceof SerializeWithoutNulls && ((SerializeWithoutNulls) annotation).value()) {// 序列化null值
+                withoutNulls[0] = true;
+            } else if (annotation instanceof SerializeDate) {// 日期格式化
+                builder.setDateFormat(StringUtil.emptyDefault(((SerializeDate) annotation).value(), DateUtil.FORMAT_DATE_TIME));
+            } else if (annotation instanceof SerializeExpose && ((SerializeExpose) annotation).value()) {// 启用只注解有Expose的字段
+                builder.excludeFieldsWithoutExposeAnnotation();
+            } else if (annotation instanceof SerializeHtmlEscaping && !((SerializeHtmlEscaping) annotation).value()) {// 转义HTML
+                builder.disableHtmlEscaping();
+            } else if (annotation instanceof SerializeWithoutInnerClass && ((SerializeWithoutInnerClass) annotation).value()) {// 禁止序列化内部类
+                builder.disableInnerClassSerialization();
+            }
+        });
+
+        if (!withoutNulls[0]) {
+            builder.serializeNulls();
+        }
+
+        return builder.create().toJson(object);
+    }
+
+    /**
+     * 对象转换为JSON字符串
+     *
      * @param object 被转换对象
      * @return json字符串
      */
     public static String objectToJson(@Nullable Object object) {
-        GsonBuilder builder = new GsonBuilder();
-        // 序列化null值
-        SerializeNulls sn = object.getClass().getAnnotation(SerializeNulls.class);
-        if (sn != null && sn.value()) {
-            builder.serializeNulls();
-        }
-        // 日期格式化
-        SerializeDate sd = object.getClass().getAnnotation(SerializeDate.class);
-        if (sd != null && StringUtil.isNotEmpty(sd.value())) {
-            builder.setDateFormat(sd.value());
-        } else {
-            builder.setDateFormat(DateUtil.FORMAT_DATE_TIME);
-        }
-        // 启用只注解有Expose的字段
-        SerializeExpose se = object.getClass().getAnnotation(SerializeExpose.class);
-        if (se != null && se.value()) {
-            builder.excludeFieldsWithoutExposeAnnotation();
-        }
-        // 转义HTML
-        SerializeHtmlEscaping she = object.getClass().getAnnotation(SerializeHtmlEscaping.class);
-        if (she == null || !she.value()) {
-            builder.disableHtmlEscaping();
-        }
-        // 禁止序列化内部类
-        SerializeWithoutInnerClass sic = object.getClass().getAnnotation(SerializeWithoutInnerClass.class);
-        if (sic != null && sic.value()) {
-            builder.disableInnerClassSerialization();
-        }
-        return builder.create().toJson(object);
+        return objectToJson(object, object.getClass().getAnnotations());
     }
 
     /**

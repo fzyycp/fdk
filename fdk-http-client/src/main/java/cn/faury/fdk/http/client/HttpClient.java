@@ -250,8 +250,8 @@ public class HttpClient {
                     .setRedirectsEnabled(config.isRedirectsEnabled()).setExpectContinueEnabled(false);
             // 无密码代理
             if (config.isProxyEnable()) {
-                AssertUtil.check(StringUtil.isNotEmpty(config.getProxyHost()), "代理配置错误，host不可以为空");
-                AssertUtil.check((config.getProxyPort() > 0 && config.getProxyPort() < 65536), "代理配置错误，port不可以为%s，必须为[0~65535]", config.getProxyPort());
+                AssertUtil.assertTrue(StringUtil.isNotEmpty(config.getProxyHost()), "代理配置错误，host不可以为空");
+                AssertUtil.assertTrue((config.getProxyPort() > 0 && config.getProxyPort() < 65536), String.format("代理配置错误，port不可以为%s，必须为[0~65535]", config.getProxyPort()));
                 HttpHost proxy = new HttpHost(config.getProxyHost(), config.getProxyPort(), config.getProxyProtocol());
                 builder.setProxy(proxy);
             }

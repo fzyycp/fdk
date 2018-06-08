@@ -21,11 +21,12 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * JSON序列化包含null值
+ * JSON序列化编码HTMl
  */
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.TYPE})
+@SerializeTag
 public @interface SerializeHtmlEscaping {
     boolean value() default true;
 }

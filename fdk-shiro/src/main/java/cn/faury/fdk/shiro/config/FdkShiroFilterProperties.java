@@ -2,6 +2,7 @@ package cn.faury.fdk.shiro.config;
 
 import cn.faury.fdk.common.utils.JsonUtil;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Map;
  */
 @Component
 @ConfigurationProperties(prefix = "fdk.shiro.filter")
+@Order(1)
 public class FdkShiroFilterProperties {
     // 登录URL
     private String loginUrl;

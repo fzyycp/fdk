@@ -7,6 +7,7 @@
 package cn.faury.fdk.common.entry;
 
 import cn.faury.fdk.common.anotation.NonNull;
+import cn.faury.fdk.common.utils.JsonUtil;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -90,5 +91,10 @@ public class ComboBoxEntry implements Serializable {
 
     public void setAttrs(@NonNull Map<String, Object> attrs) {
         this.attrs = attrs;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtil.objectToJson(this);
     }
 }
