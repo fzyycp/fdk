@@ -1,0 +1,1 @@
+provides: fdk-shiro-spring-boot-autoconfigure,spring-boot,spring-boot-starter-web,fdk-captcha-spring-boot-autoconfigure,fdk-captcha

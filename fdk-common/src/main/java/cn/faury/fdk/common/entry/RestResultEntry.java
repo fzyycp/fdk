@@ -7,7 +7,10 @@
 
 package cn.faury.fdk.common.entry;
 
+import cn.faury.fdk.common.anotation.NonNull;
 import cn.faury.fdk.common.exception.TipsException;
+import cn.faury.fdk.common.utils.JsonUtil;
+import cn.faury.fdk.common.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +116,7 @@ public class RestResultEntry {
      * @return 结果对象
      */
     public static RestResultEntry createErrorResult(TipsException te) {
-        return createErrorResult(te.getMessage(), te.getTips());
+        return createErrorResult(te.getCode(), te.getMessage(), te.getTips());
     }
 
     /**
@@ -124,77 +127,123 @@ public class RestResultEntry {
      * @return 结果对象
      */
     public static RestResultEntry createErrorResult(String message, String tips) {
-        return new RestResultEntry(false, RestResultCode.CODE500.getCode(), message, tips, null);
+        return createErrorResult(RestResultCode.CODE500.getCode(), message, tips);
     }
 
     /**
-     * @return the message
+     * 根据输入参数生成一个返回结果集
+     *
+     * @param code    错误码
+     * @param message 消息
+     * @param tips    用户提示信息
+     * @return 结果对象
+     */
+    public static RestResultEntry createErrorResult(String code, String message, String tips) {
+        return new RestResultEntry(false, StringUtil.emptyDefault(code, RestResultCode.CODE500.getCode()), message, tips, null);
+    }
+
+    /**
+     * 根据输入参数生成一个返回结果集
+     *
+     * @param resultCode 错误码
+     * @return 结果对象
+     */
+    public static RestResultEntry createErrorResult(@NonNull RestResultCode resultCode) {
+        return new RestResultEntry(false, resultCode.getCode(), resultCode.getMessage(), resultCode.getTips(), null);
+    }
+
+    /**
+     * 获取message
+     *
+     * @return message
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     * @param message the message to set
+     * 设置message
+     *
+     * @param message 值
      */
     public void setMessage(String message) {
-        this.message = message == null ? "" : message;
+        this.message = message;
     }
 
     /**
-     * @return the tips
+     * 获取tips
+     *
+     * @return tips
      */
     public String getTips() {
         return tips;
     }
 
     /**
-     * @param tips the tips to set
+     * 设置tips
+     *
+     * @param tips 值
      */
     public void setTips(String tips) {
         this.tips = tips;
     }
 
     /**
-     * @return the success
+     * 获取success
+     *
+     * @return success
      */
     public boolean isSuccess() {
         return success;
     }
 
     /**
-     * @param success the success to set
+     * 设置success
+     *
+     * @param success 值
      */
     public void setSuccess(boolean success) {
         this.success = success;
     }
 
     /**
-     * @return the code
+     * 获取code
+     *
+     * @return code
      */
     public String getCode() {
         return code;
     }
 
     /**
-     * @param code the code to set
+     * 设置code
+     *
+     * @param code 值
      */
     public void setCode(String code) {
-        this.code = code == null ? RestResultCode.CODE200.getCode() : code;
+        this.code = code;
     }
 
     /**
-     * @return the data
+     * 获取data
+     *
+     * @return data
      */
     public List<?> getData() {
         return data;
     }
 
     /**
-     * @param data the data to set
+     * 设置data
+     *
+     * @param data 值
      */
     public void setData(List<?> data) {
-        this.data = data == null ? new ArrayList<>() : data;
+        this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return JsonUtil.objectToJson(this);
+    }
 }

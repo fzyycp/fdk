@@ -1,0 +1,11 @@
+fdk:
+#shiro?????MongoDB??
+  shiro:
+    repository:
+      mongodb:
+        port: 27017 #???
+        host: "127.0.0.1" #?????
+        username: "" #???
+        password: "" #????
+        db-name: "FdkDbName" #Session??DB??
+        coll-name: "FdkCollName" #Session??Collection??

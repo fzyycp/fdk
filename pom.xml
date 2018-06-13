@@ -11,9 +11,18 @@
     <modules>
         <module>fdk-common</module>
         <module>fdk-http-client</module>
-        <module>fdk-shiro</module>
-        <module>fdk-shiro-repository-mongodb</module>
-        <module>fdk-mybatis</module>
+        <module>fdk-shiro-suite/fdk-shiro</module>
+        <module>fdk-shiro-suite/fdk-shiro-spring-boot-autoconfigure</module>
+        <module>fdk-shiro-suite/fdk-shiro-spring-boot-starter</module>
+        <module>fdk-mybatis-suite/fdk-mybatis</module>
+        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-autoconfigure</module>
+        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-starter</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-autoconfigure</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-starter</module>
+        <module>fdk-captcha-suite/fdk-captcha</module>
+        <module>fdk-captcha-suite/fdk-captcha-spring-boot-autoconfigure</module>
+        <module>fdk-captcha-suite/fdk-captcha-spring-boot-starter</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>
@@ -128,6 +137,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

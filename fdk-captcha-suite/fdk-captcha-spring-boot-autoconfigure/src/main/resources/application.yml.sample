@@ -1,0 +1,13 @@
+fdk:
+#验证码配置，默认基本满足
+  captcha:
+    enable: true #是否启用
+#    request-name: "captchaCode" #前端传入的参数名
+#    border: "yes" #是否有边框
+#    borderColor: "105,179,90" #边框颜色
+#    font-color: "blue" #内部文字颜色
+#    font-names: "宋体,楷体,微软雅黑" #内部文字字体
+#    char-length: 4 #内部文字个数
+#    image-width: 125 #验证码图片宽度
+#    image-height: 45 #验证码图片高度
+#    session-key: "fdkCaptchaCode" #验证码存入Session的Key
