@@ -43,7 +43,7 @@ public class FdkCaptchaProperties {
     /**
      * 验证码字符个数
      */
-    private int charLength = 4;
+    private String charLength = "4";
 
     /**
      * 验证码字体名字
@@ -53,12 +53,12 @@ public class FdkCaptchaProperties {
     /**
      * 验证码图片宽度
      */
-    private int imageWidth = 125;
+    private String imageWidth = "125";
 
     /**
      * 验证码图片高度
      */
-    private int imageHeight = 45;
+    private String imageHeight = "45";
 
     /**
      * 验证码存储在Session中的key
@@ -160,7 +160,7 @@ public class FdkCaptchaProperties {
      *
      * @return charLength
      */
-    public int getCharLength() {
+    public String getCharLength() {
         return charLength;
     }
 
@@ -169,7 +169,7 @@ public class FdkCaptchaProperties {
      *
      * @param charLength 值
      */
-    public void setCharLength(int charLength) {
+    public void setCharLength(String charLength) {
         this.charLength = charLength;
     }
 
@@ -196,7 +196,7 @@ public class FdkCaptchaProperties {
      *
      * @return imageWidth
      */
-    public int getImageWidth() {
+    public String getImageWidth() {
         return imageWidth;
     }
 
@@ -205,7 +205,7 @@ public class FdkCaptchaProperties {
      *
      * @param imageWidth 值
      */
-    public void setImageWidth(int imageWidth) {
+    public void setImageWidth(String imageWidth) {
         this.imageWidth = imageWidth;
     }
 
@@ -214,7 +214,7 @@ public class FdkCaptchaProperties {
      *
      * @return imageHeight
      */
-    public int getImageHeight() {
+    public String getImageHeight() {
         return imageHeight;
     }
 
@@ -223,7 +223,7 @@ public class FdkCaptchaProperties {
      *
      * @param imageHeight 值
      */
-    public void setImageHeight(int imageHeight) {
+    public void setImageHeight(String imageHeight) {
         this.imageHeight = imageHeight;
     }
 
