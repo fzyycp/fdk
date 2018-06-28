@@ -2,34 +2,26 @@ package cn.faury.fdk.shiro.controller;
 
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.entry.RestResultEntry;
-import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.JsonUtil;
 import cn.faury.fdk.common.utils.StringUtil;
+import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import cn.faury.fdk.shiro.filter.captcha.FdkCaptchaConst;
-import cn.faury.fdk.shiro.filter.captcha.FdkCaptchaValidateException;
 import cn.faury.fdk.shiro.utils.SessionUtil;
 import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
-import com.google.gson.JsonObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -53,7 +45,7 @@ public class IndexController {
     public RestResultEntry login(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         // 已登录
         if (ShiroUtil.authenticated()) {
-            return loginSuccess();
+            return loginSuccess(httpServletRequest, httpServletResponse);
         }
 
         RestResultEntry resultEntry = RestResultEntry.createErrorResult(RestResultCode.CODE401);
@@ -82,13 +74,15 @@ public class IndexController {
      */
     @RequestMapping("/loginSuccess")
     @ApiOperation(value = "登录结果验证", notes = "检查是否已登录")
-    public RestResultEntry loginSuccess() {
+    public RestResultEntry loginSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         RestResultEntry resultEntry;
         try {
             UserInfoBean userInfoBean = SessionUtil.getCurrentUserInfo(UserInfoBean.class);
             Map<String, Object> result = JsonUtil.jsonToMap(JsonUtil.objectToJson(userInfoBean));
-            result.put("S", SessionUtil.getSession().getId().toString());
+            String sessionId = SessionUtil.getSession().getId().toString();
+            result.put("S", sessionId);
             resultEntry = RestResultEntry.createSuccessResult(Arrays.asList(result));
+            httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, sessionId);
             logger.debug("登录成功：{}", resultEntry);
         } catch (IncorrectCredentialsException e) {
             logger.error("异常：{}", e.getMessage(), e);

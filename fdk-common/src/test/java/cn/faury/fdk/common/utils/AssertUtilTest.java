@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class AssertUtilTest {
+
     @Test
     public void assertTrue() throws Exception {
         AssertUtil.assertTrue(true,new RuntimeException("这个异常不会出现"));
@@ -84,6 +85,21 @@ public class AssertUtilTest {
         thrown.expect(TipsException.class);
         thrown.expectMessage("code=500,tips=这个异常会出现");
         AssertUtil.assertNotEmpty("","500","这个异常会出现");
+    }
+    @Test
+    public void assertEmpty() throws Exception {
+        AssertUtil.assertEmpty("","这个异常不会出现");
+        thrown.expect(TipsException.class);
+        thrown.expectMessage("code=402,tips=这个异常会出现");
+        AssertUtil.assertEmpty("string","这个异常会出现");
+    }
+
+    @Test
+    public void assertEmpty1() throws Exception {
+        AssertUtil.assertEmpty("","500","这个异常不会出现");
+        thrown.expect(TipsException.class);
+        thrown.expectMessage("code=500,tips=这个异常会出现");
+        AssertUtil.assertEmpty("string","500","这个异常会出现");
     }
 
     @Rule

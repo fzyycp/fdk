@@ -14,7 +14,7 @@
     <version>0.0.1</version>
 
     <properties>
-        <fdk.common.version>0.0.7</fdk.common.version>
+        <fdk.common.version>0.0.9</fdk.common.version>
     </properties>
 
     <dependencies>

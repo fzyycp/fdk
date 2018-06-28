@@ -31,6 +31,8 @@ public class PropertiesUtil {
     // 保存配置属性
     private ConcurrentMap<String, Object> properties = new ConcurrentHashMap<>();
 
+    private static PropertiesUtil _ins;
+
     /**
      * 私有构造函数
      */
@@ -68,6 +70,24 @@ public class PropertiesUtil {
         }
         property.loadPropertyFile(new File(fullpath));
         return property;
+    }
+
+    /**
+     * 获取默认实例
+     * @return 单一实例
+     */
+    public static PropertiesUtil instance() {
+        AssertUtil.assertNotNull(_ins,"Properties未初始化");
+        return _ins;
+    }
+
+    /**
+     * 初始化
+     *
+     * @param file
+     */
+    public static void init(@NonNull String file) {
+        _ins = createPropertyInstance(file);
     }
 
     /**
@@ -326,5 +346,10 @@ public class PropertiesUtil {
             throw new IllegalArgumentException(
                     "You must load properties file by invoking loadPropertyFile(String) method in configConstant(Constants) method before.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtil.objectToJson(this);
     }
 }

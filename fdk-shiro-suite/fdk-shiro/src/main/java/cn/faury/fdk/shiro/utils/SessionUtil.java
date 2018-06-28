@@ -51,8 +51,7 @@ public class SessionUtil {
                 userName = SessionUtil.getCurrentLoginName();
             }
             SessionUtil.setSessionAtt("userName", userName);
-        }catch (Exception e){
-
+        }catch (Exception ignored){
         }
     }
 
@@ -65,8 +64,7 @@ public class SessionUtil {
         String userName = null;
         try {
             userName = SessionUtil.getSessionAtt("userName");
-        } catch (Exception e) {
-            return null;
+        } catch (Exception ignored) {
         }
         if (StringUtil.isEmpty(userName)) {
             return null;
@@ -80,7 +78,7 @@ public class SessionUtil {
     public static void setCurrentUserId(Long userId) {
         try {
             SessionUtil.setSessionAtt("userId", userId);
-        }catch (Exception e){
+        }catch (Exception ignored){
         }
     }
 
@@ -89,15 +87,11 @@ public class SessionUtil {
      *
      * @return 当前登录的用户ID
      */
-    public static String getCurrentUserId() {
-        String userId = null;
+    public static Long getCurrentUserId() {
+        Long userId = null;
         try {
-            userId = String.valueOf(SessionUtil.getSessionAtt("userId"));
-        } catch (Exception e) {
-            return null;
-        }
-        if (StringUtil.isEmpty(userId)) {
-            return null;
+            userId = SessionUtil.getSessionAtt("userId");
+        } catch (Exception ignored) {
         }
         return userId;
     }
@@ -111,7 +105,7 @@ public class SessionUtil {
         byte[] data = SerializeUtil.serialize(userInfo);
         try {
             setSessionAtt(SKEY_USERBEAN,data);
-        }catch (Exception e){}
+        }catch (Exception ignored){}
     }
 
     /**
@@ -139,7 +133,7 @@ public class SessionUtil {
         byte[] data = SerializeUtil.serialize(roles);
         try {
             setSessionAtt(SKEY_ROLESBEAN,data);
-        }catch (Exception e){}
+        }catch (Exception ignored){}
     }
 
     /**
@@ -154,11 +148,8 @@ public class SessionUtil {
                 return SerializeUtil.deserialize(data, clazz);
             }
         }
-
         return null;
     }
-
-
 
     /**
      * 获取用户Session

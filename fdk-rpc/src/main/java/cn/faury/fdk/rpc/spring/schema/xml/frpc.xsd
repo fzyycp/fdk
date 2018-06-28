@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.faury.cn/fdk/rpc/spring/schema/fdk-rpc-0.0.1"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:beans="http://www.springframework.org/schema/beans"
+	targetNamespace="http://www.faury.cn/fdk/rpc/spring/schema/fdk-rpc-0.0.1"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:import namespace="http://www.springframework.org/schema/beans"
+		schemaLocation="http://www.springframework.org/schema/beans/spring-beans-4.3.xsd" />
+
+	<xsd:element name="exporter">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					发布服务为远程RPC服务
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="name" type="xsd:string" use="optional">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务路径]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="provider" type="xsd:string" use="required">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务提供者Bean]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="api" type="xsd:string" use="required">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务契约接口名]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="protocol" type="xsd:string" use="optional">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务发布方式【spring:HttpInvokerServiceExporter;  hessian:HessianServiceExporter(默认)】]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="importer">
+		<xsd:annotation>
+			<xsd:documentation>
+				<![CDATA[
+					导入远程RPC服务
+				]]>
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="name" type="xsd:string" use="optional">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务本地Bean名称]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="url" type="xsd:string" use="required">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务提供者URL]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="api" type="xsd:string" use="required">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务契约接口名]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="overloadEnabled" type="xsd:boolean" use="optional" default="true">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务接口方法是否有重载]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+					<xsd:attribute name="protocol" type="xsd:string" use="optional">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[RPC服务发布方式【spring:HttpInvokerServiceExporter;  hessian:HessianServiceExporter(默认)】]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

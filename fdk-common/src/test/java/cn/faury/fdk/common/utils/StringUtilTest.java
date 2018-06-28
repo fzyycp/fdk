@@ -3,7 +3,38 @@ package cn.faury.fdk.common.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class StringUtilTest {
+    @Test
+    public void join() throws Exception {
+        List<String> values = Arrays.asList("a","b","c");
+        String join = StringUtil.join(values,"#");
+        Assert.assertTrue("a#b#c".equals(join));
+    }
+
+    @Test
+    public void join1() throws Exception {
+        List<String> values = Arrays.asList("a","b","c");
+        String join = StringUtil.join(values,"#","[","]");
+        Assert.assertTrue("[a#b#c]".equals(join));
+    }
+
+    @Test
+    public void join2() throws Exception {
+        String[] values = new String[]{"a","b","c"};
+        String join = StringUtil.join(values,"#");
+        Assert.assertTrue("a#b#c".equals(join));
+    }
+
+    @Test
+    public void join3() throws Exception {
+        String[] values = new String[]{"a","b","c"};
+        String join = StringUtil.join(values,"#","[","]");
+        Assert.assertTrue("[a#b#c]".equals(join));
+    }
+
     @Test
     public void byteToBase64() throws Exception {
         byte[] str = StringUtil.getBytes("abcd");

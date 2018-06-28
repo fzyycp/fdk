@@ -14,9 +14,9 @@
     <artifactId>fdk-shiro</artifactId>
     <version>0.0.1</version>
     <properties>
-        <fdk.common.version>0.0.7</fdk.common.version>
-        <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
+        <fdk.common.version>0.0.9</fdk.common.version>
         <fdk.captcha.version>0.0.1</fdk.captcha.version>
+        <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
         <fwmf.module.user.api.role.version>0.0.1</fwmf.module.user.api.role.version>
     </properties>
     <dependencies>
@@ -32,8 +32,13 @@
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-captcha-spring-boot-starter</artifactId>
+            <artifactId>fdk-captcha</artifactId>
             <version>${fdk.captcha.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
+            <version>${fdk.captcha.spring.boot.autoconfigure.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>

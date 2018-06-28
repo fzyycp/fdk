@@ -9,6 +9,10 @@ package cn.faury.fdk.common.utils;
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 参数判断
  */
@@ -84,6 +88,27 @@ public class AssertUtil {
     }
 
     /**
+     * 检查对象为空，不为空抛出异常
+     *
+     * @param obj  对象
+     * @param code 错误码
+     * @param tips 不成立时异常信息
+     */
+    public static void assertNull(Object obj, String code, String tips) {
+        assertTrue(obj == null, code, tips);
+    }
+
+    /**
+     * 检查对象为空，不为空抛出异常
+     *
+     * @param obj  对象
+     * @param tips 不成立时异常信息
+     */
+    public static void assertNull(Object obj, String tips) {
+        assertTrue(obj == null, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
      * 检查对象不为空，为空抛出异常
      *
      * @param obj  对象
@@ -123,5 +148,84 @@ public class AssertUtil {
      */
     public static void assertNotEmpty(String str, String tips) {
         assertTrue(StringUtil.isNotEmpty(str), RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 检查集合不为空，为空抛出异常
+     *
+     * @param collection 集合
+     * @param code       错误码
+     * @param tips       不成立时异常信息
+     */
+    public static void assertNotEmpty(Collection collection, String code, String tips) {
+        assertTrue(collection != null && collection.size() > 0, code, tips);
+    }
+
+    /**
+     * 检查集合不为空，为空抛出异常
+     *
+     * @param collection 集合
+     * @param tips       不成立时异常信息
+     */
+    public static void assertNotEmpty(Collection collection, String tips) {
+        assertTrue(collection != null && collection.size() > 0, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 检查Map不为空，为空抛出异常
+     *
+     * @param map  集合
+     * @param code 错误码
+     * @param tips 不成立时异常信息
+     */
+    public static void assertNotEmpty(Map map, String code, String tips) {
+        assertTrue(map != null && map.size() > 0, code, tips);
+    }
+
+    /**
+     * 检查Map不为空，为空抛出异常
+     *
+     * @param map  集合
+     * @param tips 不成立时异常信息
+     */
+    public static void assertNotEmpty(Map map, String tips) {
+        assertTrue(map != null && map.size() > 0, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 检查字符串为空，不为空抛出异常
+     *
+     * @param str  字符串
+     * @param code 错误码
+     * @param tips 不成立时异常信息
+     */
+    public static void assertEmpty(String str, String code, String tips) {
+        assertTrue(StringUtil.isEmpty(str), code, tips);
+    }
+
+    /**
+     * 检查字符串为空，不为空抛出异常
+     *
+     * @param str  字符串
+     * @param tips 不成立时异常信息
+     */
+    public static void assertEmpty(String str, String tips) {
+        assertTrue(StringUtil.isEmpty(str), RestResultCode.CODE402.getCode(), tips);
+    }
+
+    public static void assertEmpty(Collection collection, String code, String tips) {
+        assertTrue(collection == null || collection.size() <= 0, code, tips);
+    }
+
+    public static void assertEmpty(Collection collection, String tips) {
+        assertTrue(collection == null || collection.size() <= 0, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    public static void assertEmpty(Map map, String code, String tips) {
+        assertTrue(map == null || map.size() <= 0, code, tips);
+    }
+
+    public static void assertEmpty(Map map, String tips) {
+        assertTrue(map == null || map.size() <= 0, RestResultCode.CODE402.getCode(), tips);
     }
 }

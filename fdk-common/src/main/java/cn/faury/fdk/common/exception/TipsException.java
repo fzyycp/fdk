@@ -6,6 +6,7 @@
  #############################################################################*/
 package cn.faury.fdk.common.exception;
 
+import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.utils.StringUtil;
 
 /**
@@ -26,13 +27,20 @@ public class TipsException extends RuntimeException {
     /**
      * 构造函数
      *
+     * @param resultCode 错误码
+     */
+    public TipsException(RestResultCode resultCode) {
+        this(resultCode.getCode(),resultCode.getTips(),resultCode.getMessage());
+    }
+
+    /**
+     * 构造函数
+     *
      * @param code 错误码
      * @param tips 用户提示信息
      */
     public TipsException(String code, String tips) {
-        super(String.format("code=%s,tips=%s", code, tips));
-        this.code = code;
-        this.tips = tips;
+        this(code,tips,String.format("code=%s,tips=%s", code, tips));
     }
 
     /**
@@ -43,9 +51,7 @@ public class TipsException extends RuntimeException {
      * @param cause 错误原因
      */
     public TipsException(String code, String tips, Throwable cause) {
-        super(String.format("code=%s,tips=%s", code, tips), cause);
-        this.code = code;
-        this.tips = tips;
+        this(code,tips,String.format("code=%s,tips=%s", code, tips),cause);
     }
 
     /**

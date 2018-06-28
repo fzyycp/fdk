@@ -37,26 +37,26 @@ public class FdkShiroAutoConfiguration {
     private Logger logger = LoggerFactory.getLogger(FdkShiroAutoConfiguration.class);
 
     // 配置文件，不可以为空
-    @Autowired
+    @Autowired(required = false)
     private FdkShiroProperties fdkShiroProperties;
 
-    @Autowired
+    @Autowired(required = false)
     private FdkShiroFilterProperties fdkShiroFilterProperties;
 
     // 验证码配置文件
-    @Autowired
+    @Autowired(required = false)
     private FdkCaptchaProperties fdkCaptchaProperties;
 
     // Session管理器由外部jar包提供，不可以为空
-    @Autowired
+    @Autowired(required = false)
     private ShiroSessionRepository shiroSessionRepository;
 
     // 用户服务，不可以为空
-    @Autowired
+    @Autowired(required = false)
     private UserService userService;
 
     // 角色服务，不可以为空
-    @Autowired
+    @Autowired(required = false)
     private RoleService roleService;
 
     @Bean

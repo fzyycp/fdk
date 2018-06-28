@@ -8,6 +8,7 @@ package cn.faury.fdk.common.entry;
 
 import cn.faury.fdk.common.anotation.NonNull;
 import cn.faury.fdk.common.anotation.Nullable;
+import cn.faury.fdk.common.utils.JsonUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class TreeNodeEntry implements Serializable {
     /**
      * 是否为叶子节点
      */
-    private boolean leaf;
+    private boolean leaf=false;
 
     /**
      * 节点属性
@@ -65,6 +66,16 @@ public class TreeNodeEntry implements Serializable {
      *
      * @param id     id值
      * @param text   显示文本
+     */
+    public TreeNodeEntry(@NonNull String id, @NonNull String text) {
+        this.id = id;
+        this.text = text;
+    }
+    /**
+     * 构造函数
+     *
+     * @param id     id值
+     * @param text   显示文本
      * @param isLeaf 是否叶子节点
      */
     public TreeNodeEntry(@NonNull String id, @NonNull String text, boolean isLeaf) {
@@ -73,8 +84,20 @@ public class TreeNodeEntry implements Serializable {
         this.leaf = isLeaf;
     }
 
-    public TreeNodeEntry(@NonNull String id,@NonNull  String text,@Nullable String iconCls, boolean checked, @Nullable String state, boolean leaf,@NonNull Map<String, String> attributes,@NonNull List<TreeNodeEntry> children) {
-        this(id,text,leaf);
+    /**
+     * 构造函数
+     *
+     * @param id     id值
+     * @param text   显示文本
+     * @param isLeaf 是否叶子节点
+     * @param iconCls 节点icon
+     * @param checked 是否选中
+     * @param state 状态
+     * @param attributes 附加属性
+     * @param children 子节点
+     */
+    public TreeNodeEntry(@NonNull String id, @NonNull String text, boolean isLeaf, @Nullable String iconCls, boolean checked, @Nullable String state, @NonNull Map<String, String> attributes, @NonNull List<TreeNodeEntry> children) {
+        this(id, text, isLeaf);
         this.iconCls = iconCls;
         this.checked = checked;
         this.state = state;
@@ -84,6 +107,7 @@ public class TreeNodeEntry implements Serializable {
 
     /**
      * 添加子节点
+     *
      * @param child 子节点
      * @return 当前对象
      */
@@ -99,6 +123,7 @@ public class TreeNodeEntry implements Serializable {
 
     /**
      * 添加子节点
+     *
      * @param child 子节点
      * @return 当前对象
      */
@@ -112,67 +137,152 @@ public class TreeNodeEntry implements Serializable {
         return this;
     }
 
+    /**
+     * 获取id
+     *
+     * @return id
+     */
     public String getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+    /**
+     * 设置id
+     *
+     * @param id 值
+     */
+    public void setId(String id) {
         this.id = id;
     }
 
+    /**
+     * 获取text
+     *
+     * @return text
+     */
     public String getText() {
         return text;
     }
 
-    public void setText(@NonNull String text) {
+    /**
+     * 设置text
+     *
+     * @param text 值
+     */
+    public void setText(String text) {
         this.text = text;
     }
 
+    /**
+     * 获取iconCls
+     *
+     * @return iconCls
+     */
     public String getIconCls() {
         return iconCls;
     }
 
-    public void setIconCls(@Nullable String iconCls) {
+    /**
+     * 设置iconCls
+     *
+     * @param iconCls 值
+     */
+    public void setIconCls(String iconCls) {
         this.iconCls = iconCls;
     }
 
+    /**
+     * 获取checked
+     *
+     * @return checked
+     */
     public boolean isChecked() {
         return checked;
     }
 
+    /**
+     * 设置checked
+     *
+     * @param checked 值
+     */
     public void setChecked(boolean checked) {
         this.checked = checked;
     }
 
+    /**
+     * 获取state
+     *
+     * @return state
+     */
     public String getState() {
         return state;
     }
 
-    public void setState(@Nullable String state) {
+    /**
+     * 设置state
+     *
+     * @param state 值
+     */
+    public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     * 获取leaf
+     *
+     * @return leaf
+     */
     public boolean isLeaf() {
         return leaf;
     }
 
+    /**
+     * 设置leaf
+     *
+     * @param leaf 值
+     */
     public void setLeaf(boolean leaf) {
         this.leaf = leaf;
     }
 
+    /**
+     * 获取attributes
+     *
+     * @return attributes
+     */
     public Map<String, String> getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(@NonNull Map<String, String> attributes) {
+    /**
+     * 设置attributes
+     *
+     * @param attributes 值
+     */
+    public void setAttributes(Map<String, String> attributes) {
         this.attributes = attributes;
     }
 
+    /**
+     * 获取children
+     *
+     * @return children
+     */
     public List<TreeNodeEntry> getChildren() {
         return children;
     }
 
-    public void setChildren(@NonNull List<TreeNodeEntry> children) {
+    /**
+     * 设置children
+     *
+     * @param children 值
+     */
+    public void setChildren(List<TreeNodeEntry> children) {
         this.children = children;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtil.objectToJson(this);
     }
 }

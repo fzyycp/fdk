@@ -11,10 +11,7 @@ import cn.faury.fdk.common.anotation.Nullable;
 import org.apache.commons.codec.binary.Base64;
 
 import java.nio.charset.Charset;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class StringUtil {
     /**
@@ -199,13 +196,14 @@ public class StringUtil {
     public static byte[] getBytes(@NonNull String str) {
         return str == null ? new byte[0] : str.getBytes(UTF_8);
     }
+
     /**
      * 字节转字符串，默认"UTF-8"
      *
      * @param bytes 输入字符串
      */
     public static String getString(@NonNull byte[] bytes) {
-        return bytes == null ? null : new String(bytes,UTF_8);
+        return bytes == null ? null : new String(bytes, UTF_8);
     }
 
     /**
@@ -270,6 +268,7 @@ public class StringUtil {
 
     /**
      * 字节转化为16进制字符串
+     *
      * @param bs 字节
      * @return 16进制字符串
      */
@@ -284,6 +283,7 @@ public class StringUtil {
 
     /**
      * 字节转base64码
+     *
      * @param bs 字节
      * @return base64码
      */
@@ -293,11 +293,63 @@ public class StringUtil {
 
     /**
      * base64码转字节
+     *
      * @param base base64码
      * @return 字节
      */
     public static byte[] base64ToByte(String base) {
         return Base64.decodeBase64(StringUtil.getBytes(base));
+    }
+
+    /**
+     * 连接字符串
+     *
+     * @param values    要拼接的数组
+     * @param delimiter 分隔符
+     * @param prefix    前缀
+     * @param suffix    后缀
+     * @return 返回字符串
+     */
+    public static <T extends CharSequence> String join(List<T> values, CharSequence delimiter, CharSequence prefix, CharSequence suffix) {
+        StringJoiner joiner = new StringJoiner(delimiter, prefix, suffix);
+        values.forEach(joiner::add);
+        return joiner.toString();
+    }
+
+    /**
+     * 连接字符串
+     *
+     * @param values    要拼接的数组
+     * @param delimiter 分隔符
+     * @param prefix    前缀
+     * @param suffix    后缀
+     * @return 返回字符串
+     */
+    public static <T extends CharSequence> String join(T[] values, CharSequence delimiter, CharSequence prefix, CharSequence suffix) {
+        StringJoiner joiner = new StringJoiner(delimiter, prefix, suffix);
+        Arrays.stream(values).forEach(joiner::add);
+        return joiner.toString();
+    }
+    /**
+     * 连接字符串
+     *
+     * @param values    要拼接的数组
+     * @param delimiter 分隔符
+     * @return 返回字符串
+     */
+    public static <T extends CharSequence> String join(List<T> values, CharSequence delimiter) {
+        return join(values,delimiter,"","");
+    }
+
+    /**
+     * 连接字符串
+     *
+     * @param values    要拼接的数组
+     * @param delimiter 分隔符
+     * @return 返回字符串
+     */
+    public static <T extends CharSequence> String join(T[] values, CharSequence delimiter) {
+        return join(values,delimiter,"","");
     }
 
 }

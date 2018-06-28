@@ -14,22 +14,28 @@
     <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
     <version>0.0.1</version>
 
+    <properties>
+        <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.captcha.version>0.0.1</fdk.captcha.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.0.2.RELEASE</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-common</artifactId>
-            <version>0.0.7</version>
+            <version>${fdk.common.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-captcha</artifactId>
-            <version>0.0.1</version>
+            <version>${fdk.captcha.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

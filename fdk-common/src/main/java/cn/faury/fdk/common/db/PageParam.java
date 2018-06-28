@@ -54,14 +54,25 @@ public class PageParam implements Serializable {
 
     /**
      * 根据默认参数构造分页对象
+     *
      * @param param 参数map
      * @return 分页结果
      */
-    public static PageParam buildDefaultIns(Map<String, Object> param) {
+    public static PageParam buildDefaultIns(Map<String, ?> param) {
         PageParam pageBounds = new PageParam();
         if (param != null) {
-            String pageNo = (String)param.get("pageNo");
-            String pageSize = (String)param.get("pageSize");
+            String pageNo = "1";
+            if (param.get("pageNo") instanceof String){
+                pageNo = (String) param.get("pageNo");
+            } else if (param.get("pageNo") instanceof Integer){
+                pageNo = String.valueOf(((Integer) param.get("pageNo")).intValue());
+            }
+            String pageSize = "20";
+            if (param.get("pageSize") instanceof String){
+                pageSize = (String) param.get("pageSize");
+            } else if (param.get("pageSize") instanceof Integer){
+                pageSize = String.valueOf(((Integer) param.get("pageSize")).intValue());
+            }
             if (StringUtil.isEmpty(pageNo)) {
                 pageNo = "1";
             }

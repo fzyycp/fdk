@@ -23,6 +23,9 @@
         <module>fdk-captcha-suite/fdk-captcha</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-autoconfigure</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-starter</module>
+        <module>fdk-ftp</module>
+        <module>fdk-rpc</module>
+        <module>fdk-qrcode</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>

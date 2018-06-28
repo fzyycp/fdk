@@ -21,11 +21,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.0.2.RELEASE</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-mybatis</artifactId>
             <version>${fdk.mybatis.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
