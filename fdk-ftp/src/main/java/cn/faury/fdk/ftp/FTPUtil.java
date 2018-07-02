@@ -25,12 +25,12 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * FTP工具类
  */
-public class FTPKit {
+public class FTPUtil {
 
     /**
      * 日志记录器
      */
-    private static Logger log = LoggerFactory.getLogger(FTPKit.class);
+    private static Logger log = LoggerFactory.getLogger(FTPUtil.class);
 
     /**
      * 默认配置文件路径
@@ -61,7 +61,7 @@ public class FTPKit {
                 log.error("{}","》配置文件不可以为空=====");
                 return;
             }
-            synchronized (FTPKit.class) {
+            synchronized (FTPUtil.class) {
                 if (pool == null) {
                     log.error("》开始读取配置文件[{}]=====",configFile);
                     // 初始化配置文件

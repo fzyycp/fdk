@@ -26,6 +26,7 @@
         <module>fdk-ftp</module>
         <module>fdk-rpc</module>
         <module>fdk-qrcode</module>
+        <module>fdk-pay</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>

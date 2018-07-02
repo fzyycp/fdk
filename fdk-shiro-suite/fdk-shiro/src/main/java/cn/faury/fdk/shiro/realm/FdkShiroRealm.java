@@ -214,7 +214,7 @@ public class FdkShiroRealm extends AuthorizingRealm {
      */
     protected void doValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
         // 验证是否启用
-        if (!"1".equals(user.getIsEnable())) {
+        if (!"Y".equals(user.getIsEnable())) {
             // 账号未启用
             throw new DisabledAccountException(String.format("当前账号[%s]已禁用!", user.getLoginName()));
         }

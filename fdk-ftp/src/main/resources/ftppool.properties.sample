@@ -1,18 +1,18 @@
-#FTP����
+#FTP主机
 ftp.hostname=128.0.3.253
-#FTP �˿�
+#FTP 端口
 ftp.port=21
-#FTP�û���
+#FTP用户名
 ftp.username=ftpuser
-#FTP����
+#FTP密码
 ftp.password=ftp123456
-#FTP������
+#FTP被动池
 ftp.passiveModeConf=true
-#��������
+#最大池容量
 ftp.pool.maxActive=10
-#��Ϊ��ʱȡ����ȴ�����������
+#池为空时取对象等待的最大毫秒数
 ftp.pool.maxWait=30000
-#ȡ������ʱ��֤(�˴����ó���֤ftp�Ƿ�������״̬).
+#取出对象时验证(此处设置成验证ftp是否处于连接状态).
 ftp.pool.testOnBorrow=true
-#���ض���ʱ��֤(�˴����ó���֤ftp�Ƿ�������״̬).
+#还回对象时验证(此处设置成验证ftp是否处于连接状态).
 ftp.pool.testOnReturn=true;
