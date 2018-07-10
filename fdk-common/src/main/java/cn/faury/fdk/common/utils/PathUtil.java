@@ -7,6 +7,8 @@
 package cn.faury.fdk.common.utils;
 
 import cn.faury.fdk.common.anotation.NonNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 
@@ -19,6 +21,8 @@ import java.io.File;
  * 字符，例如 D:\path\abc.txt
  */
 public class PathUtil {
+
+    private static Logger logger = LoggerFactory.getLogger(PathUtil.class);
 
     // Web环境根目录（一个JVM不会改变，获取一次即可）
     private static String webRootPath = StringUtil.EMPTY_STR;
@@ -58,10 +62,12 @@ public class PathUtil {
      * @return 类根目录
      */
     public static String getClassRootPath() {
+        logger.debug("classRootPath in memory is {}",webRootPath);
         if (StringUtil.isEmpty(classRootPath)) {
             try {
                 String path = PathUtil.class.getClassLoader()
                         .getResource(StringUtil.EMPTY_STR).toURI().getPath();
+                logger.debug("the / of classRootPath path is {}",path);
                 classRootPath = new File(path).getAbsolutePath();
             } catch (Exception e) {
                 String path = PathUtil.class.getClassLoader()
@@ -69,6 +75,7 @@ public class PathUtil {
                 classRootPath = new File(path).getAbsolutePath();
             }
         }
+        logger.debug("the result of classRootPath is {}",classRootPath);
         return classRootPath;
     }
 
@@ -91,15 +98,17 @@ public class PathUtil {
      * @return web根目录
      */
     public static String getWebRootPath() {
+        logger.debug("webRootPath in memory is {}",webRootPath);
         if (StringUtil.isEmpty(webRootPath)) {
             try {
                 String path = PathUtil.class.getResource("/").toURI().getPath();
+                logger.debug("the / of webRootPath path is {}",path);
                 webRootPath = new File(path).getParentFile().getParentFile()
                         .getCanonicalPath();
             } catch (Exception ignored) {
             }
         }
-        ;
+        logger.debug("the result of webRootPath is {}",webRootPath);
         return webRootPath;
     }
 }

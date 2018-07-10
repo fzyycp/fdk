@@ -40,7 +40,7 @@ public class IndexController {
      *
      * @return 登录结果JSON
      */
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
     @ApiOperation(value = "登录结果返回", notes = "登录失败后返回登录结果")
     public RestResultEntry login(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         // 已登录
@@ -72,7 +72,7 @@ public class IndexController {
      *
      * @return 登录结果JSON
      */
-    @RequestMapping("/loginSuccess")
+    @RequestMapping(value = "/loginSuccess",method = {RequestMethod.GET,RequestMethod.POST})
     @ApiOperation(value = "登录结果验证", notes = "检查是否已登录")
     public RestResultEntry loginSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         RestResultEntry resultEntry;
@@ -105,7 +105,7 @@ public class IndexController {
      *
      * @return 登录结果JSON
      */
-    @PostMapping("/logout")
+    @PostMapping(value = "/logout")
     @ApiOperation(value = "退出登录", notes = "退出当前登录的用户")
     public RestResultEntry logout() {
         SecurityUtils.getSubject().logout();

@@ -45,30 +45,16 @@ public class PropertiesUtil {
      * @param file 文件
      * @return 配置对象
      */
-    public static PropertiesUtil createPropertyInstance(@NonNull String file) {
+    public static PropertiesUtil createPropertyInstance(@NonNull File file) {
         if (logger.isTraceEnabled()) {
             logger.trace("createPropertyInstance from file=" + file);
         }
         PropertiesUtil property = new PropertiesUtil();
-        if (StringUtil.isEmpty(file)) {
+        if (file==null || !file.exists()) {
             throw new IllegalArgumentException(
                     "Parameter of file can not be empty");
         }
-        if (file.contains("..")) {
-            throw new IllegalArgumentException(
-                    "Parameter of file can not contains \"..\"");
-        }
-        // 检查是否web环境
-        String fullpath = PathUtil.getWebRootPath()
-                + File.separator
-                + "WEB-INF"
-                + ((file.startsWith(File.separator)) ? file : (File.separator + file));
-        if (!(new File(fullpath)).exists()) {
-            fullpath = PathUtil.getClassRootPath()
-                    + File.separator
-                    + ((file.startsWith(File.separator)) ? file : (File.separator + file));
-        }
-        property.loadPropertyFile(new File(fullpath));
+        property.loadPropertyFile(file);
         return property;
     }
 
@@ -84,10 +70,11 @@ public class PropertiesUtil {
     /**
      * 初始化
      *
-     * @param file
+     * @param file 文件名
      */
-    public static void init(@NonNull String file) {
-        _ins = createPropertyInstance(file);
+    public static void init(@NonNull File file){
+        _ins = new PropertiesUtil();
+        _ins.loadPropertyFile(file);
     }
 
     /**

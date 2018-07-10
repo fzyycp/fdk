@@ -119,6 +119,7 @@ public class HttpClient {
 
     // 构造函数
     HttpClient(HttpConfig defaultConfig) {
+        AssertUtil.assertNotNull(defaultConfig, "HttpClient config cannot be null");
         // 创建连接池
         cm = new PoolingHttpClientConnectionManager();
         // 数值连接池全局最大连接数
@@ -128,11 +129,7 @@ public class HttpClient {
         // 设置cookie存储器
         cookieStore = new BasicCookieStore();
         // 连接配置
-        if (defaultConfig != null) {
-            this.defaultConfig = defaultConfig;
-        } else {
-            this.defaultConfig = (new HttpConfig.Builder()).buildFromFile("http.properties");
-        }
+        this.defaultConfig = defaultConfig;
     }
 
     /**

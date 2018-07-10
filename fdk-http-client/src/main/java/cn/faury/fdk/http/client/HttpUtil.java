@@ -8,6 +8,8 @@ package cn.faury.fdk.http.client;
 
 import cn.faury.fdk.common.anotation.NonNull;
 import cn.faury.fdk.common.anotation.Nullable;
+import cn.faury.fdk.common.entry.RestResultCode;
+import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.http.client.conf.HttpConfig;
 import cn.faury.fdk.http.client.core.HttpRequest;
@@ -18,6 +20,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +56,7 @@ public class HttpUtil {
      *
      * @param properties 配置文件路径
      */
-    public static void init(String properties) {
+    public static void init(File properties) {
         logger.debug("{}", "=====初始化HttpUtil Start=====");
         if (!isInit) {
             synchronized (HttpUtil.class) {
@@ -78,13 +81,6 @@ public class HttpUtil {
         }
         logger.debug("{}", "》配置参数：" + httpConfig.toString());
         logger.debug("{}", "=====初始化HttpUtil Finish=====");
-    }
-
-    /**
-     * 初始化代理配置
-     */
-    public static void init() {
-        init("http.properties");
     }
 
     /**
@@ -215,7 +211,7 @@ public class HttpUtil {
     protected static void checkInit() {
         if (!isInit) {
             logger.debug("{}", "checkInit error[HttpUtil not init]!");
-            init();
+            throw new TipsException(RestResultCode.CODE500.getCode(),"HttpUtil not init");
         }
     }
 }

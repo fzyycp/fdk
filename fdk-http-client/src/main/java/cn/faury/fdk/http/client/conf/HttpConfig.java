@@ -14,6 +14,7 @@ import cn.faury.fdk.common.utils.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.Serializable;
 
 /**
@@ -314,7 +315,7 @@ public final class HttpConfig implements Serializable {
          * @param properties 配置文件路径
          * @return 配置对象
          */
-        public HttpConfig buildFromFile(String properties) {
+        public HttpConfig buildFromFile(File properties) {
             // 初始化配置文件
             PropertiesUtil cfg;
             try {

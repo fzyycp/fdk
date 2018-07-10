@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class FTPUtilTest {
 
     @Before
     public void init() throws Exception {
-        FTPUtil.init();
+        FTPUtil.init(new File("D:\\faury\\github\\fdk\\fdk-ftp\\src\\test\\resources\\ftppool.properties"));
     }
 
     @After

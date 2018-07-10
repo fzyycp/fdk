@@ -30,7 +30,7 @@ public class TipsException extends RuntimeException {
      * @param resultCode 错误码
      */
     public TipsException(RestResultCode resultCode) {
-        this(resultCode.getCode(),resultCode.getTips(),resultCode.getMessage());
+        this(resultCode.getCode(), resultCode.getTips(), resultCode.getMessage());
     }
 
     /**
@@ -40,7 +40,7 @@ public class TipsException extends RuntimeException {
      * @param tips 用户提示信息
      */
     public TipsException(String code, String tips) {
-        this(code,tips,String.format("code=%s,tips=%s", code, tips));
+        this(code, tips, String.format("code=%s,tips=%s", code, tips));
     }
 
     /**
@@ -51,7 +51,7 @@ public class TipsException extends RuntimeException {
      * @param cause 错误原因
      */
     public TipsException(String code, String tips, Throwable cause) {
-        this(code,tips,String.format("code=%s,tips=%s", code, tips),cause);
+        this(code, tips, String.format("code=%s,tips=%s", code, tips), cause);
     }
 
     /**
@@ -99,6 +99,7 @@ public class TipsException extends RuntimeException {
 
     /**
      * 获取错误码
+     *
      * @return 错误码
      */
     public String getCode() {
@@ -107,6 +108,7 @@ public class TipsException extends RuntimeException {
 
     /**
      * 设置错误码
+     *
      * @param code 错误码
      */
     public void setCode(String code) {
@@ -115,6 +117,7 @@ public class TipsException extends RuntimeException {
 
     /**
      * 获取用户提示信息
+     *
      * @return 用户提示信息
      */
     public String getTips() {
@@ -123,9 +126,19 @@ public class TipsException extends RuntimeException {
 
     /**
      * 设置用户提示信息
+     *
      * @param tips 用户提示信息
      */
     public void setTips(String tips) {
         this.tips = tips;
+    }
+
+    @Override
+    public String toString() {
+        return "TipsException{" +
+                "code='" + code + '\'' +
+                ", tips='" + tips + '\'' +
+                ", message='" + getMessage() + '\'' +
+                '}';
     }
 }

@@ -1,9 +1,6 @@
 package cn.faury.fdk.ftp;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -33,43 +30,31 @@ public class FTPUtil {
     private static Logger log = LoggerFactory.getLogger(FTPUtil.class);
 
     /**
-     * 默认配置文件路径
-     */
-    private static final String DEFAULT_CFG_FILE = "ftppool.properties";
-
-    /**
      * 连接池
      */
     private static FTPPool pool = null;
 
     /**
      * 初始化
-     */
-    public static void init() {
-        init(DEFAULT_CFG_FILE);
-    }
-
-    /**
-     * 初始化
      *
      * @param configFile 配置文件路径
      */
-    public static void init(String configFile) {
-        log.error("{}","=====初始化FTP缓冲池组件 Start=====");
+    public static void init(File configFile) {
+        log.error("{}", "=====初始化FTP缓冲池组件 Start=====");
         if (pool == null) {
-            if (StringUtil.isEmpty(configFile)) {
-                log.error("{}","》配置文件不可以为空=====");
+            if (configFile == null || !configFile.exists()) {
+                log.error("{}", "》配置文件不可以为空=====");
                 return;
             }
             synchronized (FTPUtil.class) {
                 if (pool == null) {
-                    log.error("》开始读取配置文件[{}]=====",configFile);
+                    log.error("》开始读取配置文件[{}]=====", configFile);
                     // 初始化配置文件
                     PropertiesUtil cfg = PropertiesUtil.createPropertyInstance(configFile);
                     // 验证正确性
                     if (StringUtil.isEmpty(cfg.getProperty("ftp.hostname"), cfg.getProperty("ftp.port"),
                             cfg.getProperty("ftp.username"), cfg.getProperty("ftp.password"))) {
-                        log.error("Properties file [{}] error",configFile);
+                        log.error("Properties file [{}] error", configFile);
                         throw new RuntimeException("Properties file [ftppool.properties] error");
                     }
 
@@ -81,7 +66,7 @@ public class FTPUtil {
 
                     log.error("》初始化账户参数：{}",
                             String.format("{hostname=%s,port=%s,username=%s,password=***,passiveModeConf=%s}",
-                            hostname, port, username, passiveModeConf));
+                                    hostname, port, username, passiveModeConf));
 
                     GenericObjectPoolConfig config = new GenericObjectPoolConfig();
                     // 能从池中借出的对象的最大数目。如果这个值不是正数，表示没有限制。
@@ -118,31 +103,31 @@ public class FTPUtil {
 
                     log.error("》初始化池参数：{}",
                             String.format(
-                            "{maxActive=%s,whenExhaustedAction=%s,maxWait=%s,testOnBorrow=%s,testOnReturn=%s}",
-                            config.getMaxTotal(), config.getBlockWhenExhausted(), config.getMaxWaitMillis(), config.getTestOnBorrow(),
-                            config.getTestOnReturn()));
+                                    "{maxActive=%s,whenExhaustedAction=%s,maxWait=%s,testOnBorrow=%s,testOnReturn=%s}",
+                                    config.getMaxTotal(), config.getBlockWhenExhausted(), config.getMaxWaitMillis(), config.getTestOnBorrow(),
+                                    config.getTestOnReturn()));
 
                     pool = new FTPPool(config, hostname, port, username, password, passiveModeConf);
-                    log.error("{}","》FTP缓冲池组件初始化 Success=====");
+                    log.error("{}", "》FTP缓冲池组件初始化 Success=====");
                 } else {
-                    log.error("{}","》FTP缓冲池组件已经存在无需重复初始化=====");
+                    log.error("{}", "》FTP缓冲池组件已经存在无需重复初始化=====");
                 }
             }
         } else {
-            log.error("{}","》FTP缓冲池组件已经存在无需重复初始化=====");
+            log.error("{}", "》FTP缓冲池组件已经存在无需重复初始化=====");
         }
-        log.error("{}","=====初始化FTP缓冲池组件 Finish=====");
+        log.error("{}", "=====初始化FTP缓冲池组件 Finish=====");
     }
 
     /**
      * 销毁
      */
     public static void destory() {
-        log.error("{}","=====销毁FTP缓冲池组件 Start=====");
+        log.error("{}", "=====销毁FTP缓冲池组件 Start=====");
         if (pool != null) {
             pool.destory();
         }
-        log.error("{}","=====销毁FTP缓冲池组件 End=====");
+        log.error("{}", "=====销毁FTP缓冲池组件 End=====");
     }
 
     /**
@@ -150,7 +135,7 @@ public class FTPUtil {
      */
     protected static void checkInit() {
         if (pool == null) {
-            log.debug("{}","checkInit error[FTPPool not init]!");
+            log.debug("{}", "checkInit error[FTPPool not init]!");
             throw new IllegalArgumentException("FTPPool not init！");
         }
     }
@@ -192,13 +177,13 @@ public class FTPUtil {
             ftpClient = borrowInstance();
             FTPFile[] files = ftpClient.listFiles(remote);
             if (files.length < 1) {
-                log.error("FTP获取文件大小失败->找不到文件：{},{}",remote,ftpClient.getReplyString());
+                log.error("FTP获取文件大小失败->找不到文件：{},{}", remote, ftpClient.getReplyString());
                 return 0;
             }
             Long size = files[0].getSize();
             return size.intValue();
         } catch (IOException ex) {
-            log.error("FTP获取文件大小失败->获取文件出错：{},{}",remote,ftpClient.getReplyString(), ex);
+            log.error("FTP获取文件大小失败->获取文件出错：{},{}", remote, ftpClient.getReplyString(), ex);
             return 0;
         } finally {
             returnInstance(ftpClient);
@@ -222,13 +207,13 @@ public class FTPUtil {
             ftpClient = borrowInstance();
             FTPFile[] files = ftpClient.listFiles(remote);
             if (files.length < 1) {
-                log.error("FTP获取文件时间失败->找不到文件：{},{}",remote,ftpClient.getReplyString());
+                log.error("FTP获取文件时间失败->找不到文件：{},{}", remote, ftpClient.getReplyString());
                 return null;
             }
             Calendar date = files[0].getTimestamp();
             return date.getTime();
         } catch (IOException ex) {
-            log.error("FTP获取文件时间失败->获取文件出错：{},{}",remote,ftpClient.getReplyString(), ex);
+            log.error("FTP获取文件时间失败->获取文件出错：{},{}", remote, ftpClient.getReplyString(), ex);
             return null;
         } finally {
             returnInstance(ftpClient);
@@ -251,11 +236,11 @@ public class FTPUtil {
             try {
                 result = upload(request.getInputStream(), remote, 0, override);
             } catch (IOException e) {
-                log.error("{}","FTP上传文件失败：读取文件流失败", e);
+                log.error("{}", "FTP上传文件失败：读取文件流失败", e);
                 result = UploadStatus.Upload_New_File_Failed;
             }
         } else {
-            log.error("{}","FTP上传文件失败：输入参数request为空");
+            log.error("{}", "FTP上传文件失败：输入参数request为空");
         }
         return result;
     }
@@ -309,23 +294,23 @@ public class FTPUtil {
             }
             // 检查远程是否存在文件
             FTPFile[] files = ftpClient.listFiles(remote);
-            log.debug("检测目标文件是否存在：{}",files.length);
+            log.debug("检测目标文件是否存在：{}", files.length);
             if (files.length == 1) {
-                log.debug("{}","文件已存在，进行断点续传......");
+                log.debug("{}", "文件已存在，进行断点续传......");
                 result = _breakPointUpload(ftpClient, stream, remote, offset);
             } else {
-                log.debug("{}","上传新文件......");
+                log.debug("{}", "上传新文件......");
                 if (ftpClient.storeFile(remote, stream)) {
-                    log.debug("{}","上传新文件成功");
+                    log.debug("{}", "上传新文件成功");
                     result = UploadStatus.Upload_New_File_Success;
                 } else {
-                    log.debug("{}","上传新文件失败");
+                    log.debug("{}", "上传新文件失败");
                     result = UploadStatus.Upload_New_File_Failed;
                 }
             }
             return result;
         } catch (RuntimeException | IOException ex) {
-            log.error("FTP上传文件失败：{},{}", remote,ftpClient.getReplyString(), ex);
+            log.error("FTP上传文件失败：{},{}", remote, ftpClient.getReplyString(), ex);
             return UploadStatus.Upload_New_File_Failed;
         } finally {
             log.debug("结束上传文件到：{}", remote);
@@ -408,7 +393,7 @@ public class FTPUtil {
             ftpClient.retrieveFile(remote, buffer);
             return buffer.toByteArray();
         } catch (RuntimeException | IOException ex) {
-            log.error("FTP下载文件失败：{},{}", remote,ftpClient.getReplyString(), ex);
+            log.error("FTP下载文件失败：{},{}", remote, ftpClient.getReplyString(), ex);
         } finally {
             returnInstance(ftpClient);
         }
@@ -435,7 +420,7 @@ public class FTPUtil {
             }
             return ftpClient.deleteFile(filePath);
         } catch (RuntimeException | IOException ex) {
-            log.error("FTP删除文件失败：{},{}", filePath,ftpClient.getReplyString(), ex);
+            log.error("FTP删除文件失败：{},{}", filePath, ftpClient.getReplyString(), ex);
         } finally {
             returnInstance(ftpClient);
         }
@@ -483,9 +468,9 @@ public class FTPUtil {
 
             return ftpClient.rename(fromPath, toPath);
         } catch (RuntimeException ex) {
-            log.error("FTP移动文件失败：{} -> {},{}",fromPath,toPath,ftpClient.getReplyString(), ex);
+            log.error("FTP移动文件失败：{} -> {},{}", fromPath, toPath, ftpClient.getReplyString(), ex);
         } catch (IOException e) {
-            log.error("FTP移动文件失败：{} -> {},{}",fromPath,toPath,ftpClient.getReplyString(), e);
+            log.error("FTP移动文件失败：{} -> {},{}", fromPath, toPath, ftpClient.getReplyString(), e);
         } finally {
             returnInstance(ftpClient);
         }
@@ -553,9 +538,9 @@ public class FTPUtil {
 
             return ftpClient.storeFile(toPath, fromIS);
         } catch (RuntimeException ex) {
-            log.error("FTP复制文件失败：{} -> {},{}",fromPath , toPath,ftpClient.getReplyString(), ex);
+            log.error("FTP复制文件失败：{} -> {},{}", fromPath, toPath, ftpClient.getReplyString(), ex);
         } catch (IOException e) {
-            log.error("FTP复制文件失败：{} -> {},{}",fromPath , toPath,ftpClient.getReplyString(), e);
+            log.error("FTP复制文件失败：{} -> {},{}", fromPath, toPath, ftpClient.getReplyString(), e);
         } finally {
             returnInstance(ftpClient);
         }
@@ -597,11 +582,11 @@ public class FTPUtil {
      */
     private static UploadStatus _breakPointUpload(FTPClient ftpClient, InputStream stream, String remote, int offset) {
         try {
-            log.debug("{}","开始断点续传......");
+            log.debug("{}", "开始断点续传......");
             UploadStatus status = UploadStatus.Upload_From_Break_Success;
             OutputStream out = ftpClient.appendFileStream(remote);
             if (null == out) {
-                log.debug("断点续传失败：{}",ftpClient.getReplyString());
+                log.debug("断点续传失败：{}", ftpClient.getReplyString());
                 return UploadStatus.Upload_From_Break_Failed;
             }
             byte[] bytes = new byte[1024];
@@ -614,16 +599,16 @@ public class FTPUtil {
             out.close();
             boolean result = ftpClient.completePendingCommand();
             if (!result) {
-                log.debug("断点续传失败：{}",ftpClient.getReplyString());
+                log.debug("断点续传失败：{}", ftpClient.getReplyString());
                 return UploadStatus.Upload_From_Break_Failed;
             }
-            log.debug("{}","断点续传完成");
+            log.debug("{}", "断点续传完成");
             return status;
         } catch (RuntimeException ex) {
-            log.error("FTP上传文件失败：{},{}",remote,ftpClient.getReplyString(), ex);
+            log.error("FTP上传文件失败：{},{}", remote, ftpClient.getReplyString(), ex);
             return UploadStatus.Upload_From_Break_Failed;
         } catch (IOException e) {
-            log.error("FTP上传文件失败：{},{}",remote,ftpClient.getReplyString(), e);
+            log.error("FTP上传文件失败：{},{}", remote, ftpClient.getReplyString(), e);
             return UploadStatus.Upload_From_Break_Failed;
         }
     }
@@ -665,7 +650,7 @@ public class FTPUtil {
                         if (FTPReply.isPositiveCompletion(rs)) {
                             ftpClient.changeWorkingDirectory(subDirectory);
                         } else {
-                            log.debug("创建目录失败:{},{}",subDirectory, ftpClient.getReplyString());
+                            log.debug("创建目录失败:{},{}", subDirectory, ftpClient.getReplyString());
                             return false;
                         }
                     }
@@ -679,11 +664,11 @@ public class FTPUtil {
                     }
                 }
             }
-            log.debug("创建目录成功：{}",directory);
+            log.debug("创建目录成功：{}", directory);
             _gotoRootDir(ftpClient);
             return true;
         } catch (RuntimeException | IOException ex) {
-            log.error("FTP创建目录失败：{},{}",remote,ftpClient.getReplyString(), ex);
+            log.error("FTP创建目录失败：{},{}", remote, ftpClient.getReplyString(), ex);
             return false;
         }
     }
@@ -700,7 +685,7 @@ public class FTPUtil {
         try {
             files = ftpClient.listFiles(remote);
         } catch (IOException e) {
-            log.error("查看文件是否存在失败：{},{}",remote,ftpClient.getReplyString(), e);
+            log.error("查看文件是否存在失败：{},{}", remote, ftpClient.getReplyString(), e);
         }
         return files.length > 0;
     }
