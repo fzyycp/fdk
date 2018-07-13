@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>fdk</artifactId>
+        <groupId>cn.faury</groupId>
+        <version>1.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.faury.fdk</groupId>
+    <artifactId>fdk-mobile-spring-boot-starter</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <fdk.mobile.version>0.0.1</fdk.mobile.version>
+        <fdk.mobile.spring.boot.autoconfigure.version>0.0.1</fdk.mobile.spring.boot.autoconfigure.version>
+        <fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>
+        <fwmf.module.app.spring.boot.starter.version>0.0.1</fwmf.module.app.spring.boot.starter.version>
+        <fwmf.module.shop.spring.boot.starter.version>0.0.1</fwmf.module.shop.spring.boot.starter.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+        <!--主api依赖-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-mobile</artifactId>
+            <version>${fdk.mobile.version}</version>
+        </dependency>
+        <!--主autoconfigure依赖-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-mobile-spring-boot-autoconfigure</artifactId>
+            <version>${fdk.mobile.spring.boot.autoconfigure.version}</version>
+        </dependency>
+        <!--存在spring boot starter的依赖-->
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
+            <version>${fwmf.module.user.role.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-app-spring-boot-starter</artifactId>
+            <version>${fwmf.module.app.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-shop-spring-boot-starter</artifactId>
+            <version>${fwmf.module.shop.spring.boot.starter.version}</version>
+        </dependency>
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk-mobile-spring-boot-starter/;publish=1</url>
+        </repository>
+    </distributionManagement>
+</project>

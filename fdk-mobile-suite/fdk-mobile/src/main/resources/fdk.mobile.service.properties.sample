@@ -1,0 +1,25 @@
+#模式:默认PRO
+#		DEV：开发模式，输出错误信息和提示信息
+#		TEST：测试模式，输出错误信息和提示信息
+#		PRO：生产模式，屏蔽错误信息，输出提示信息
+fdk.mobile.service.mode=TEST
+
+#是否进行权限验证：默认true
+#		false：关闭权限验证，
+#		true：采用Service声明的权限验证方式
+fdk.mobile.service.auth=true
+
+#不兼容接口配置，兼容的无须配置
+#		启动验证必须要非开发模式
+#		如果一种客户端兼容另一种不兼容，则不兼容的配置版本号，兼容的为0
+#		版本号为访问接口需要最低APP版本号
+#		配置信息区分大小写
+#		提示不兼容情况：
+#             case1：配置为[obsolete]的接口
+#             case2：手机端没有传入相应的版本号
+#             case3：传入的版本号小于最低版本号
+#
+#不兼容升级配置：接口名称=Android版本号,IOS版本号
+#                        例：getUserInfo=1.5,2.5,0.0
+#废弃的接口配置：接口名称=[obsolete]
+#                        例：getUseInfo=[obsolete]

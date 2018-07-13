@@ -1,0 +1,17 @@
+fdk:
+  mobile:
+    oauth:
+      cfgs: #APP编码.appid.secret,APP编码.appid.secret
+        weixin: "sskAPP.wxbe1ae55c516d7730.4bade84b123a563a2799b7e22d8ee2a4"
+        weixinmp: "STUDENT_APP.wxcec652ffcc89c558.56d0f873a29f46635ca3e2993038b097"
+        qq: "sskAPP.1101342828.P7p3tjCjq3gHtPyt"
+        sinaweibo: "sskAPP.3392691557.a6068ea4f8e6b7db1fc0239aa5d620b8"
+      nounionid: #不使用unionid机制
+        weixinmp: "jl-yexs"
+    filter: # 不拦截登录验证地址
+      anon:
+        - "/api/**"
+        - "/index.html"
+    session-timeout: 86400
+    cookie-name: "S"
+    service-config-file:"fdk.mobile.service.properties"

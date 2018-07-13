@@ -36,7 +36,7 @@ public class PropertiesUtil {
     /**
      * 私有构造函数
      */
-    private PropertiesUtil() {
+    public PropertiesUtil() {
     }
 
     /**

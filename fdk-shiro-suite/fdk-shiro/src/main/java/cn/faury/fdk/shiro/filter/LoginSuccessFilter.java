@@ -6,6 +6,7 @@ package cn.faury.fdk.shiro.filter;
 
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.shiro.utils.SessionUtil;
+import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
 import cn.faury.fwmf.module.api.role.service.RoleService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
@@ -48,7 +49,7 @@ public class LoginSuccessFilter extends FdkCaptchaValidateAuthenticationFilter {
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         // 登录成功初始化:设置Session值，相当于初始化SessionUtil
-        SessionUtil.setCurrentUserName(SessionUtil.getCurrentLoginName());
+        SessionUtil.setCurrentUserName(ShiroUtil.principal());
         if (userService != null) {
             UserInfoBean user = userService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
             if (user != null) {

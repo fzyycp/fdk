@@ -16,8 +16,10 @@
 
     <properties>
         <fdk.shiro.version>0.0.1</fdk.shiro.version>
+        <fdk.mybatis.version>0.0.1</fdk.mybatis.version>
         <fdk.shiro.spring.boot.autoconfigure.version>0.0.1</fdk.shiro.spring.boot.autoconfigure.version>
-        <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
+        <fdk.captcha.spring.boot.starter.version>0.0.1</fdk.captcha.spring.boot.starter.version>
+        <fwmf.module.user.role.spring.boot.stater.version>0.0.1</fwmf.module.user.role.spring.boot.stater.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,7 +40,19 @@
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-captcha-spring-boot-starter</artifactId>
-            <version>${fdk.captcha.spring.boot.autoconfigure.version}</version>
+            <version>${fdk.captcha.spring.boot.starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
+            <version>${fwmf.module.user.role.spring.boot.stater.version}</version>
+        </dependency>
+        <!--编译的时候使用，fwmf-module-user-role-spring-boot-starter里面已经包含了-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-mybatis-spring-boot-starter</artifactId>
+            <version>${fdk.mybatis.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 

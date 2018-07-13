@@ -13,6 +13,7 @@ import cn.faury.fdk.common.utils.JsonUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -107,6 +108,16 @@ public class RestResultEntry {
      */
     public static RestResultEntry createSuccessResult(List<?> data) {
         return new RestResultEntry(true, RestResultCode.CODE200.getCode(), RestResultCode.CODE200.getMessage(), data);
+    }
+
+    /**
+     * 根据输入参数生成一个返回结果集
+     *
+     * @param data 数据
+     * @return 结果对象
+     */
+    public static <T> RestResultEntry createSuccessResult(T data) {
+        return createSuccessResult(Collections.singletonList(data));
     }
 
     /**

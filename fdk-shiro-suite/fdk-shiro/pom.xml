@@ -21,11 +21,6 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>cn.faury.fwmf.module</groupId>
-            <artifactId>fwmf-module-user-role-api</artifactId>
-            <version>${fwmf.module.user.api.role.version}</version>
-        </dependency>
-        <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-common</artifactId>
             <version>${fdk.common.version}</version>
@@ -39,6 +34,11 @@
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
             <version>${fdk.captcha.spring.boot.autoconfigure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-api</artifactId>
+            <version>${fwmf.module.user.api.role.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>

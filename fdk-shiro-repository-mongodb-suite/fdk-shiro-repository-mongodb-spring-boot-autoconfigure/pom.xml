@@ -14,8 +14,9 @@
     <artifactId>fdk-shiro-repository-mongodb-spring-boot-autoconfigure</artifactId>
     <version>0.0.1</version>
     <properties>
-        <fdk.shiro.spring.boot.autoconfigure.version>0.0.1</fdk.shiro.spring.boot.autoconfigure.version>
         <fdk.shiro.repository.mongodb.version>0.0.1</fdk.shiro.repository.mongodb.version>
+        <fdk.shiro.spring.boot.autoconfigure.version>0.0.1</fdk.shiro.spring.boot.autoconfigure.version>
+        <fdk.mobile.spring.boot.autoconfigure.version>0.0.1</fdk.mobile.spring.boot.autoconfigure.version>
     </properties>
     <dependencies>
         <dependency>
@@ -30,10 +31,17 @@
             <version>${fdk.shiro.repository.mongodb.version}</version>
             <optional>true</optional>
         </dependency>
+        <!--以下两个一个为web端一个为mobile端二选一-->
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-shiro-spring-boot-autoconfigure</artifactId>
             <version>${fdk.shiro.spring.boot.autoconfigure.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-mobile-spring-boot-autoconfigure</artifactId>
+            <version>${fdk.mobile.spring.boot.autoconfigure.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

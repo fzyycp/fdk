@@ -15,12 +15,14 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.Cookie;
+import org.apache.shiro.web.servlet.OncePerRequestFilter;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -96,8 +98,8 @@ public class FdkShiroAutoConfiguration {
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl(fdkShiroFilterProperties.getUnauthorizedUrl());
         Map<String, Filter> filters = new HashMap<>();
-        filters.put("captcha", fdkCaptchaValidateFilter());
-        filters.put("login", loginSuccessFilter());
+        filters.put("captcha", fdkCaptchaValidateFilter().getFilter());
+        filters.put("login", loginSuccessFilter().getFilter());
         shiroFilterFactoryBean.setFilters(filters);
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         logger.debug("{}", "=====完成初始化ShiroFilterFactoryBean=====");
@@ -105,13 +107,21 @@ public class FdkShiroAutoConfiguration {
     }
 
     @Bean
-    public FdkCaptchaValidateFilter fdkCaptchaValidateFilter() {
-        return new FdkCaptchaValidateFilter(fdkCaptchaProperties);
+    public FilterRegistrationBean fdkCaptchaValidateFilter() {
+        FdkCaptchaValidateFilter filter = new FdkCaptchaValidateFilter(fdkCaptchaProperties);
+        FilterRegistrationBean<FdkCaptchaValidateFilter> registrationBean = new FilterRegistrationBean<>(filter);
+        // 关闭在spring chain中注册filter
+        registrationBean.setEnabled(false);
+        return registrationBean;
     }
 
     @Bean
-    public LoginSuccessFilter loginSuccessFilter() {
-        return new LoginSuccessFilter(userService, roleService, fdkShiroProperties.getSaCode());
+    public FilterRegistrationBean loginSuccessFilter() {
+        LoginSuccessFilter filter = new LoginSuccessFilter(userService, roleService, fdkShiroProperties.getSaCode());
+        FilterRegistrationBean<LoginSuccessFilter> registrationBean = new FilterRegistrationBean<>(filter);
+        // 关闭在spring chain中注册filter
+        registrationBean.setEnabled(false);
+        return registrationBean;
     }
 
     @Bean
@@ -160,7 +170,7 @@ public class FdkShiroAutoConfiguration {
 
     @Bean
     public Cookie sessionIdCookie() {
-        Cookie cookie = new SimpleCookie("JSESSIONID_S");
+        Cookie cookie = new SimpleCookie("S");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(fdkShiroProperties.getSessionTimeout());
         return cookie;

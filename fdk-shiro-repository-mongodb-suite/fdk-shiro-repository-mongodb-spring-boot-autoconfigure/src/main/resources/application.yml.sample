@@ -1,11 +1,10 @@
 fdk:
-#shiro?????MongoDB??
   shiro:
     repository:
       mongodb:
-        port: 27017 #???
-        host: "127.0.0.1" #?????
-        username: "" #???
-        password: "" #????
-        db-name: "FdkDbName" #Session??DB??
-        coll-name: "FdkCollName" #Session??Collection??
+        port: 27017 #端口号
+        host: "127.0.0.1" 服务器地址
+        username: "" #用户名，暂不使用
+        password: "" #密码，暂不使用
+        db-name: "FdkDbName" #Session存储的DB名字
+        coll-name: "FdkCollName" #Session存储的Collection名字

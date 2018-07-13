@@ -90,6 +90,16 @@ public class AssertUtil {
     /**
      * 检查对象为空，不为空抛出异常
      *
+     * @param obj 对象
+     * @param re  不为空时抛出的异常信息
+     */
+    public static void assertNull(Object obj, RuntimeException re) {
+        assertTrue(obj == null, re);
+    }
+
+    /**
+     * 检查对象为空，不为空抛出异常
+     *
      * @param obj  对象
      * @param code 错误码
      * @param tips 不成立时异常信息
@@ -111,6 +121,16 @@ public class AssertUtil {
     /**
      * 检查对象不为空，为空抛出异常
      *
+     * @param obj 对象
+     * @param re  不成立时异常信息
+     */
+    public static void assertNotNull(Object obj, RuntimeException re) {
+        assertTrue(obj != null, re);
+    }
+
+    /**
+     * 检查对象不为空，为空抛出异常
+     *
      * @param obj  对象
      * @param code 错误码
      * @param tips 不成立时异常信息
@@ -127,6 +147,16 @@ public class AssertUtil {
      */
     public static void assertNotNull(Object obj, String tips) {
         assertTrue(obj != null, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 检查字符串不为空，为空抛出异常
+     *
+     * @param str 字符串
+     * @param re  不成立时异常信息
+     */
+    public static void assertNotEmpty(String str, RuntimeException re) {
+        assertTrue(StringUtil.isNotEmpty(str), re);
     }
 
     /**
@@ -154,6 +184,16 @@ public class AssertUtil {
      * 检查集合不为空，为空抛出异常
      *
      * @param collection 集合
+     * @param re         不成立时异常信息
+     */
+    public static void assertNotEmpty(Collection collection, RuntimeException re) {
+        assertTrue(collection != null && collection.size() > 0, re);
+    }
+
+    /**
+     * 检查集合不为空，为空抛出异常
+     *
+     * @param collection 集合
      * @param code       错误码
      * @param tips       不成立时异常信息
      */
@@ -169,6 +209,16 @@ public class AssertUtil {
      */
     public static void assertNotEmpty(Collection collection, String tips) {
         assertTrue(collection != null && collection.size() > 0, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 检查Map不为空，为空抛出异常
+     *
+     * @param map 集合
+     * @param re  不成立时异常信息
+     */
+    public static void assertNotEmpty(Map map, RuntimeException re) {
+        assertTrue(map != null && map.size() > 0, re);
     }
 
     /**
@@ -195,6 +245,16 @@ public class AssertUtil {
     /**
      * 检查字符串为空，不为空抛出异常
      *
+     * @param str 字符串
+     * @param re  不成立时异常信息
+     */
+    public static void assertEmpty(String str, RuntimeException re) {
+        assertTrue(StringUtil.isEmpty(str), re);
+    }
+
+    /**
+     * 检查字符串为空，不为空抛出异常
+     *
      * @param str  字符串
      * @param code 错误码
      * @param tips 不成立时异常信息
@@ -213,18 +273,64 @@ public class AssertUtil {
         assertTrue(StringUtil.isEmpty(str), RestResultCode.CODE402.getCode(), tips);
     }
 
+    /**
+     * 检查集合为空，不为空抛出异常
+     *
+     * @param collection 集合
+     * @param re         不成立时异常信息
+     */
+    public static void assertEmpty(Collection collection, RuntimeException re) {
+        assertTrue(collection == null || collection.size() <= 0, re);
+    }
+
+    /**
+     * 检查集合为空，不为空抛出异常
+     *
+     * @param collection 集合
+     * @param code       错误码
+     * @param tips       不成立时异常信息
+     */
     public static void assertEmpty(Collection collection, String code, String tips) {
         assertTrue(collection == null || collection.size() <= 0, code, tips);
     }
 
+    /**
+     * 检查集合为空，不为空抛出异常
+     *
+     * @param collection 集合
+     * @param tips       不成立时异常信息
+     */
     public static void assertEmpty(Collection collection, String tips) {
         assertTrue(collection == null || collection.size() <= 0, RestResultCode.CODE402.getCode(), tips);
     }
 
+    /**
+     * 检查Map为空，不为空抛出异常
+     *
+     * @param map 集合
+     * @param re  不成立时异常信息
+     */
+    public static void assertEmpty(Map map, RuntimeException re) {
+        assertTrue(map == null || map.size() <= 0, re);
+    }
+
+    /**
+     * 检查Map为空，不为空抛出异常
+     *
+     * @param map  集合
+     * @param code 错误码
+     * @param tips 不成立时异常信息
+     */
     public static void assertEmpty(Map map, String code, String tips) {
         assertTrue(map == null || map.size() <= 0, code, tips);
     }
 
+    /**
+     * 检查Map为空，不为空抛出异常
+     *
+     * @param map  集合
+     * @param tips 不成立时异常信息
+     */
     public static void assertEmpty(Map map, String tips) {
         assertTrue(map == null || map.size() <= 0, RestResultCode.CODE402.getCode(), tips);
     }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>fdk</artifactId>
+        <groupId>cn.faury</groupId>
+        <version>1.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.faury.fdk</groupId>
+    <artifactId>fdk-mobile</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.http.client.version>0.0.1</fdk.http.client.version>
+        <fdk.shiro.version>0.0.1</fdk.shiro.version>
+        <fwmf.module.user.role.api.version>0.0.1</fwmf.module.user.role.api.version>
+        <fwmf.module.app.api.version>0.0.1</fwmf.module.app.api.version>
+        <fwmf.module.shop.api.version>0.0.1</fwmf.module.shop.api.version>
+    </properties>
+
+    <dependencies>
+        <!--单一api依赖-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-common</artifactId>
+            <version>${fdk.common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-http-client</artifactId>
+            <version>${fdk.http.client.version}</version>
+        </dependency>
+        <!--只使用api，autoconfigure和starter不用-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-shiro</artifactId>
+            <version>${fdk.shiro.version}</version>
+        </dependency>
+        <!--存在spring boot autoconfigure的api依赖-->
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-user-role-api</artifactId>
+            <version>${fwmf.module.user.role.api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-app-api</artifactId>
+            <version>${fwmf.module.app.api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.faury.fwmf.module</groupId>
+            <artifactId>fwmf-module-shop-api</artifactId>
+            <version>${fwmf.module.shop.api.version}</version>
+        </dependency>
+        <!--其他依赖-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.0.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk-mobile/;publish=1</url>
+        </repository>
+    </distributionManagement>
+</project>

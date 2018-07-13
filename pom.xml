@@ -27,6 +27,9 @@
         <module>fdk-rpc</module>
         <module>fdk-qrcode</module>
         <module>fdk-pay</module>
+        <module>fdk-mobile-suite/fdk-mobile</module>
+        <module>fdk-mobile-suite/fdk-mobile-spring-boot-autoconfigure</module>
+        <module>fdk-mobile-suite/fdk-mobile-spring-boot-starter</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>

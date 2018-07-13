@@ -179,7 +179,8 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	 */
 	@Override
 	public void commit() {
-		this.sqlSessionTemplate.commit();
+		// Manual commit is not allowed over a Spring managed SqlSession
+//		this.sqlSessionTemplate.commit();
 	}
 
 	/* (non-Javadoc)
@@ -187,7 +188,8 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	 */
 	@Override
 	public void commit(boolean force) {
-		this.sqlSessionTemplate.commit(force);
+		// Manual commit is not allowed over a Spring managed SqlSession
+//		this.sqlSessionTemplate.commit(force);
 	}
 
 	/* (non-Javadoc)
@@ -195,7 +197,8 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	 */
 	@Override
 	public void rollback() {
-		this.sqlSessionTemplate.rollback();
+		// Manual rollback is not allowed over a Spring managed SqlSession
+//		this.sqlSessionTemplate.rollback();
 	}
 
 	/* (non-Javadoc)
@@ -203,7 +206,8 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	 */
 	@Override
 	public void rollback(boolean force) {
-		this.sqlSessionTemplate.rollback(force);
+		// Manual rollback is not allowed over a Spring managed SqlSession
+//		this.sqlSessionTemplate.rollback(force);
 	}
 
 	/* (non-Javadoc)
@@ -219,7 +223,8 @@ public class CommonDaoImpl extends BaseDaoImpl implements CommonDao {
 	 */
 	@Override
 	public void close() {
-		this.sqlSessionTemplate.close();
+		// Manual close is not allowed over a Spring managed SqlSession
+//		this.sqlSessionTemplate.close();
 	}
 
 	/* (non-Javadoc)

@@ -64,9 +64,26 @@ public class StringUtil {
     public static final Charset ISO_8859_1 = Charset.forName(ISO8859_NAME);
 
     /**
+     * 是否字符表示时：是
+     */
+    public static final String WHETHER_YES = "Y";
+
+    /**
+     * 是否字符表示时：否
+     */
+    public static final String WHETHER_NO = "N";
+
+    /**
      * 全静态方法
      */
     protected StringUtil() {
+    }
+
+    /**
+     * 是否是是
+     */
+    public static boolean whetherYes(@NonNull String whether) {
+        return StringUtil.isNotEmpty(whether) && WHETHER_YES.equals(whether.toUpperCase());
     }
 
     /**
@@ -330,6 +347,7 @@ public class StringUtil {
         Arrays.stream(values).forEach(joiner::add);
         return joiner.toString();
     }
+
     /**
      * 连接字符串
      *
@@ -338,7 +356,7 @@ public class StringUtil {
      * @return 返回字符串
      */
     public static <T extends CharSequence> String join(List<T> values, CharSequence delimiter) {
-        return join(values,delimiter,"","");
+        return join(values, delimiter, "", "");
     }
 
     /**
@@ -349,7 +367,7 @@ public class StringUtil {
      * @return 返回字符串
      */
     public static <T extends CharSequence> String join(T[] values, CharSequence delimiter) {
-        return join(values,delimiter,"","");
+        return join(values, delimiter, "", "");
     }
 
 }

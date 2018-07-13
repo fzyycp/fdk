@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -30,10 +30,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/")
 @Api(value = "Shiro主控制器", tags = {"Shiro主控制器接口"})
-public class IndexController {
+public class FdkShiroLoginController {
 
     // 日志
-    private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
+    private static final Logger logger = LoggerFactory.getLogger(FdkShiroLoginController.class);
 
     /**
      * 登录失败接口
@@ -81,7 +81,7 @@ public class IndexController {
             Map<String, Object> result = JsonUtil.jsonToMap(JsonUtil.objectToJson(userInfoBean));
             String sessionId = SessionUtil.getSession().getId().toString();
             result.put("S", sessionId);
-            resultEntry = RestResultEntry.createSuccessResult(Arrays.asList(result));
+            resultEntry = RestResultEntry.createSuccessResult(Collections.singletonList(result));
             httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, sessionId);
             logger.debug("登录成功：{}", resultEntry);
         } catch (IncorrectCredentialsException e) {

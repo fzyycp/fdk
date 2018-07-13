@@ -1,28 +1,43 @@
 package cn.faury.fdk.shiro.utils;
 
+import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.common.utils.SerializeUtil;
 import cn.faury.fdk.common.utils.StringUtil;
+import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
+import org.apache.shiro.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SessionUtil {
 
     /**
      * Session中KEY：用户信息
      */
-    public static final String SKEY_USERBEAN = "SESSION_USER_BEAN";
+    public static final String SESSION_KEY_USERBEAN = "SESSION_USER_BEAN";
 
     /**
      * Session中KEY：角色信息信息
      */
-    public static final String SKEY_ROLESBEAN = "SESSION_ROLES_BEAN";
+    public static final String SESSION_KEY_ROLESBEAN = "SESSION_ROLES_BEAN";
 
     /**
      * Session中KEY：错误信息或正确信息传递
      */
-    public static final String SKEY_MESSAGE = "SESSION_MESSAGE";
+    public static final String SESSION_KEY_MESSAGE = "SESSION_MESSAGE";
+
+    /**
+     * 获取当前用户Session ID
+     */
+    public static String getCurrentSessionId(){
+        return ShiroUtil.getShiroSessionId();
+    }
 
     /**
      * 获取当前登录的用户登录名. <br/>
@@ -47,11 +62,11 @@ public class SessionUtil {
      */
     public static void setCurrentUserName(String userName) {
         try {
-            if(StringUtil.isEmpty(userName)){
+            if (StringUtil.isEmpty(userName)) {
                 userName = SessionUtil.getCurrentLoginName();
             }
             SessionUtil.setSessionAtt("userName", userName);
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
         }
     }
 
@@ -78,7 +93,7 @@ public class SessionUtil {
     public static void setCurrentUserId(Long userId) {
         try {
             SessionUtil.setSessionAtt("userId", userId);
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
         }
     }
 
@@ -99,13 +114,14 @@ public class SessionUtil {
     /**
      * 设置当前登录的用户Bean.
      *
-     * @param  userInfo 用户信息Bean对象
+     * @param userInfo 用户信息Bean对象
      */
     public static void setCurrentUserInfo(Serializable userInfo) {
         byte[] data = SerializeUtil.serialize(userInfo);
         try {
-            setSessionAtt(SKEY_USERBEAN,data);
-        }catch (Exception ignored){}
+            setSessionAtt(SESSION_KEY_USERBEAN, data);
+        } catch (Exception ignored) {
+        }
     }
 
     /**
@@ -114,8 +130,8 @@ public class SessionUtil {
      * @return 当前登录的用户Bean
      */
     public static <T> T getCurrentUserInfo(Class<T> clazz) {
-        if (getSessionAtt(SKEY_USERBEAN) != null) {// 检查Session中是否存在
-            byte[] data = getSessionAtt(SKEY_USERBEAN);
+        if (getSessionAtt(SESSION_KEY_USERBEAN) != null) {// 检查Session中是否存在
+            byte[] data = getSessionAtt(SESSION_KEY_USERBEAN);
             if (data != null) {
                 return SerializeUtil.deserialize(data, clazz);
             }
@@ -129,11 +145,12 @@ public class SessionUtil {
      *
      * @param roles 角色列表
      */
-    public static void setCurrentRolesInfo(List<? extends  Serializable> roles) {
+    public static void setCurrentRolesInfo(List<? extends Serializable> roles) {
         byte[] data = SerializeUtil.serialize(roles);
         try {
-            setSessionAtt(SKEY_ROLESBEAN,data);
-        }catch (Exception ignored){}
+            setSessionAtt(SESSION_KEY_ROLESBEAN, data);
+        } catch (Exception ignored) {
+        }
     }
 
     /**
@@ -142,8 +159,8 @@ public class SessionUtil {
      * @return 当前登录用户的角色列表
      */
     public static <T> T getCurrentRolesInfo(Class<T> clazz) {
-        if (getSessionAtt(SKEY_ROLESBEAN) != null) {// 检查Session中是否存在
-            byte[] data = getSessionAtt(SKEY_ROLESBEAN);
+        if (getSessionAtt(SESSION_KEY_ROLESBEAN) != null) {// 检查Session中是否存在
+            byte[] data = getSessionAtt(SESSION_KEY_ROLESBEAN);
             if (data != null) {
                 return SerializeUtil.deserialize(data, clazz);
             }
@@ -163,10 +180,8 @@ public class SessionUtil {
     /**
      * 向Session中添加属性
      *
-     * @param key
-     *            键
-     * @param value
-     *            值
+     * @param key   键
+     * @param value 值
      */
     public static void setSessionAtt(String key, Object value) {
         ShiroUtil.setShiroSessionAttr(key, value);
@@ -175,8 +190,7 @@ public class SessionUtil {
     /**
      * 获取Session中的值
      *
-     * @param key
-     *            键
+     * @param key 键
      * @return 对应的值
      */
     public static <T> T getSessionAtt(String key) {
@@ -186,8 +200,7 @@ public class SessionUtil {
     /**
      * 删除Session中的值
      *
-     * @param key
-     *            键
+     * @param key 键
      */
     public static void removeSessionAtt(String key) {
         ShiroUtil.removeShiroSessionAttr(key);
@@ -199,25 +212,23 @@ public class SessionUtil {
      * @return 信息
      */
     public static String getSessionMessage() {
-        return getSessionAtt(SKEY_MESSAGE);
+        return getSessionAtt(SESSION_KEY_MESSAGE);
     }
 
     /**
      * 删除Session中存放的信息
-     *
      */
     public static void removeSessionMessage() {
-        removeSessionAtt(SKEY_MESSAGE);
+        removeSessionAtt(SESSION_KEY_MESSAGE);
     }
 
     /**
      * 设置Session中存放的信息
      *
-     * @param message
-     *            信息
+     * @param message 信息
      */
     public static void setSessionMessage(String message) {
-        setSessionAtt(SKEY_MESSAGE, message);
+        setSessionAtt(SESSION_KEY_MESSAGE, message);
     }
 
     /**
@@ -228,7 +239,7 @@ public class SessionUtil {
     public static void setOldStyle() {
         try {
             SessionUtil.setSessionAtt("oldPage", "true");
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 

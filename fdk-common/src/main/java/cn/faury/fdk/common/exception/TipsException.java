@@ -36,6 +36,16 @@ public class TipsException extends RuntimeException {
     /**
      * 构造函数
      *
+     * @param resultCode 错误码
+     * @param cause      错误原因
+     */
+    public TipsException(RestResultCode resultCode, Throwable cause) {
+        this(resultCode.getCode(), resultCode.getTips(), resultCode.getMessage(), cause);
+    }
+
+    /**
+     * 构造函数
+     *
      * @param code 错误码
      * @param tips 用户提示信息
      */

@@ -1,0 +1,1 @@
+provides: fdk-mobile,fdk-mobile-spring-boot-autoconfigure,fwmf-module-user-role-spring-boot-starter,fwmf-module-app-spring-boot-starter,fwmf-module-shop-spring-boot-starter
