@@ -16,7 +16,7 @@ public class CanNotReadException extends TipsException {
     /**
      * 错误消息常量
      */
-    private final static String DEFAULT_MESSAGE = "This Service Can Not Read!";
+    private final static String DEFAULT_MESSAGE = "This Service Can Not Read";
 
     /**
      * 构造函数

@@ -19,7 +19,7 @@ public class AssertUtilTest {
     public void assertTrue1() throws Exception {
         AssertUtil.assertTrue(true,"500","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=500,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=500)");
         AssertUtil.assertTrue(false,"500","这个异常会出现");
     }
 
@@ -27,7 +27,7 @@ public class AssertUtilTest {
     public void assertTrue2() throws Exception {
         AssertUtil.assertTrue(true,"这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=402,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=402)");
         AssertUtil.assertTrue(false,"这个异常会出现");
     }
 
@@ -43,7 +43,7 @@ public class AssertUtilTest {
     public void assertFalse1() throws Exception {
         AssertUtil.assertFalse(false,"500","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=500,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=500)");
         AssertUtil.assertFalse(true,"500","这个异常会出现");
     }
 
@@ -51,7 +51,7 @@ public class AssertUtilTest {
     public void assertFalse2() throws Exception {
         AssertUtil.assertFalse(false,"这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=402,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=402)");
         AssertUtil.assertFalse(true,"这个异常会出现");
     }
 
@@ -59,7 +59,7 @@ public class AssertUtilTest {
     public void assertNotNull() throws Exception {
         AssertUtil.assertNotNull(new Object(),"这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=402,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=402)");
         AssertUtil.assertNotNull(null,"这个异常会出现");
     }
 
@@ -67,7 +67,7 @@ public class AssertUtilTest {
     public void assertNotNull1assaaaaasdas2d() throws Exception {
         AssertUtil.assertNotNull(new Object(),"500","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=500,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=500)");
         AssertUtil.assertNotNull(null,"500","这个异常会出现");
     }
 
@@ -75,7 +75,7 @@ public class AssertUtilTest {
     public void assertNotEmpty() throws Exception {
         AssertUtil.assertNotEmpty("string","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=402,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=402)");
         AssertUtil.assertNotEmpty("","这个异常会出现");
     }
 
@@ -83,14 +83,14 @@ public class AssertUtilTest {
     public void assertNotEmpty1() throws Exception {
         AssertUtil.assertNotEmpty("string","500","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=500,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=500)");
         AssertUtil.assertNotEmpty("","500","这个异常会出现");
     }
     @Test
     public void assertEmpty() throws Exception {
         AssertUtil.assertEmpty("","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=402,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=402)");
         AssertUtil.assertEmpty("string","这个异常会出现");
     }
 
@@ -98,7 +98,7 @@ public class AssertUtilTest {
     public void assertEmpty1() throws Exception {
         AssertUtil.assertEmpty("","500","这个异常不会出现");
         thrown.expect(TipsException.class);
-        thrown.expectMessage("code=500,tips=这个异常会出现");
+        thrown.expectMessage("这个异常会出现(code=500)");
         AssertUtil.assertEmpty("string","500","这个异常会出现");
     }
 

@@ -50,7 +50,7 @@ public class TipsException extends RuntimeException {
      * @param tips 用户提示信息
      */
     public TipsException(String code, String tips) {
-        this(code, tips, String.format("code=%s,tips=%s", code, tips));
+        this(code, tips, String.format("%s(code=%s)", tips, code));
     }
 
     /**
@@ -61,7 +61,7 @@ public class TipsException extends RuntimeException {
      * @param cause 错误原因
      */
     public TipsException(String code, String tips, Throwable cause) {
-        this(code, tips, String.format("code=%s,tips=%s", code, tips), cause);
+        this(code, tips, String.format("%s(code=%s)", tips, code), cause);
     }
 
     /**

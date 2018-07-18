@@ -18,7 +18,7 @@ public class CanNotWriteException extends TipsException {
     /**
      * 错误消息常量
      */
-    private final static String DEFAULT_MESSAGE = "This Service Can Not Write!";
+    private final static String DEFAULT_MESSAGE = "This Service Can Not Write";
 
     /**
      * 构造函数
