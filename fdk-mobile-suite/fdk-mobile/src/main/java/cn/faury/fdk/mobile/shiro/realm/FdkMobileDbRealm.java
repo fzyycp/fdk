@@ -38,279 +38,293 @@ import java.util.List;
  */
 public class FdkMobileDbRealm extends AuthorizingRealm {
 
-	/**
-	 * 用户信息服务
-	 */
-	private UserService userService;
+    /**
+     * 用户信息服务
+     */
+    private UserService userService;
 
-	/**
-	 * 用户授权App服务
-	 */
-	private UserRAppInfoService userRAppInfoService;
+    /**
+     * 用户授权App服务
+     */
+    private UserRAppInfoService userRAppInfoService;
 
-	/**
-	 * 商店授权APP服务
-	 */
-	private ShopRAppInfoService shopRAppInfoService;
+    /**
+     * 商店授权APP服务
+     */
+    private ShopRAppInfoService shopRAppInfoService;
 
-	/**
-	 * 商店信息服务
-	 */
-	private ShopInfoService shopInfoService;
+    /**
+     * 商店信息服务
+     */
+    private ShopInfoService shopInfoService;
 
-	/**
-	 * APP编码
-	 */
-	private String appCode;
+    /**
+     * APP信息服务
+     */
+    private AppInfoService appInfoService;
 
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		UsernamePasswordToken upt = (UsernamePasswordToken) token;
+    /**
+     * APP编码
+     */
+    private String appCode;
 
-		// 获取用户信息
-		UserInfoBean user = userService.getUserInfoByLoginName(upt.getUsername());
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        UsernamePasswordToken upt = (UsernamePasswordToken) token;
 
-		if (user != null) {
-			// 执行有效性验证
-			validateStatus(user, token);
-			// 执行授权验证
-			validateAuth(user, token);
-			UserPasswordBean pwd = userService.getUserPasswordByUserId(user.getUserId());
-			return new SimpleAuthenticationInfo(user.getLoginName(), pwd.getPassword(), getName());
-		}
-		throw new UnknownAccountException(String.format("当前登录用户[%s]不存在!", upt.getUsername()));
-	}
+        // 获取用户信息
+        UserInfoBean user = userService.getUserInfoByLoginName(upt.getUsername());
 
-	/**
-	 * 验证用户授权
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected void validateAuth(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-		if (preValidateAuth(user, token)) {
-			doValidateAuth(user, token);
-		}
-		afterValidateAuth(user, token);
-	}
+        if (user != null) {
+            // 执行有效性验证
+            validateStatus(user, token);
+            // 执行授权验证
+            validateAuth(user, token);
+            UserPasswordBean pwd = userService.getUserPasswordByUserId(user.getUserId());
+            return new SimpleAuthenticationInfo(user.getLoginName(), pwd.getPassword(), getName());
+        }
+        throw new UnknownAccountException(String.format("当前登录用户[%s]不存在!", upt.getUsername()));
+    }
 
-	/**
-	 * 执行验证用户授权后
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected void afterValidateAuth(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-	}
+    /**
+     * 验证用户授权
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected void validateAuth(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+        if (preValidateAuth(user, token)) {
+            doValidateAuth(user, token);
+        }
+        afterValidateAuth(user, token);
+    }
 
-	/**
-	 * 验证用户状态
-	 *
-	 * <pre>
-	 * 对可以夸过状态验证的需要自己扩展
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 *             验证异常
-	 */
-	protected void validateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-		if (preValidateStatus(user, token)) {
-			doValidateStatus(user, token);
-		}
-		afterValidateStatus(user, token);
-	}
+    /**
+     * 执行验证用户授权后
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected void afterValidateAuth(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+    }
 
-	/**
-	 * 执行验证用户状态前操作
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected boolean preValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-		return true;
-	}
+    /**
+     * 验证用户状态
+     * <p>
+     * <pre>
+     * 对可以夸过状态验证的需要自己扩展
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException 验证异常
+     */
+    protected void validateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+        if (preValidateStatus(user, token)) {
+            doValidateStatus(user, token);
+        }
+        afterValidateStatus(user, token);
+    }
 
-	/**
-	 * 执行验证用户状态
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected void doValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-		// 验证是否启用
-		if (false == "1".equals(user.getIsEnable())) {
-			// 账号未启用
-			throw new DisabledAccountException(String.format("当前账号[%s]已禁用!", user.getLoginName()));
-		}
+    /**
+     * 执行验证用户状态前操作
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected boolean preValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+        return true;
+    }
 
-		// 获取当前时间
-		Calendar now = Calendar.getInstance();
-		Date currentDate = DateUtil.getCurrentDate();
-		// 验证账号是否生效
-		Date startDate = user.getEfctYmd();
-		if (startDate.compareTo(currentDate) > 0) {
-			// 账号生效日期未到
-			throw new NotEffectAccountException(String.format("当前账号[%s]尚未生效!", user.getLoginName()));
-		}
+    /**
+     * 执行验证用户状态
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected void doValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+        // 验证是否启用
+        if (!StringUtil.whetherYes(user.getIsEnable())) {
+            // 账号未启用
+            throw new DisabledAccountException(String.format("当前账号[%s]已禁用!", user.getLoginName()));
+        }
 
-		// 验证账号是否失效
-		Date endDate = user.getExprYmd();
-		if (endDate.compareTo(currentDate) < 0) {
-			// 账号失效日期已到
-			throw new HasExpiredAccountException(String.format("当前账号[%s]已失效!", user.getLoginName()));
-		}
-	}
+        // 获取当前时间
+        Calendar now = Calendar.getInstance();
+        Date currentDate = DateUtil.getCurrentDate();
+        // 验证账号是否生效
+        Date startDate = user.getEfctYmd();
+        if (startDate.compareTo(currentDate) > 0) {
+            // 账号生效日期未到
+            throw new NotEffectAccountException(String.format("当前账号[%s]尚未生效!", user.getLoginName()));
+        }
 
-	/**
-	 * 执行验证用户状态后
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected void afterValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
-	}
+        // 验证账号是否失效
+        Date endDate = user.getExprYmd();
+        if (endDate.compareTo(currentDate) < 0) {
+            // 账号失效日期已到
+            throw new HasExpiredAccountException(String.format("当前账号[%s]已失效!", user.getLoginName()));
+        }
+    }
 
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(
-			PrincipalCollection principals) {
-		// 手机APP不存在角色授权
-		return null;
-	}
+    /**
+     * 执行验证用户状态后
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected void afterValidateStatus(UserInfoBean user, AuthenticationToken token) throws AuthenticationException {
+    }
 
-	/**
-	 * 执行验证用户授权前操作
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected boolean preValidateAuth(UserInfoBean user,
-									  AuthenticationToken token) throws AuthenticationException {
-		// 是否有权限
-		boolean hasAuth = false;
-		// 如果启用商店关联业务系统服务验证，则进行判断用户所在商店是否有授权
-		if (user != null && shopRAppInfoService != null) {
-			List<ShopRAppInfoBean> apps = shopRAppInfoService
-					.getShopRAppInfoListByUserId(user.getUserId());
-			if (apps != null && apps.size() > 0) {
-				for (ShopRAppInfoBean ura : apps) {
-					if (this.appCode != null
-							&& this.appCode.equals(ura.getAppCode())) {
-						// 进一步验证商店是否禁用、删除
-						if(shopInfoService!=null && ura.getShopId()!=null){
-							ShopInfoBean sib = shopInfoService.getShopInfoById(ura.getShopId());
-							// 商店信息存在且未删除且启用状态则可以登录，否则无权限登录
-							if(sib!=null && "1".equals(sib.getShopState()) && "0".equals(sib.getDelFlag())){
-								hasAuth = true;
-							}
-						} else {
-							// 不验证商店状态
-							hasAuth = true;
-						}
-						break;
-					}
-				}
-			}
-		}
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(
+            PrincipalCollection principals) {
+        // 手机APP不存在角色授权
+        return null;
+    }
 
-		// 没有权限则继续下推验证
-		return (false == hasAuth);
-	}
+    /**
+     * 执行验证用户授权前操作
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected boolean preValidateAuth(UserInfoBean user,
+                                      AuthenticationToken token) throws AuthenticationException {
+        // 是否有权限
+        boolean hasAuth = false;
+        // 如果启用商店关联业务系统服务验证，则进行判断用户所在商店是否有授权
+        if (user != null && shopRAppInfoService != null) {
+            List<ShopRAppInfoBean> apps = shopRAppInfoService
+                    .getShopRAppInfoListByUserId(user.getUserId());
+            if (apps != null && apps.size() > 0) {
+                for (ShopRAppInfoBean ura : apps) {
+                    if (this.appCode != null
+                            && this.appCode.equals(ura.getAppCode())) {
+                        // 进一步验证商店是否禁用、删除
+                        if (shopInfoService != null && ura.getShopId() != null) {
+                            ShopInfoBean sib = shopInfoService.getShopInfoById(ura.getShopId());
+                            // 商店信息存在且未删除且启用状态则可以登录，否则无权限登录
+                            if (sib != null && "1".equals(sib.getShopState()) && !StringUtil.whetherYes(sib.getDelFlag())) {
+                                hasAuth = true;
+                            }
+                        } else {
+                            // 不验证商店状态
+                            hasAuth = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
 
-	/**
-	 * 执行验证用户授权
-	 *
-	 * <pre>
-	 * 不同的业务需要进行扩展验证
-	 * </pre>
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws AuthenticationException
-	 */
-	protected void doValidateAuth(UserInfoBean user, AuthenticationToken token)
-			throws AuthenticationException {
-		if (userRAppInfoService == null) {
-			throw new UnauthorizedAppException("用户关联APP服务未配置");
-		} else if (false == hasAppAuth(user, token)) {
-			throw new UnauthorizedAppException();
-		}
-	}
+        // 没有权限则继续下推验证
+        return (false == hasAuth);
+    }
 
-	/**
-	 * 判断用户是否有权限登录该APP
-	 *
-	 * @param user
-	 *            用户信息
-	 * @param token
-	 *            身份
-	 * @throws UnauthorizedAppException
-	 */
-	protected boolean hasAppAuth(UserInfoBean user, AuthenticationToken token) {
-		boolean hasAuth = false;
-		if (user != null && userRAppInfoService != null) {
-			// 获取用户授权的APP列表
-			List<UserRAppInfoBean> apps = userRAppInfoService
-					.getUserRAppInfoList(Arrays.asList(user.getUserId()));
-			if (apps != null && apps.size() > 0) {
-				for (UserRAppInfoBean ura : apps) {
-					if (this.appCode != null
-							&& this.appCode.equals(ura.getAppCode())) {
-						hasAuth = true;
-						break;
-					}
-				}
-			}
-		}
-		return hasAuth;
-	}
+    /**
+     * 执行验证用户授权
+     * <p>
+     * <pre>
+     * 不同的业务需要进行扩展验证
+     * </pre>
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws AuthenticationException
+     */
+    protected void doValidateAuth(UserInfoBean user, AuthenticationToken token)
+            throws AuthenticationException {
+        if (userRAppInfoService == null) {
+            throw new UnauthorizedAppException("用户关联APP服务未配置");
+        } else if (false == hasAppAuth(user, token)) {
+            throw new UnauthorizedAppException();
+        }
+    }
+
+    /**
+     * 判断用户是否有权限登录该APP
+     *
+     * @param user  用户信息
+     * @param token 身份
+     * @throws UnauthorizedAppException
+     */
+    protected boolean hasAppAuth(UserInfoBean user, AuthenticationToken token) {
+        boolean hasAuth = false;
+        if (user != null && userRAppInfoService != null) {
+            UserType userType = UserType.parse(user.getUserType());
+            AppInfoBean appInfoBean = null;
+            if (appInfoService != null) {
+                appInfoBean = appInfoService.getAppInfoByAppCode(null, this.getAppCode());
+            }
+            switch (userType) {
+                case GUEST:
+                    // 检查APP是否设置为拒绝游客用户直接登录
+                    if (appInfoBean != null && !StringUtil.whetherYes(appInfoBean.getRejectGuestUser())) {
+                        hasAuth = true;
+                    }
+                    break;
+                case SHOPPING:
+                    // 检查APP是否设置为拒绝购物用户直接登录
+                    if (appInfoBean != null && !StringUtil.whetherYes(appInfoBean.getRejectShoppingUser())) {
+                        hasAuth = true;
+                    }
+                    break;
+                case FWMF:
+                case SYSTEM:
+                    if (appInfoBean != null && StringUtil.whetherYes(appInfoBean.getAllowBackgroundUser())) {
+                        hasAuth = true;
+                    }
+                    break;
+            }
+            // 没有统一放行权限，则验证单个用户APP授权信息
+            if (!hasAuth) {
+                // 获取用户授权的APP列表
+                List<UserRAppInfoBean> apps = userRAppInfoService
+                        .getUserRAppInfoList(Arrays.asList(user.getUserId()));
+                if (apps != null && apps.size() > 0) {
+                    for (UserRAppInfoBean ura : apps) {
+                        if (this.appCode != null
+                                && this.appCode.equals(ura.getAppCode())) {
+                            hasAuth = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return hasAuth;
+    }
 
     /**
      * 获取userService
@@ -400,5 +414,23 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
      */
     public void setAppCode(String appCode) {
         this.appCode = appCode;
+    }
+
+    /**
+     * 获取appInfoService
+     *
+     * @return appInfoService
+     */
+    public AppInfoService getAppInfoService() {
+        return appInfoService;
+    }
+
+    /**
+     * 设置appInfoService
+     *
+     * @param appInfoService 值
+     */
+    public void setAppInfoService(AppInfoService appInfoService) {
+        this.appInfoService = appInfoService;
     }
 }

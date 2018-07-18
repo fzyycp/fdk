@@ -4,6 +4,7 @@ import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.common.utils.SerializeUtil;
+import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.shiro.filter.oauth2.OAuth2Handler;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
@@ -98,7 +99,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
         byte[] oauth2InfoBytes = (byte[]) request.getAttribute(ATTRIBUTE_KEY_OAUTH2_INFO);
         if (oauth2InfoBytes != null) {
             UserOAuthInfoBean bean = SerializeUtil.deserialize(oauth2InfoBytes, UserOAuthInfoBean.class);
-            return bean.getUnionid();
+            return SigAESUtil.encryptPassWord(bean.getUnionid());
         }
         return super.getPassword(request);
     }
@@ -202,7 +203,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
      * @param request 请求
      */
     protected void oauth2Handler(ServletRequest request) {
-        String code = getOAuth2Code(request);
+//        String code = getOAuth2Code(request);
         String unionid = getOAuth2UnionId(request);
         String oauth2Type = getOAuth2Type(request);
 
@@ -279,7 +280,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
         OAuth2Handler value = getOauth2().get(oauth2Type);
         AssertUtil.assertNotNull(value,"不支持的第三方登录类型");
         UserOAuthInfoBean bean = value.getUserOAuthInfoBean(appCode, getOAuth2Code(request));
-        log.debug("第三方登录授权信息获取失败：UserOAuthInfoBean={}",bean);
+        log.debug("第三方登录授权信息：UserOAuthInfoBean={}",bean);
         AssertUtil.assertNotNull(bean,"第三方登录授权信息获取失败");
         AssertUtil.assertNotEmpty(bean.getUnionid(),"第三方登录授权信息获取失败");
 
@@ -292,7 +293,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
         if (userInfo == null) {
             AppInfoBean appInfo = appInfoService.getAppInfoBySystemCode(null, appCode);
             AssertUtil.assertNotNull(appCode,"APP不存在或已停用");
-            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.SHOPPING,userInfo.getCreatePerson(),"");
+            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.SHOPPING,unionid,"");
         } else {
             userId = userInfo.getUserId();
         }

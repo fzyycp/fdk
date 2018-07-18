@@ -3,6 +3,7 @@ package cn.faury.fdk.mobile.shiro.filter;
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.AssertUtil;
+import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.shiro.token.AppUsernamePasswordToken;
 import cn.faury.fdk.shiro.exception.IMessageAccountException;

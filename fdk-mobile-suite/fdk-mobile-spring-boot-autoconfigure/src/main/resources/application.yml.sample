@@ -9,9 +9,7 @@ fdk:
       nounionid: #不使用unionid机制
         weixinmp: "jl-yexs"
     filter: # 不拦截登录验证地址
-      anon:
-        - "/api/**"
-        - "/index.html"
+      anon: "/api/**","/index.html"
     session-timeout: 86400
     cookie-name: "S"
     service-config-file:"fdk.mobile.service.properties"

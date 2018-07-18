@@ -8,9 +8,9 @@ package cn.faury.fdk.common.utils;
 
 import cn.faury.fdk.common.anotation.Nullable;
 import cn.faury.fdk.common.anotation.serialize.*;
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -138,9 +138,53 @@ public class JsonUtil {
      * @return 对象实体
      */
     public static Map<String, Object> jsonToMap(String json) {
-        Type type = new TypeToken<Map<String, Object>>() {
-        }.getType();
-        return jsonToObject(json, type);
+        return JSON.parseObject(json);
+//        Type type = new TypeToken<TreeMap<String, Object>>() {
+//        }.getType();
+////        Gson gson = new Gson();
+//        Gson gson = new GsonBuilder()
+//                .registerTypeAdapter(Double.class, new JsonDeserializer<Double>() {
+//                    @Override
+//                    public Double deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+//                        return null;
+//                    }
+//                })
+//                .registerTypeAdapter(Number.class, new JsonDeserializer<Number>() {
+//                    @Override
+//                    public Number deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+//                        return null;
+//                    }
+//                })
+////                .registerTypeAdapterFactory(new MapTypeAdapterFactory())
+////                .registerTypeAdapter(type, (JsonDeserializer<TreeMap<String, Object>>) (jsonElement, type1, jsonDeserializationContext) -> {
+////                    TreeMap<String, Object> treeMap = new TreeMap<>();
+////                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+////                    Set<Map.Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
+////                    for (Map.Entry<String, JsonElement> entry : entrySet) {
+////                        JsonElement value = entry.getValue();
+////                        if (value.isJsonPrimitive()) {
+////                            if (((JsonPrimitive) value).isBoolean()) {
+////                                treeMap.put(entry.getKey(), value.getAsBoolean());
+////                            } else if (((JsonPrimitive) value).isNumber()) {
+////                                Number number = value.getAsNumber();
+////                                if (number.longValue() == number.doubleValue()) {
+////                                    treeMap.put(entry.getKey(), value.getAsLong());
+////                                } else {
+////                                    treeMap.put(entry.getKey(), value.getAsNumber());
+////                                }
+////                            } else if (((JsonPrimitive) value).isString()) {
+////                                treeMap.put(entry.getKey(), value.getAsString());
+////                            } else {
+////                                treeMap.put(entry.getKey(), value.getAsString());
+////                            }
+////                        } else {
+////                            treeMap.put(entry.getKey(), value);
+////                        }
+////                    }
+////                    return treeMap;
+////                })
+//                .create();
+//        return gson.fromJson(json, type);
     }
 
     /**

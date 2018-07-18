@@ -30,22 +30,22 @@ public class FdkMobileProperties {
 
     private String intefaceConfigFile = MobileFrameworkInitializer.DEFAULT_SERVICE_CONFIG_FILE;
 
-    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.weixin}")
+    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.weixin:}")
     private String weixinOAuth2Keys;
 
-    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.weixinmp}")
+    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.weixinmp:}")
     private String weixinmpOAuth2Keys;
 
-    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.qq}")
+    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.qq:}")
     private String qqOAuth2Keys;
 
-    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.sinaweibo}")
+    @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.sinaweibo:}")
     private String sinaweiboOAuth2Keys;
 
-    @Value("${" + PROPERTIES_PREFIX + ".oauth.nounionid.weixinmp}")
+    @Value("${" + PROPERTIES_PREFIX + ".oauth.nounionid.weixinmp:}")
     private String weixinmpNoUnionId;
 
-    @Value("${" + PROPERTIES_PREFIX + ".filter.anon}")
+    @Value("#{'${" + PROPERTIES_PREFIX + ".filter.anon:}'.split(',')}")
     private List<String> anon = new ArrayList<>();
 
     /**

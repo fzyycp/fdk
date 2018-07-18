@@ -200,6 +200,7 @@ public class FdkMobileAutoConfiguration {
         fdkMobileDbRealm.setShopInfoService(shopInfoService);
         fdkMobileDbRealm.setShopRAppInfoService(shopRAppInfoService);
         fdkMobileDbRealm.setUserRAppInfoService(userRAppInfoService);
+        fdkMobileDbRealm.setAppInfoService(appInfoService);
         fdkMobileDbRealm.setUserService(userService);
         return fdkMobileDbRealm;
     }

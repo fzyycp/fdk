@@ -120,7 +120,7 @@ public class WeixinOAuth2Handler extends AdapterOAuth2Handler {
 
         // 通过授权Code获取access_token
         Map<String, Object> accessToken = this.getAccessToken(appCode, code);
-        log.debug("获取微信授权凭证失败:accessToken={}", accessToken);
+        log.debug("获取微信授权凭证:accessToken={}", accessToken);
         if (accessToken == null) {
             throw new TipsException(RestResultCode.CODE500.getCode(), "获取微信授权凭证失败");
         } else if (StringUtil.isEmpty((String) accessToken.get("access_token"))
@@ -137,7 +137,7 @@ public class WeixinOAuth2Handler extends AdapterOAuth2Handler {
         String openid = (String) accessToken.get("openid");
 
         Map<String, Object> userinfo = this.userinfo(access_token, openid);
-        log.debug("获取微信用户信息失败:userinfo={}", userinfo);
+        log.debug("获取微信用户信息:userinfo={}", userinfo);
         if (userinfo == null) {
             throw new TipsException(RestResultCode.CODE500.getCode(),"获取微信用户信息失败");
         }

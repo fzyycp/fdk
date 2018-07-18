@@ -14,6 +14,12 @@
     <version>0.0.9</version>
 
     <dependencies>
+        <!--用于处理字符串到map时gson数字变成double问题-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

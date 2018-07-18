@@ -1,6 +1,7 @@
 package cn.faury.fdk.mobile.shiro.filter.oauth2;
 
 import cn.faury.fdk.common.utils.AssertUtil;
+import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.mobile.shiro.filter.FdkMobileFormAuthenticationFilter;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
