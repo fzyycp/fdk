@@ -75,7 +75,6 @@ public class FdkShiroAutoConfiguration {
         // 添加验证码过滤
         filterChainDefinitionMap.put(FdkCaptchaProperties.REQUEST_URL, "anon");
         filterChainDefinitionMap.put(fdkShiroFilterProperties.getLoginUrl(), "captcha,login");
-        filterChainDefinitionMap.put(fdkShiroFilterProperties.getUnauthorizedUrl(), "anon");
         filterChainDefinitionMap.put("logout", "logout");
         // properties文件中列表，以分号隔开，前面为过滤规则，后面为匹配uri规则
         if (fdkShiroFilterProperties.getChain() != null) {

@@ -11,6 +11,7 @@ import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -40,12 +42,12 @@ public class FdkShiroLoginController {
      *
      * @return 登录结果JSON
      */
-    @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
+    @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.GET})
     @ApiOperation(value = "登录结果返回", notes = "登录失败后返回登录结果")
     public RestResultEntry login(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         // 已登录
         if (ShiroUtil.authenticated()) {
-            return loginSuccess(httpServletRequest, httpServletResponse);
+            return currentUser(httpServletRequest, httpServletResponse);
         }
 
         RestResultEntry resultEntry = RestResultEntry.createErrorResult(RestResultCode.CODE401);
@@ -68,13 +70,13 @@ public class FdkShiroLoginController {
     }
 
     /**
-     * 登录成功接口
+     * 当前登录用户信息
      *
      * @return 登录结果JSON
      */
-    @RequestMapping(value = "/loginSuccess",method = {RequestMethod.GET,RequestMethod.POST})
+    @GetMapping(value = "/currentUser")
     @ApiOperation(value = "登录结果验证", notes = "检查是否已登录")
-    public RestResultEntry loginSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public RestResultEntry currentUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         RestResultEntry resultEntry;
         try {
             UserInfoBean userInfoBean = SessionUtil.getCurrentUserInfo(UserInfoBean.class);
@@ -111,5 +113,4 @@ public class FdkShiroLoginController {
         SecurityUtils.getSubject().logout();
         return RestResultEntry.createSuccessResult(null);
     }
-
 }

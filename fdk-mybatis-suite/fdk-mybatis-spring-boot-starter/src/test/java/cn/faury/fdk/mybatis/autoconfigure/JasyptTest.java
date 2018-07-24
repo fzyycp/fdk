@@ -9,7 +9,7 @@ public class JasyptTest {
     // 加密算法
     public static final String algorithm = "PBEWithMD5AndDES";
     // 项目配置的加密种子
-    public static final String salt = "RzE4Bp1q5I";
+    public static final String salt = "OC5pSswBN";
 
 
     // 加密
@@ -29,7 +29,7 @@ public class JasyptTest {
     @Test
     public void jasyptPBEStringDecryptionTest(){
         // 输入密文
-        String url="2UKO1gQZoyUgZDlT0gfB03D9TOhmARfYeeMJWEMugoJv4B3On6/CWe/FqFRHMbDF";
+        String url="JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=";
         String username="uK7aeM4tK/cXOksE1Yu0zA==";
         String password = "2xwWu5xTB5qFOI3OBRKfmA==";
 
