@@ -1,12 +1,15 @@
 package cn.faury.fdk.ftp;
 
 import cn.faury.fdk.ftp.constants.UploadStatus;
+import org.apache.commons.net.ftp.FTPFile;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 
 public class FTPUtilTest {
@@ -25,7 +28,13 @@ public class FTPUtilTest {
         FTPUtil.destory();
     }
 
-//    @Test
+    @Test
+    public void list() throws IOException {
+        FTPFile[] files = FTPUtil.borrowInstance().listFiles("/jl/yexs/shop/img/201807/2018072415230952950.jpg");
+        System.out.println(files.length);
+    }
+
+    //    @Test
     public void testAll() throws Exception {
         // 先删除文件
         FTPUtil.deleteFile(uploadRemotePath);
@@ -45,7 +54,7 @@ public class FTPUtilTest {
 
     public void upload() throws Exception {
         FileInputStream fileInputStream = new FileInputStream(uploadLocalFile);
-        UploadStatus status = FTPUtil.upload(fileInputStream, uploadRemotePath,0,true);
+        UploadStatus status = FTPUtil.upload(fileInputStream, uploadRemotePath, 0, true);
         System.out.println(status);
         Assert.assertTrue(UploadStatus.Upload_New_File_Success == status || UploadStatus.Upload_From_Break_Success == status);
     }
