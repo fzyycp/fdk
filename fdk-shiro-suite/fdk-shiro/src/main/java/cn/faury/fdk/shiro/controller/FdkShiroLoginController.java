@@ -57,7 +57,7 @@ public class FdkShiroLoginController {
             if (errorMsg instanceof String && StringUtil.isNotEmpty((String) errorMsg)) {
                 resultEntry.setMessage((String) errorMsg);
             }
-            Object errorTips = httpServletRequest.getAttribute(FdkCaptchaConst.ATTRIBUTE_KEY_FAILURE_MSG);
+            Object errorTips = httpServletRequest.getAttribute(FdkCaptchaConst.ATTRIBUTE_KEY_FAILURE_MSG_TIPS);
             if (errorMsg instanceof String && StringUtil.isNotEmpty((String) errorTips)) {
                 resultEntry.setTips((String) errorTips);
             }

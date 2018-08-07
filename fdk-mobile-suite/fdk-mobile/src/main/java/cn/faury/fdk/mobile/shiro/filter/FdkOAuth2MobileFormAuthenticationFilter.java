@@ -293,7 +293,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
         if (userInfo == null) {
             AppInfoBean appInfo = appInfoService.getAppInfoBySystemCode(null, appCode);
             AssertUtil.assertNotNull(appCode,"APP不存在或已停用");
-            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.SHOPPING,unionid,"");
+            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,unionid,"");
         } else {
             userId = userInfo.getUserId();
         }

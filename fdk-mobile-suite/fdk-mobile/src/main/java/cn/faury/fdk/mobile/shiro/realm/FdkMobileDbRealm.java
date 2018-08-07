@@ -294,7 +294,7 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
                         hasAuth = true;
                     }
                     break;
-                case SHOPPING:
+                case ENDUSER:
                     // 检查APP是否设置为拒绝购物用户直接登录
                     if (appInfoBean != null && !StringUtil.whetherYes(appInfoBean.getRejectShoppingUser())) {
                         hasAuth = true;

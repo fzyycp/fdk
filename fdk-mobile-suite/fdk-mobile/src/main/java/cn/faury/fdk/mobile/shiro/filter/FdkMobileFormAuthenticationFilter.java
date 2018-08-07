@@ -7,6 +7,7 @@ import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.shiro.token.AppUsernamePasswordToken;
 import cn.faury.fdk.shiro.exception.IMessageAccountException;
+import cn.faury.fdk.shiro.filter.captcha.FdkCaptchaConst;
 import cn.faury.fdk.shiro.utils.SessionUtil;
 import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
@@ -63,12 +64,12 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
     /**
      * 错误信息
      */
-    public static final String ATTRIBUTE_KEY_FAILURE_MSG = "shiroLoginFailureMsg";
+    public static final String ATTRIBUTE_KEY_FAILURE_MSG = FdkCaptchaConst.ATTRIBUTE_KEY_FAILURE_MSG;
 
     /**
      * 用户提示信息
      */
-    public static final String ATTRIBUTE_KEY_FAILURE_MSG_TIPS = "shiroLoginFailureMsgTips";
+    public static final String ATTRIBUTE_KEY_FAILURE_MSG_TIPS = FdkCaptchaConst.ATTRIBUTE_KEY_FAILURE_MSG_TIPS;
 
     /**
      * 游客登录名check
@@ -220,28 +221,28 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
         // 开始处理异常信息
         log.debug("登录异常：" + fail);
         if (IncorrectCredentialsException.class.getName().equals(fail)) {
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户名密码不匹配！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户名密码不匹配！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户名密码不匹配");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户名密码不匹配");
         } else if (ExpiredCredentialsException.class.getName().equals(fail)) {
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户密码已过期！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户密码已过期！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户密码已过期");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户密码已过期");
         } else if (UnknownAccountException.class.getName().equals(fail)) {
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户不存在或密码错误！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户不存在或密码错误！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户不存在或密码错误");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户不存在或密码错误");
         } else if (LockedAccountException.class.getName().equals(fail)) {
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户账号已锁定！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户账号已锁定！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户账号已锁定");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户账号已锁定");
         } else if (DisabledAccountException.class.getName().equals(fail)) {
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户账号已禁用！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户账号已禁用！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户账号已禁用");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户账号已禁用");
         } else if (AuthenticationException.class.getName().equals(fail)) {
             log.error("Shiro认证异常：" + fail);
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户认证失败！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户认证失败！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "用户认证失败");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "用户认证失败");
         } else {
             log.error("未知异常：" + fail);
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "登录失败！");
-            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "登录失败！");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG, "登录失败");
+            request.setAttribute(ATTRIBUTE_KEY_FAILURE_MSG_TIPS, "登录失败");
 
             // 尝试通过反射确认是否为自定义的异常信息，并获取默认消息返回
             try {

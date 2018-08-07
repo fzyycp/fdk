@@ -65,7 +65,7 @@ public abstract class SsoOAuth2Handler extends AdapterOAuth2Handler {
         if (userInfo == null) {
             AppInfoBean appInfo = appRegisterService.getAppInfoBySystemCode(null, appCode);
             AssertUtil.assertNotNull(appInfo,"APP不存在或已停用");
-            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.SHOPPING,"init","");
+            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,"init","");
         } else {
             userId = userInfo.getUserId();
         }

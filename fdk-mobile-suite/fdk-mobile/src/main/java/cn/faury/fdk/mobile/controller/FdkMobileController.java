@@ -1,6 +1,7 @@
 package cn.faury.fdk.mobile.controller;
 
 import cn.faury.fdk.common.entry.RestResultEntry;
+import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.core.FdkMobileInterfaceManager;
 import cn.faury.fdk.mobile.exception.IntefaceInvokeException;
@@ -57,7 +58,7 @@ public class FdkMobileController extends MobileBaseController {
                 if (result == null) {
                     throw new IntefaceInvokeException("接口返回结果为null", "无返回结果");
                 }
-            } catch (IntefaceInvokeException e) {
+            } catch (TipsException e){
                 log.error("调用接口错误！", e);
                 result = RestResultEntry.createErrorResult(e);
             } catch (Exception e) {

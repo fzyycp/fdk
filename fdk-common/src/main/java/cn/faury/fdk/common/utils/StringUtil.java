@@ -370,4 +370,34 @@ public class StringUtil {
         return join(values, delimiter, "", "");
     }
 
+    /**
+     * 字符串转换为Long
+     *
+     * @param value 字符串值
+     * @return 转换后的Long值
+     */
+    public static Optional<Long> parseLong(String value) {
+        Optional<Long> result = Optional.empty();
+        try {
+            result = Optional.ofNullable(Long.parseLong(value));
+        } catch (NumberFormatException ignored) {
+        }
+        return result;
+    }
+
+    /**
+     * 字符串转换为Long
+     *
+     * @param value        字符串值
+     * @param defaultValue 默认值
+     * @return 转换后的Long值
+     */
+    public static Optional<Long> parseLong(String value, Long defaultValue) {
+        Optional<Long> result = Optional.ofNullable(defaultValue);
+        try {
+            result = Optional.of(Long.valueOf(value));
+        } catch (NumberFormatException ignored) {
+        }
+        return result;
+    }
 }

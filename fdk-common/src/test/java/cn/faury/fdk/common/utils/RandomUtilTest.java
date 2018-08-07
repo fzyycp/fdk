@@ -3,7 +3,17 @@ package cn.faury.fdk.common.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 public class RandomUtilTest {
+    @Test
+    public void getRandomNumber() throws Exception {
+        int i=100;
+        while (i-->0){
+            System.out.println(RandomUtil.getRandomNumber(3));
+        }
+    }
+
     @Test
     public void getUUIDString() throws Exception {
         System.out.println(RandomUtil.getUUIDString());

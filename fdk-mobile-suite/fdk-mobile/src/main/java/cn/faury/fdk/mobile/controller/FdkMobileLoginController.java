@@ -69,7 +69,7 @@ public class FdkMobileLoginController {
     @ApiOperation(value = "登录结果验证", notes = "检查是否已登录")
     public RestResultEntry oauth2LoginSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         // 获取登录成功基础信息
-        RestResultEntry resultEntry = fdkShiroLoginController.loginSuccess(httpServletRequest, httpServletResponse);
+        RestResultEntry resultEntry = fdkShiroLoginController.currentUser(httpServletRequest, httpServletResponse);
         // 扩展OAuth2登录信息
         if (resultEntry!=null){
             try {

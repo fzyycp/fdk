@@ -10,7 +10,6 @@ import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -333,5 +332,36 @@ public class AssertUtil {
      */
     public static void assertEmpty(Map map, String tips) {
         assertTrue(map == null || map.size() <= 0, RestResultCode.CODE402.getCode(), tips);
+    }
+
+    /**
+     * 断言参数可以转换为Long值
+     *
+     * @param value 输入值
+     * @param tips  失败提示
+     */
+    public static void assertIsLong(String value, String tips) {
+        assertTrue(StringUtil.parseLong(value).isPresent(), tips);
+    }
+
+    /**
+     * 断言参数可以转换为Long值
+     *
+     * @param value 输入值
+     * @param code  错误码
+     * @param tips  失败提示
+     */
+    public static void assertIsLong(String value, String code, String tips) {
+        assertTrue(StringUtil.parseLong(value).isPresent(), code, tips);
+    }
+
+    /**
+     * 断言参数可以转换为Long值
+     *
+     * @param value 输入值
+     * @param re    异常对象
+     */
+    public static void assertIsLong(String value, RuntimeException re) {
+        assertTrue(StringUtil.parseLong(value).isPresent(), re);
     }
 }

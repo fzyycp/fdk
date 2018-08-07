@@ -11,11 +11,21 @@ public interface FdkCaptchaConst {
 	 * 验证码验证失败后存储到Request的属性名
 	 */
 	String ATTRIBUTE_KEY_FAILURE = FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME;
-	
+//
+//	/**
+//	 * 验证码验证失败后错误信息存储到Request的属性名
+//	 */
+//	String ATTRIBUTE_KEY_FAILURE_MSG = "fdkCaptchaErrorMsg";
+
 	/**
-	 * 验证码验证失败后错误信息存储到Request的属性名
+	 * 错误信息
 	 */
-	String ATTRIBUTE_KEY_FAILURE_MSG = "fdkCaptchaErrorMsg";
+	String ATTRIBUTE_KEY_FAILURE_MSG = "shiroLoginFailureMsg";
+
+	/**
+	 * 用户提示信息
+	 */
+	String ATTRIBUTE_KEY_FAILURE_MSG_TIPS = "shiroLoginFailureMsgTips";
 
 	/**
 	 * 验证码验证失败后存储到Request的属性值

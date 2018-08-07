@@ -8,6 +8,7 @@ package cn.faury.fdk.common.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -79,5 +80,20 @@ public class RandomUtil {
         }
         return hashed;
 
+    }
+
+    /**
+     * 随机获取几位数字
+     * @param digital 数字位数
+     * @return 字符串数字
+     */
+    public static String getRandomNumber(int digital) {
+        StringBuilder number = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < digital; i++) {
+            int nextInt = random.nextInt(10);
+            number.append(nextInt);
+        }
+        return number.toString();
     }
 }
