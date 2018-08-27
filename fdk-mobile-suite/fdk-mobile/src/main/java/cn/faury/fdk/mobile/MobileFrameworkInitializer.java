@@ -1,7 +1,9 @@
 package cn.faury.fdk.mobile;
 
+import cn.faury.fdk.common.anotation.Properties;
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
+import cn.faury.fdk.common.utils.PropertiesUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.core.FdkMobileInterfaceManager;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
+import java.io.InputStream;
 
 /**
  * 手机框架初始化
@@ -25,16 +28,23 @@ public class MobileFrameworkInitializer implements ApplicationListener<ContextRe
     public static final String DEFAULT_SERVICE_CONFIG_FILE = "fdk.mobile.service.properties";
 
     // 配置文件
-    private String properties;
+    private String configFile;
+
+    // 配置属性
+    private PropertiesUtil propertiesUtil;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         log.error("{}","=====初始化手机接口管理器=====init");
         try {
-            properties = StringUtil.emptyDefault(properties, DEFAULT_SERVICE_CONFIG_FILE);
-            File configFile = (new ClassPathResource(properties)).getFile();
-            // 初始化手机接口管理器
-            FdkMobileInterfaceManager.init(event, configFile);
+            if (propertiesUtil!=null){
+                FdkMobileInterfaceManager.init(event,propertiesUtil);
+            } else {
+                configFile = StringUtil.emptyDefault(configFile, DEFAULT_SERVICE_CONFIG_FILE);
+                InputStream inputStream = (new ClassPathResource(configFile)).getInputStream();
+                // 初始化手机接口管理器
+                FdkMobileInterfaceManager.init(event, inputStream);
+            }
             log.error("{}","=====初始化手机接口管理器=====success");
         } catch (TipsException te) {
             throw te;
@@ -47,20 +57,38 @@ public class MobileFrameworkInitializer implements ApplicationListener<ContextRe
     }
 
     /**
-     * 获取properties
+     * 获取configFile
      *
-     * @return properties
+     * @return configFile
      */
-    public String getProperties() {
-        return properties;
+    public String getConfigFile() {
+        return configFile;
     }
 
     /**
-     * 设置properties
+     * 设置configFile
      *
-     * @param properties 值
+     * @param configFile 值
      */
-    public void setProperties(String properties) {
-        this.properties = properties;
+    public void setConfigFile(String configFile) {
+        this.configFile = configFile;
+    }
+
+    /**
+     * 获取propertiesUtil
+     *
+     * @return propertiesUtil
+     */
+    public PropertiesUtil getPropertiesUtil() {
+        return propertiesUtil;
+    }
+
+    /**
+     * 设置propertiesUtil
+     *
+     * @param propertiesUtil 值
+     */
+    public void setPropertiesUtil(PropertiesUtil propertiesUtil) {
+        this.propertiesUtil = propertiesUtil;
     }
 }

@@ -1,0 +1,20 @@
+fdk:
+  ftp:
+    hostname: 127.0.0.1 #FTP主机
+    port: 21  #FTP端口
+    username: ftp #FTP用户名
+    password: ftp #FTP密码
+#    passiveModeConf: true #FTP被动模式
+    pool:
+        maxActive: 10 #FTP缓冲池最大池容量
+        maxWait: 30000  #FTP缓冲池为空时取对象等待的最大毫秒数
+#        maxIdle: 10  #FTP缓冲池最大空闲数量
+#        minIdle: 5 #FTP缓冲池最小空闲数量
+#        testOnBorrow: true #FTP缓冲池取出对象时验证(此处设置成验证ftp是否处于连接状态).
+#        testOnReturn: true #FTP缓冲池还回对象时验证(此处设置成验证ftp是否处于连接状态).
+#        testWhileIdle: false #设定在进行后台对象清理时，是否还对没有过期的池内对象进行有效性检查。
+#        timeBetweenEvictionRunsMillis: 30000 #设定间隔每过多少毫秒进行一次后台对象清理的行动。如果不是正数，则不进行清理
+#        numTestsPerEvictionRun: 5  #设定在进行后台对象清理时，每次检查几个对象
+#        minEvictableIdleTimeMillis: 60000  #定在进行后台对象清理时，视休眠时间超过了多少毫秒的对象为过期。过期的对象将被回收。
+#        softMinEvictableIdleTimeMillis: 60000  #设定在进行后台对象清理时，是否还对没有过期的池内对象进行有效性检查。
+#        lifo: true #先进先出

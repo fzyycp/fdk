@@ -1,6 +1,7 @@
 package cn.faury.fdk.mobile.autoconfigure;
 
 import cn.faury.fdk.common.utils.JsonUtil;
+import cn.faury.fdk.common.utils.PropertiesUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.MobileFrameworkInitializer;
 import cn.faury.fdk.mobile.shiro.filter.FdkOAuth2MobileFormAuthenticationFilter;
@@ -31,22 +32,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Configuration
-@EnableConfigurationProperties(FdkMobileProperties.class)
+@EnableConfigurationProperties({FdkMobileProperties.class, FdkMobileServiceProperties.class})
 public class FdkMobileAutoConfiguration {
     // 日志
     private Logger logger = LoggerFactory.getLogger(FdkMobileAutoConfiguration.class);
 
-    // 登录地址
-    public static final String LOGIN_URL = "/login";
-
     @Autowired(required = false)
     private FdkMobileProperties fdkMobileProperties;
+
+    @Autowired(required = false)
+    private FdkMobileServiceProperties fdkMobileServiceProperties;
 
     // Session管理器由外部jar包提供，不可以为空
     @Autowired(required = false)
@@ -78,7 +76,16 @@ public class FdkMobileAutoConfiguration {
     @Bean
     public MobileFrameworkInitializer mobileFrameworkInitializer() {
         MobileFrameworkInitializer initializer = new MobileFrameworkInitializer();
-        initializer.setProperties(fdkMobileProperties.getIntefaceConfigFile());
+        Properties properties = new Properties();
+        if (fdkMobileServiceProperties != null) {
+            properties.setProperty(FdkMobileServiceProperties.PROPERTIES_PREFIX + ".mode", fdkMobileServiceProperties.getMode());
+            properties.setProperty(FdkMobileServiceProperties.PROPERTIES_PREFIX + ".auth", String.valueOf(fdkMobileServiceProperties.isAuth()));
+            Map<String, String> incompatible = fdkMobileServiceProperties.getIncompatible();
+            if (incompatible != null) {
+                properties.putAll(incompatible);
+            }
+        }
+        initializer.setPropertiesUtil(PropertiesUtil.createPropertyInstance(properties));
         return initializer;
     }
 

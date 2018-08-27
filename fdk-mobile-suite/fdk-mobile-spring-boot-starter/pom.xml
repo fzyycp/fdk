@@ -5,7 +5,7 @@
     <parent>
         <artifactId>fdk</artifactId>
         <groupId>cn.faury</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -17,6 +17,8 @@
     <properties>
         <fdk.mobile.version>0.0.1</fdk.mobile.version>
         <fdk.mobile.spring.boot.autoconfigure.version>0.0.1</fdk.mobile.spring.boot.autoconfigure.version>
+        <fdk.http.client.spring.boot.starter.version>0.0.2</fdk.http.client.spring.boot.starter.version>
+        <fdk.captcha.spring.boot.starter.version>0.0.1</fdk.captcha.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>
         <fwmf.module.app.spring.boot.starter.version>0.0.1</fwmf.module.app.spring.boot.starter.version>
         <fwmf.module.shop.spring.boot.starter.version>0.0.1</fwmf.module.shop.spring.boot.starter.version>
@@ -41,6 +43,22 @@
             <version>${fdk.mobile.spring.boot.autoconfigure.version}</version>
         </dependency>
         <!--存在spring boot starter的依赖-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-http-client-spring-boot-starter</artifactId>
+            <version>${fdk.http.client.spring.boot.starter.version}</version>
+        </dependency>
+        <!--不能引入fdk-shiro-spring-boot-starter，否则会覆盖掉mobile的自动注入-->
+        <!--<dependency>-->
+            <!--<groupId>cn.faury.fdk</groupId>-->
+            <!--<artifactId>fdk-shiro-spring-boot-starter</artifactId>-->
+            <!--<version>${fdk.shiro.spring.boot.starter.version}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-captcha-spring-boot-starter</artifactId>
+            <version>${fdk.captcha.spring.boot.starter.version}</version>
+        </dependency>
         <dependency>
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>

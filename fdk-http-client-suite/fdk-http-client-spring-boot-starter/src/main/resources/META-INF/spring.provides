@@ -1,0 +1,1 @@
+provides: fdk-http-client,fdk-http-client-spring-boot-autoconfigure

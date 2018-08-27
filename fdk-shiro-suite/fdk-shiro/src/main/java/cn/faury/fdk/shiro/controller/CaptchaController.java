@@ -1,7 +1,7 @@
 package cn.faury.fdk.shiro.controller;
 
 import cn.faury.fdk.captcha.FdkCaptcha;
-import cn.faury.fdk.captcha.autoconfigure.FdkCaptchaProperties;
+import cn.faury.fdk.captcha.config.FdkCaptchaConfig;
 import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,12 +30,12 @@ public class CaptchaController {
     FdkCaptcha fdkCaptcha;
 
     @Autowired
-    FdkCaptchaProperties fdkCaptchaProperties;
+    FdkCaptchaConfig fdkCaptchaConfig;
 
     /**
      * 显示验证码
      */
-    @GetMapping(FdkCaptchaProperties.REQUEST_URL)
+    @GetMapping(FdkCaptchaConfig.REQUEST_URL)
     @ApiOperation(value = "生成验证码", notes = "根据配置文件生成验证码图片并返回")
     public void captcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         byte[] captchaChallengeAsJpeg = null;
@@ -43,7 +43,7 @@ public class CaptchaController {
         try {
             //生产验证码字符串并保存到session中
             String createText = fdkCaptcha.createText();
-            httpServletRequest.getSession().setAttribute(fdkCaptchaProperties.getSessionKey(), createText);
+            httpServletRequest.getSession().setAttribute(fdkCaptchaConfig.getSessionKey(), createText);
             //使用生产的验证码字符串返回一个BufferedImage对象并转为byte写入到byte数组中
             BufferedImage challenge = fdkCaptcha.createImage(createText);
             ImageIO.write(challenge, "jpg", jpegOutputStream);

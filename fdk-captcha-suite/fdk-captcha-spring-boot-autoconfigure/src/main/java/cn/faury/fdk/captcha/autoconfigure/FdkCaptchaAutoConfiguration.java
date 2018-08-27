@@ -1,6 +1,7 @@
 package cn.faury.fdk.captcha.autoconfigure;
 
 import cn.faury.fdk.captcha.FdkCaptcha;
+import cn.faury.fdk.captcha.config.FdkCaptchaConfig;
 import com.google.code.kaptcha.util.Config;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,11 @@ public class FdkCaptchaAutoConfiguration {
 
     @Autowired
     FdkCaptchaProperties fdkCaptchaProperties;
+
+    @Bean
+    FdkCaptchaConfig fdkCaptchaConfig() {
+        return fdkCaptchaProperties;
+    }
 
     @Bean
     FdkCaptcha fdkCaptcha() {

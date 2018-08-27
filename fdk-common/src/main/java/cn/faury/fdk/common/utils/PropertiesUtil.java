@@ -45,12 +45,12 @@ public class PropertiesUtil {
      * @param file 文件
      * @return 配置对象
      */
-    public static PropertiesUtil createPropertyInstance(@NonNull File file) {
+    public static PropertiesUtil createPropertyInstance(@NonNull InputStream file) {
         if (logger.isTraceEnabled()) {
             logger.trace("createPropertyInstance from file=" + file);
         }
         PropertiesUtil property = new PropertiesUtil();
-        if (file==null || !file.exists()) {
+        if (file == null) {
             throw new IllegalArgumentException(
                     "Parameter of file can not be empty");
         }
@@ -59,22 +59,56 @@ public class PropertiesUtil {
     }
 
     /**
+     * 根据property文件创建配置对象
+     *
+     * @param properties 属性对象
+     * @return 配置对象
+     */
+    public static PropertiesUtil createPropertyInstance(@NonNull Properties properties) {
+        final PropertiesUtil property = new PropertiesUtil();
+        if (properties != null) {
+            properties.forEach((key, value) -> property.properties.put(key.toString(), value));
+        }
+        return property;
+    }
+
+    /**
      * 获取默认实例
+     *
      * @return 单一实例
      */
     public static PropertiesUtil instance() {
-        AssertUtil.assertNotNull(_ins,"Properties未初始化");
+        AssertUtil.assertNotNull(_ins, "Properties未初始化");
         return _ins;
     }
+
+//    /**
+//     * 初始化
+//     *
+//     * @param file 文件名
+//     * @deprecated SpringBoot jar包启动的时候file找不到文件，建议使用stream
+//     */
+//    @Deprecated
+//    public static void init(@NonNull File file) {
+//        _ins = new PropertiesUtil();
+//        _ins.loadPropertyFile(file);
+//    }
 
     /**
      * 初始化
      *
-     * @param file 文件名
+     * @param inputStream 文件流
      */
-    public static void init(@NonNull File file){
+    public static void init(@NonNull InputStream inputStream) {
         _ins = new PropertiesUtil();
-        _ins.loadPropertyFile(file);
+        _ins.loadPropertyFile(inputStream);
+    }
+
+    public static void init(@NonNull Properties properties) {
+        _ins = new PropertiesUtil();
+        for (Entry<Object, Object> entry : properties.entrySet()) {
+            _ins.properties.put(entry.getKey().toString(), entry.getValue());
+        }
     }
 
     /**
@@ -107,6 +141,32 @@ public class PropertiesUtil {
                 throw new IllegalArgumentException(
                         "Properties file loading failed: " + eTwo.getMessage());
             }
+        } finally {
+            try {
+                if (inputStream != null)
+                    inputStream.close();
+            } catch (IOException ignored) {
+            }
+        }
+
+        for (Entry<Object, Object> entry : property.entrySet()) {
+            this.properties.put(entry.getKey().toString(), entry.getValue());
+        }
+    }
+
+    /**
+     * 加载配置文件
+     *
+     * @param inputStream 文件流
+     */
+    private void loadPropertyFile(@NonNull InputStream inputStream) {
+        Properties property = new Properties();
+
+        try {
+            property.load(inputStream);
+        } catch (Exception eOne) {
+            throw new IllegalArgumentException(
+                    "Properties file loading failed: " + eOne.getMessage());
         } finally {
             try {
                 if (inputStream != null)

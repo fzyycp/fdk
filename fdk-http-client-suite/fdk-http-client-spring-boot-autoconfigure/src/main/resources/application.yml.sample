@@ -1,0 +1,19 @@
+fdk:
+  http:
+    client:
+      proxy-host: "" #代理主机
+      proxy-port: -1 #代理端口
+      proxy-enable: false #是否启用代理
+#      encoding: "UTF-8" #编码
+#      socket-timeout: 8000  #Socket超时(8秒)
+#      connect-timeout: 8000 #连接超时(8秒)
+#      connect-retry: 3 #最大重试次数
+#      retry-wait: 300 #重试等待(1秒)
+#      redirects-enabled: true #允许重定向
+#      proxy-protocol: http #代理协议
+#      proxy-username: "" #代理验证用户名(未使用)
+#      proxy-password: "" #代理验证密码(未使用)
+#      ssl-client-certification: false #是否使用自定义证书
+#      ssl-keystore-path: "" #Client证书位置
+#      ssl-keystore-password: "" #Client证书密码
+#      ssl-keystore-format: "" #Client证书格式

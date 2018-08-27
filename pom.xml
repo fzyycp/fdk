@@ -7,10 +7,12 @@
     <groupId>cn.faury</groupId>
     <artifactId>fdk</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.1</version>
     <modules>
         <module>fdk-common</module>
-        <module>fdk-http-client</module>
+        <module>fdk-http-client-suite/fdk-http-client</module>
+        <module>fdk-http-client-suite/fdk-http-client-spring-boot-autoconfigure</module>
+        <module>fdk-http-client-suite/fdk-http-client-spring-boot-starter</module>
         <module>fdk-shiro-suite/fdk-shiro</module>
         <module>fdk-shiro-suite/fdk-shiro-spring-boot-autoconfigure</module>
         <module>fdk-shiro-suite/fdk-shiro-spring-boot-starter</module>
@@ -23,10 +25,14 @@
         <module>fdk-captcha-suite/fdk-captcha</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-autoconfigure</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-starter</module>
-        <module>fdk-ftp</module>
+        <module>fdk-ftp-suite/fdk-ftp</module>
+        <module>fdk-ftp-suite/fdk-ftp-spring-boot-autoconfigure</module>
+        <module>fdk-ftp-suite/fdk-ftp-spring-boot-starter</module>
         <module>fdk-rpc</module>
         <module>fdk-qrcode</module>
-        <module>fdk-pay</module>
+        <module>fdk-pay-suite/fdk-pay</module>
+        <module>fdk-pay-suite/fdk-pay-spring-boot-autoconfigure</module>
+        <module>fdk-pay-suite/fdk-pay-spring-boot-starter</module>
         <module>fdk-mobile-suite/fdk-mobile</module>
         <module>fdk-mobile-suite/fdk-mobile-spring-boot-autoconfigure</module>
         <module>fdk-mobile-suite/fdk-mobile-spring-boot-starter</module>
@@ -80,20 +86,38 @@
     </dependencyManagement>
     <!-- 设定除中央仓repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找 -->
     <repositories>
-        <!-- Nexus私服 -->
-        <repository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-        </repository>
         <!-- fdk私服 -->
         <repository>
             <id>fdk</id>
             <name>FDK Repository</name>
             <url>https://dl.bintray.com/faury/fdk</url>
         </repository>
+        <!-- fwmf私服 -->
+        <repository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://bintray.com/faury/fwmf-module</url>
+        </repository>
+        <!-- Nexus私服 -->
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
     </repositories>
     <pluginRepositories>
+        <!-- fdk私服 -->
+        <pluginRepository>
+            <id>fdk</id>
+            <name>FDK Repository</name>
+            <url>https://dl.bintray.com/faury/fdk</url>
+        </pluginRepository>
+        <!-- fdk私服 -->
+        <pluginRepository>
+            <id>fwmf</id>
+            <name>FWMF Repository</name>
+            <url>https://bintray.com/faury/fwmf-module</url>
+        </pluginRepository>
         <!-- 插件仓库 Nexus私服 -->
         <pluginRepository>
             <id>nexus</id>

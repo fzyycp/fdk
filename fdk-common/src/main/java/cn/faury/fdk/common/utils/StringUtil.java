@@ -272,6 +272,32 @@ public class StringUtil {
     }
 
     /**
+     * Map中键存在且字符串value不为空
+     *
+     * @param map Map对象
+     * @param key 键值
+     * @return 是否存在值
+     */
+    public static boolean hasValue(Map<String, Object> map, String key) {
+        boolean hasValue = false;
+        if (map != null && map.containsKey(key)) {
+            Object value = map.get(key);
+            hasValue = value != null;
+            if (value != null) {
+                // 特殊类型判断
+                if (value instanceof String) {
+                    hasValue = isNotEmpty((String) value);
+                } else if (value instanceof Collection) {
+                    hasValue = ((Collection) value).size() > 0;
+                } else if (value instanceof Map) {
+                    hasValue = ((Map) value).size() > 0;
+                }
+            }
+        }
+        return hasValue;
+    }
+
+    /**
      * 如果为空则用默认值替换
      *
      * @param str        输入字符串
@@ -399,5 +425,45 @@ public class StringUtil {
         } catch (NumberFormatException ignored) {
         }
         return result;
+    }
+
+    /**
+     * 是否为http地址
+     *
+     * @param value 字符串
+     * @return 检查结果
+     */
+    public static boolean isHttpUrl(String value) {
+        return isNotEmpty(value) && value.trim().toLowerCase().startsWith("http://");
+    }
+
+    /**
+     * 是否为https地址
+     *
+     * @param value 字符串
+     * @return 检查结果
+     */
+    public static boolean isHttpsUrl(String value) {
+        return isNotEmpty(value) && value.trim().toLowerCase().startsWith("https://");
+    }
+
+    /**
+     * 是否为ftp地址
+     *
+     * @param value 字符串
+     * @return 检查结果
+     */
+    public static boolean isFtpUrl(String value) {
+        return isNotEmpty(value) && value.trim().toLowerCase().startsWith("ftp://");
+    }
+
+    /**
+     * 是否为网络地址
+     *
+     * @param value 字符串
+     * @return 检查结果
+     */
+    public static boolean isWebUrl(String value) {
+        return isHttpUrl(value) || isHttpsUrl(value) || isFtpUrl(value);
     }
 }

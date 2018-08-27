@@ -1,0 +1,11 @@
+fdk:
+  pay:
+    tenpay:
+      app-id:
+      partner:
+      key:
+      cert-local-path:
+      cert-password:
+      input-charset:
+      notify-url:
+

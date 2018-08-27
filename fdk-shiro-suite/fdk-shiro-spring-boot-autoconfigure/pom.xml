@@ -5,7 +5,7 @@
     <parent>
         <artifactId>fdk</artifactId>
         <groupId>cn.faury</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -15,6 +15,7 @@
     <version>0.0.1</version>
     <properties>
         <fdk.shiro.version>0.0.1</fdk.shiro.version>
+        <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
         <fwmf.module.user.role.spring.boot.autoconfigure.version>0.0.1</fwmf.module.user.role.spring.boot.autoconfigure.version>
     </properties>
 
@@ -32,10 +33,24 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>cn.faury.fdk</groupId>
+            <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
+            <version>${fdk.captcha.spring.boot.autoconfigure.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-user-role-spring-boot-autoconfigure</artifactId>
             <version>${fwmf.module.user.role.spring.boot.autoconfigure.version}</version>
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk-shiro-spring-boot-autoconfigure/;publish=1</url>
+        </repository>
+    </distributionManagement>
 </project>

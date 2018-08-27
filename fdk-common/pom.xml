@@ -5,13 +5,14 @@
     <parent>
         <artifactId>fdk</artifactId>
         <groupId>cn.faury</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-common</artifactId>
     <version>0.0.9</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!--用于处理字符串到map时gson数字变成double问题-->

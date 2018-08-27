@@ -12,4 +12,9 @@ fdk:
       anon: "/api/**","/index.html"
     session-timeout: 86400
     cookie-name: "S"
-    service-config-file:"fdk.mobile.service.properties"
+#    service:
+#      mode: PRO
+#      auth: true
+#      incompatible:
+#        getUserInfo: "1.5,2.5,0.0"
+#        getUserInfo: "[obsolete]"

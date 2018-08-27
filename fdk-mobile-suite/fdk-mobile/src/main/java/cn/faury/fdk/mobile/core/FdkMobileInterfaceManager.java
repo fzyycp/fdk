@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.ContextRefreshedEvent;
 
-import java.io.File;
+import java.io.InputStream;
 import java.util.DuplicateFormatFlagsException;
 import java.util.Map;
 import java.util.Set;
@@ -75,12 +75,25 @@ public class FdkMobileInterfaceManager {
      * @param event 事件
      * @param file  配置文件
      */
-    public static void init(ContextRefreshedEvent event, File file) {
+    public static void init(ContextRefreshedEvent event, InputStream file) {
+        if (event.getApplicationContext().getParent() == null) {
+            // 没有配置文件则使用默认生产配置
+            PropertiesUtil pcu = (file != null) ? PropertiesUtil.createPropertyInstance(file) : new PropertiesUtil();
+            init(event, pcu);
+        }
+    }
+
+    /**
+     * 通过配置文件初始化接口框架
+     *
+     * @param event 事件
+     * @param pcu   配置参数
+     */
+    public static void init(ContextRefreshedEvent event, PropertiesUtil pcu) {
         if (event.getApplicationContext().getParent() == null) {
             log.debug("scan mobile inteface config file......start");
             try {
                 // 没有配置文件则使用默认生产配置
-                PropertiesUtil pcu = (file != null && file.exists()) ? PropertiesUtil.createPropertyInstance(file) : new PropertiesUtil();
                 cfg.mode = pcu.getProperty(DEFAULT_CONFIG_KEY_MODE, cfg.mode);
                 cfg.auth = pcu.getPropertyToBoolean(DEFAULT_CONFIG_KEY_AUTH, cfg.auth);
                 log.debug(String.format("configure[mode=%s,auth=%s]", cfg.mode, cfg.auth));
@@ -97,6 +110,7 @@ public class FdkMobileInterfaceManager {
                     // 判断是否过时
                     String value = pcu.getProperty(key, "");
                     if (DEFAULT_CONFIG_VALUE_OBSOLETE.equals(value)) {
+                        log.debug(String.format("configure[obsolete=%s]", key));
                         intefaceObsolete.put(key, key);
                         continue;
                     }

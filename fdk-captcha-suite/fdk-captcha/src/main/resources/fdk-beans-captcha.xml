@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="fdkCaptchaConfig" class="cn.faury.fdk.captcha.config.FdkCaptchaConfig">
+		<property name="enable" value="${fdk.captcha.enable}"/>
+	</bean>
+	<bean id="properties" class="java.util.Properties">
+	</bean>
+	<bean id="config" class="com.google.code.kaptcha.util.Config">
+		<constructor-arg name="properties" ref="properties"/>
+	</bean>
+	<bean id="fdkCaptcha" class="cn.faury.fdk.captcha.FdkCaptcha">
+		<property name="config" ref="config"/>
+	</bean>
+
+	<bean id="captchaFilter" class="cn.faury.eb.manager.action.CaptchaFilter">
+		<constructor-arg name="fdkCaptcha" ref="fdkCaptcha"/>
+		<constructor-arg name="fdkCaptchaProperties" ref="fdkCaptchaProperties"/>
+	</bean>
+</beans>

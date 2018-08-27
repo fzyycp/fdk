@@ -1,6 +1,5 @@
 package cn.faury.fdk.mobile.autoconfigure;
 
-import cn.faury.fdk.mobile.MobileFrameworkInitializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -27,8 +26,6 @@ public class FdkMobileProperties {
     private int sessionTimeout = DEFAULT_SESSION_TIMEOUT;
 
     private String cookieName = DEFAULT_COOKIE_NAME;
-
-    private String intefaceConfigFile = MobileFrameworkInitializer.DEFAULT_SERVICE_CONFIG_FILE;
 
     @Value("${" + PROPERTIES_PREFIX + ".oauth.cfgs.weixin:}")
     private String weixinOAuth2Keys;
@@ -100,24 +97,6 @@ public class FdkMobileProperties {
      */
     public void setCookieName(String cookieName) {
         this.cookieName = cookieName;
-    }
-
-    /**
-     * 获取intefaceConfigFile
-     *
-     * @return intefaceConfigFile
-     */
-    public String getIntefaceConfigFile() {
-        return intefaceConfigFile;
-    }
-
-    /**
-     * 设置intefaceConfigFile
-     *
-     * @param intefaceConfigFile 值
-     */
-    public void setIntefaceConfigFile(String intefaceConfigFile) {
-        this.intefaceConfigFile = intefaceConfigFile;
     }
 
     /**

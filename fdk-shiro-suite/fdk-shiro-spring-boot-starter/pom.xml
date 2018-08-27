@@ -5,7 +5,7 @@
     <parent>
         <artifactId>fdk</artifactId>
         <groupId>cn.faury</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,7 +16,6 @@
 
     <properties>
         <fdk.shiro.version>0.0.1</fdk.shiro.version>
-        <fdk.mybatis.version>0.0.1</fdk.mybatis.version>
         <fdk.shiro.spring.boot.autoconfigure.version>0.0.1</fdk.shiro.spring.boot.autoconfigure.version>
         <fdk.captcha.spring.boot.starter.version>0.0.1</fdk.captcha.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.stater.version>0.0.1</fwmf.module.user.role.spring.boot.stater.version>
@@ -29,13 +28,13 @@
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-shiro-spring-boot-autoconfigure</artifactId>
-            <version>${fdk.shiro.spring.boot.autoconfigure.version}</version>
+            <artifactId>fdk-shiro</artifactId>
+            <version>${fdk.shiro.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-shiro</artifactId>
-            <version>${fdk.shiro.version}</version>
+            <artifactId>fdk-shiro-spring-boot-autoconfigure</artifactId>
+            <version>${fdk.shiro.spring.boot.autoconfigure.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
@@ -47,13 +46,14 @@
             <artifactId>fwmf-module-user-role-spring-boot-starter</artifactId>
             <version>${fwmf.module.user.role.spring.boot.stater.version}</version>
         </dependency>
-        <!--编译的时候使用，fwmf-module-user-role-spring-boot-starter里面已经包含了-->
-        <dependency>
-            <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-mybatis-spring-boot-starter</artifactId>
-            <version>${fdk.mybatis.version}</version>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk-shiro-spring-boot-starter/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
 </project>

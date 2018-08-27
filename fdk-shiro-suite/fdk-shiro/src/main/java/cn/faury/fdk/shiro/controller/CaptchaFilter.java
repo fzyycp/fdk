@@ -1,7 +1,7 @@
 package cn.faury.fdk.shiro.controller;
 
 import cn.faury.fdk.captcha.FdkCaptcha;
-import cn.faury.fdk.captcha.autoconfigure.FdkCaptchaProperties;
+import cn.faury.fdk.captcha.config.FdkCaptchaConfig;
 import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -26,7 +26,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
     FdkCaptcha fdkCaptcha;
 
     @Autowired
-    FdkCaptchaProperties fdkCaptchaProperties;
+    FdkCaptchaConfig fdkCaptchaConfig;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
         try {
             //生产验证码字符串并保存到session中
             String createText = fdkCaptcha.createText();
-            httpServletRequest.getSession().setAttribute(fdkCaptchaProperties.getSessionKey(), createText);
+            httpServletRequest.getSession().setAttribute(fdkCaptchaConfig.getSessionKey(), createText);
             //使用生产的验证码字符串返回一个BufferedImage对象并转为byte写入到byte数组中
             BufferedImage challenge = fdkCaptcha.createImage(createText);
             ImageIO.write(challenge, "jpg", jpegOutputStream);

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>fdk</artifactId>
         <groupId>cn.faury</groupId>
-        <version>1.0</version>
+        <version>1.1</version>
         <relativePath>../..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -16,10 +16,25 @@
     <properties>
         <fdk.common.version>0.0.9</fdk.common.version>
         <fdk.captcha.version>0.0.1</fdk.captcha.version>
-        <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
         <fwmf.module.user.api.role.version>0.0.1</fwmf.module.user.api.role.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-common</artifactId>
@@ -30,11 +45,11 @@
             <artifactId>fdk-captcha</artifactId>
             <version>${fdk.captcha.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cn.faury.fdk</groupId>
-            <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
-            <version>${fdk.captcha.spring.boot.autoconfigure.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>cn.faury.fdk</groupId>-->
+            <!--<artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>-->
+            <!--<version>${fdk.captcha.spring.boot.autoconfigure.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>cn.faury.fwmf.module</groupId>
             <artifactId>fwmf-module-user-role-api</artifactId>
@@ -48,13 +63,21 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.8.0</version>
+            <version>2.9.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.2.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+            <!--<version>2.0.2.RELEASE</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-faury-fdk</id>
+            <name>faury-fdk</name>
+            <url>https://api.bintray.com/maven/faury/fdk/fdk-shiro/;publish=1</url>
+        </repository>
+    </distributionManagement>
 </project>
