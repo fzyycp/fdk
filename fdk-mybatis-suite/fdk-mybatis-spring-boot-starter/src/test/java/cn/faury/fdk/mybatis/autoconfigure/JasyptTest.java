@@ -9,7 +9,7 @@ public class JasyptTest {
     // 加密算法
     public static final String algorithm = "PBEWithMD5AndDES";
     // 项目配置的加密种子
-    public static final String salt = "RzE4Bp1q5I";
+    public static final String salt = "PCEX2KJE2M";
 
 
     // 加密
@@ -17,8 +17,8 @@ public class JasyptTest {
     public void jasyptPBEStringEncryptionTest(){
         // 输入原文
         String url="jdbc:mysql://128.0.9.252:3306/eb";
-        String username="fanyc";
-        String password = "#EDCrfv4";
+        String username="root";
+        String password = "888888";
 
         System.out.println(url + " : " + encrypt(url));
         System.out.println(username + " : " + encrypt(username));

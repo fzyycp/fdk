@@ -96,7 +96,7 @@
         <repository>
             <id>fwmf</id>
             <name>FWMF Repository</name>
-            <url>https://bintray.com/faury/fwmf-module</url>
+            <url>https://dl.bintray.com/faury/fwmf-module</url>
         </repository>
         <!-- Nexus私服 -->
         <repository>
@@ -116,7 +116,7 @@
         <pluginRepository>
             <id>fwmf</id>
             <name>FWMF Repository</name>
-            <url>https://bintray.com/faury/fwmf-module</url>
+            <url>https://dl.bintray.com/faury/fwmf-module</url>
         </pluginRepository>
         <!-- 插件仓库 Nexus私服 -->
         <pluginRepository>
