@@ -12,7 +12,7 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-mobile</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
 
     <properties>
         <fdk.common.version>0.0.9</fdk.common.version>

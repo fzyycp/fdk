@@ -209,6 +209,7 @@ public class FdkMobileAutoConfiguration {
         fdkMobileDbRealm.setUserRAppInfoService(userRAppInfoService);
         fdkMobileDbRealm.setAppInfoService(appInfoService);
         fdkMobileDbRealm.setUserService(userService);
+        fdkMobileDbRealm.setCredentialsMatcher(shiroCredentialsMatcher());
         return fdkMobileDbRealm;
     }
 

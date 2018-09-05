@@ -12,11 +12,11 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-mobile-spring-boot-starter</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
 
     <properties>
-        <fdk.mobile.version>0.0.1</fdk.mobile.version>
-        <fdk.mobile.spring.boot.autoconfigure.version>0.0.1</fdk.mobile.spring.boot.autoconfigure.version>
+        <fdk.mobile.version>0.0.3</fdk.mobile.version>
+        <fdk.mobile.spring.boot.autoconfigure.version>0.0.3</fdk.mobile.spring.boot.autoconfigure.version>
         <fdk.http.client.spring.boot.starter.version>0.0.2</fdk.http.client.spring.boot.starter.version>
         <fdk.captcha.spring.boot.starter.version>0.0.1</fdk.captcha.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.starter.version>0.0.1</fwmf.module.user.role.spring.boot.starter.version>

@@ -99,7 +99,8 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
         byte[] oauth2InfoBytes = (byte[]) request.getAttribute(ATTRIBUTE_KEY_OAUTH2_INFO);
         if (oauth2InfoBytes != null) {
             UserOAuthInfoBean bean = SerializeUtil.deserialize(oauth2InfoBytes, UserOAuthInfoBean.class);
-            return SigAESUtil.encryptPassWord(bean.getUnionid());
+            return bean.getUnionid();
+//            return SigAESUtil.encryptPassWord(bean.getUnionid());
         }
         return super.getPassword(request);
     }

@@ -1,6 +1,5 @@
 package cn.faury.fdk.pay.autoconfigure;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
