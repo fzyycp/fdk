@@ -9,7 +9,7 @@ public class JasyptTest {
     // 加密算法
     public static final String algorithm = "PBEWithMD5AndDES";
     // 项目配置的加密种子
-    public static final String salt = "C5hFGlINY7";
+    public static final String salt = "RzE4Bp1q5I";
 
 
     // 加密
