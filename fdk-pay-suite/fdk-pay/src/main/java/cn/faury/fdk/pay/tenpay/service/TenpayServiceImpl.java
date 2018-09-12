@@ -15,16 +15,6 @@ public class TenpayServiceImpl implements TenpayService {
 	private static final Logger log = LoggerFactory.getLogger(TenpayServiceImpl.class);
 	
 	private static HttpClient httpClient;
-	
-	public TenpayServiceImpl() {
-		
-	}
-	
-	public TenpayServiceImpl(String key, String appID,
-			String mchID, String sdbMchID, String certLocalPath,
-			String certPassword) {
-		httpClient = null;
-	}
 
 	@Override
 	public void doDownloadBill(TenBillRequest request,

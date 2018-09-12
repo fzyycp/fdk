@@ -33,6 +33,7 @@ import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.cookie.SM;
 import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -108,6 +109,10 @@ public class HttpClient {
      * http请求客户端
      */
     private CloseableHttpClient httpClient;
+    /**
+     * https请求客户端
+     */
+    private CloseableHttpClient httpsClient;
 
     /**
      * cookie对象
@@ -130,6 +135,40 @@ public class HttpClient {
         cookieStore = new BasicCookieStore();
         // 连接配置
         this.defaultConfig = defaultConfig;
+        // 初始化客户端
+        this.httpClient = this.createDefaultHttpClient(this.defaultConfig);
+        this.httpsClient = this.createDefaultHttpsClient(this.defaultConfig);
+    }
+
+    private CloseableHttpClient createDefaultHttpClient(HttpConfig config) {
+        HttpClientBuilder hcb = HttpClients.custom().setConnectionManager(cm)
+                .setDefaultCookieStore(cookieStore);
+        RequestConfig.Builder builder = RequestConfig.custom()
+                .setConnectTimeout(config.getConnectTimeout())
+                .setSocketTimeout(config.getSocketTimeout())
+                .setRedirectsEnabled(config.isRedirectsEnabled()).setExpectContinueEnabled(false);
+        // 无密码代理
+        if (config.isProxyEnable()) {
+            AssertUtil.assertTrue(StringUtil.isNotEmpty(config.getProxyHost()), "代理配置错误，host不可以为空");
+            AssertUtil.assertTrue((config.getProxyPort() > 0 && config.getProxyPort() < 65536), String.format("代理配置错误，port不可以为%s，必须为[0~65535]", config.getProxyPort()));
+            HttpHost proxy = new HttpHost(config.getProxyHost(), config.getProxyPort(), config.getProxyProtocol());
+            builder.setProxy(proxy);
+        }
+        hcb.setDefaultRequestConfig(builder.build());
+        return hcb.build();
+    }
+
+    private CloseableHttpClient createDefaultHttpsClient(HttpConfig config) {
+        HttpClientBuilder hcb = HttpClients.custom().setConnectionManager(cm)
+                .setDefaultCookieStore(cookieStore);
+        SSLConnectionSocketFactory sslConSF = createSSLSocketFactory(config);
+        hcb.setSSLSocketFactory(sslConSF);
+        // 无密码代理
+        if (config.isProxyEnable() && StringUtil.isNotEmpty(config.getProxyHost())) {
+            HttpHost proxy = new HttpHost(config.getProxyHost(), config.getProxyPort(), config.getProxyProtocol());
+            hcb.setProxy(proxy);
+        }
+        return hcb.build();
     }
 
     /**
@@ -148,6 +187,10 @@ public class HttpClient {
      */
     public CloseableHttpClient getHttpClient() {
         return httpClient;
+    }
+
+    public CloseableHttpClient getHttpsClient() {
+        return httpsClient;
     }
 
     /**
@@ -184,7 +227,10 @@ public class HttpClient {
             logger.trace("{}", "》请求URL：" + httpRequest.uri);
         }
         HttpResponse r = new HttpResponse();
-        createHttpClient(httpRequest);
+        CloseableHttpClient _client = StringUtil.isHttpsUrl(httpRequest.uri) ? httpsClient : httpClient;
+        if (httpRequest.httpConfig != null) {// 不同的配置，重新创建客户端
+            _client = createHttpClient(httpRequest.httpConfig, httpRequest.uri);
+        }
 
         HttpConfig config = httpRequest.httpConfig == null ? defaultConfig : httpRequest.httpConfig;
         logger.trace("{}", "》HttpUtil使用代理设置为：" + (config != null ? config.toString() : "null"));
@@ -215,7 +261,12 @@ public class HttpClient {
 
                 } else {
                     HttpPost requestPost = new HttpPost(httpRequest.uri);
-                    requestPost.setEntity(new UrlEncodedFormEntity(httpRequest.parameters, config.getEncoding()));
+                    // 优先使用postDatas作为提交数据
+                    if (StringUtil.isNotEmpty(httpRequest.postDatas)) {
+                        requestPost.setEntity(new StringEntity(httpRequest.postDatas, config.getEncoding()));
+                    } else if (httpRequest.parameters != null && httpRequest.parameters.size() > 0) {
+                        requestPost.setEntity(new UrlEncodedFormEntity(httpRequest.parameters, config.getEncoding()));
+                    }
                     request = requestPost;
                 }
                 addHeader(request, httpRequest.addHeaders);
@@ -223,7 +274,7 @@ public class HttpClient {
                     Header cookie = new BasicHeader(SM.COOKIE, httpRequest.cookie);
                     addHeader(request, Collections.singletonList(cookie));
                 }
-                CloseableHttpResponse lastHttpResponse = httpClient.execute(request);
+                CloseableHttpResponse lastHttpResponse = _client.execute(request);
                 int statusCode = lastHttpResponse.getStatusLine().getStatusCode();
                 r.lastStatusCode = String.valueOf(statusCode);
                 r.success = (statusCode == HttpStatus.SC_OK);
@@ -264,11 +315,10 @@ public class HttpClient {
 
     }
 
-    private void createHttpClient(@NonNull HttpRequest httpRequest) {
-        HttpConfig config = httpRequest.httpConfig == null ? defaultConfig : httpRequest.httpConfig;
+    private CloseableHttpClient createHttpClient(@NonNull HttpConfig config, @NonNull String uri) {
         HttpClientBuilder hcb = HttpClients.custom().setConnectionManager(cm)
                 .setDefaultCookieStore(cookieStore);
-        if (StringUtil.isNotEmpty(httpRequest.uri) && httpRequest.uri.startsWith("https") && config.isSslClientCertification()) {
+        if (StringUtil.isNotEmpty(uri) && uri.startsWith("https") && config.isSslClientCertification()) {
             SSLConnectionSocketFactory sslConSF = createSSLSocketFactory(config);
             hcb.setSSLSocketFactory(sslConSF);
             // 无密码代理
@@ -290,7 +340,7 @@ public class HttpClient {
             }
             hcb.setDefaultRequestConfig(builder.build());
         }
-        httpClient = hcb.build();
+        return hcb.build();
     }
 
     /**

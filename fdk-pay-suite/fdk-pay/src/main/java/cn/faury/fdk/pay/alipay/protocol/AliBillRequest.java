@@ -17,13 +17,13 @@ public class AliBillRequest {
 	
 	private String service = "account.page.query";
 	private String partner = AlipayConfig.partner;
-	private String _input_charset = AlipayConfig.input_charset;
-	private String seller_email = AlipayConfig.seller_email;
+	private String _input_charset = AlipayConfig.inputCharset;
+	private String seller_email = partner;
 	private String gmt_start_time;
 	private String gmt_end_time;
 	private String page_no;
 	private String sign;
-	private String sign_type = AlipayConfig.sign_type;
+	private String sign_type = AlipayConfig.privateKey;
 	
 	/**
 	 * 构造下载对账单请求参数
@@ -39,7 +39,7 @@ public class AliBillRequest {
 		this.gmt_end_time = sdf.format(endDate);
 		this.page_no = pageNO + "";
 		String queryParams = Util.buildQueryString(getQueryParams(), new String[]{"sign", "sign_type"});
-		sign = MD5.MD5Encode(queryParams + AlipayConfig.key, _input_charset);
+		sign = MD5.MD5Encode(queryParams + AlipayConfig.privateKey, _input_charset);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class AliBillRequest {
 		this.gmt_end_time = endDate;//new String(endDate.getBytes("ISO-8859-1"), "UTF-8");
 		this.page_no = pageNO;
 		String queryParams = Util.buildQueryString(getQueryParams(), new String[]{"sign", "sign_type"});
-		sign = MD5.MD5Encode(queryParams + AlipayConfig.key, _input_charset);
+		sign = MD5.MD5Encode(queryParams + AlipayConfig.privateKey, _input_charset);
 	}
 	
 	public Map<String, String> getQueryParams() {

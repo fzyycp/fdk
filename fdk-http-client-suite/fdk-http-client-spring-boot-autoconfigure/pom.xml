@@ -12,10 +12,10 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-http-client-spring-boot-autoconfigure</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <properties>
-        <fdk.http.client.version>0.0.2</fdk.http.client.version>
+        <fdk.http.client.version>0.0.3</fdk.http.client.version>
     </properties>
 
     <dependencies>

@@ -107,7 +107,7 @@ public class HttpClient {
 		SSLConnectionSocketFactory sslsf = null;
 		
 		if(aim == Aim.Ali){
-			charset = AlipayConfig.input_charset;
+			charset = AlipayConfig.inputCharset;
     		sslsf = SSLConnectionSocketFactory.getSocketFactory();
     	}
 
@@ -158,7 +158,7 @@ public class HttpClient {
 	 * @throws Exception
 	 */
 	public static HttpClient newInstance(Aim aim) throws Exception{
-		HttpClient httpClient = null;
+		HttpClient httpClient;
 		try {
 			httpClient = new HttpClient(aim);
 		} catch (Exception e) {

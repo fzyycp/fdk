@@ -29,12 +29,12 @@ public class JasyptTest {
     @Test
     public void jasyptPBEStringDecryptionTest(){
         // 输入密文
-        String url="JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=";
-        String username="uK7aeM4tK/cXOksE1Yu0zA==";
-        String password = "2xwWu5xTB5qFOI3OBRKfmA==";
+//        String url="JZkH5bu2/qQpVokeEyZbsmZ0bFuuBzlUnm7e54uKRJxbx2Ue9dW0kYvdY3y1JOXiWUqJGDNRiNfpUj8QzVl1KWMtXYmR8uAlUV0FB0hZ7sY=";
+        String username="psODhRIcQQcOtft4OTB26g==";
+        String password = "Jm5sGw3SLETUeyPEZPqlJQ==";
 
         //解密
-        System.out.println(url + " : " + decrypt(url));
+//        System.out.println(url + " : " + decrypt(url));
         System.out.println(username + " : " + decrypt(username));
         System.out.println(password + " : " + decrypt(password));
     }

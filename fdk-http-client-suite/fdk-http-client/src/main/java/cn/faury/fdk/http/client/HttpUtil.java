@@ -157,7 +157,7 @@ public class HttpUtil {
      * @param parameters 请求参数
      * @return 请求结果
      */
-    public static HttpResponse get(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters) {
+    public static HttpResponse get(@NonNull String uri, @Nullable List<NameValuePair> parameters) {
         return get(uri, parameters, null);
     }
 
@@ -169,7 +169,7 @@ public class HttpUtil {
      * @param cookie     请求cookie
      * @return 请求结果
      */
-    public static HttpResponse get(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters, @Nullable String cookie) {
+    public static HttpResponse get(@NonNull String uri, @Nullable List<NameValuePair> parameters, @Nullable String cookie) {
         return get(uri, parameters, cookie, null);
     }
 
@@ -181,7 +181,7 @@ public class HttpUtil {
      * @param cookie     请求cookie
      * @return 请求结果
      */
-    public static HttpResponse get(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters, @Nullable String cookie, @Nullable HttpRequest lastRequest) {
+    public static HttpResponse get(@NonNull String uri, @Nullable List<NameValuePair> parameters, @Nullable String cookie, @Nullable HttpRequest lastRequest) {
         return execute(uri, HttpGet.METHOD_NAME, parameters, cookie, lastRequest);
     }
 
@@ -192,7 +192,21 @@ public class HttpUtil {
      * @return 请求结果
      */
     public static HttpResponse post(@NonNull String uri) {
-        return post(uri, null);
+        return post(uri, new ArrayList<>());
+    }
+
+    /**
+     * POST方式请求URI
+     *
+     * @param uri 资源地址
+     * @return 请求结果
+     */
+    public static HttpResponse post(@NonNull String uri, @NonNull String data) {
+        HttpRequest httpRequest = HttpRequest.Builder.createStringRequest()
+                .setUri(uri)
+                .setMethod(HttpPost.METHOD_NAME)
+                .setPostDatas(data);
+        return execute(httpRequest);
     }
 
     /**
@@ -202,7 +216,7 @@ public class HttpUtil {
      * @param parameters 请求参数
      * @return 请求结果
      */
-    public static HttpResponse post(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters) {
+    public static HttpResponse post(@NonNull String uri, @Nullable List<NameValuePair> parameters) {
         return post(uri, parameters, null);
     }
 
@@ -214,7 +228,7 @@ public class HttpUtil {
      * @param cookie     请求cookie
      * @return 请求结果
      */
-    public static HttpResponse post(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters, @Nullable String cookie) {
+    public static HttpResponse post(@NonNull String uri, @Nullable List<NameValuePair> parameters, @Nullable String cookie) {
         return post(uri, parameters, cookie, null);
     }
 
@@ -226,7 +240,7 @@ public class HttpUtil {
      * @param cookie     请求cookie
      * @return 请求结果
      */
-    public static HttpResponse post(@NonNull String uri, @Nullable ArrayList<NameValuePair> parameters, @Nullable String cookie,
+    public static HttpResponse post(@NonNull String uri, @Nullable List<NameValuePair> parameters, @Nullable String cookie,
                                     @Nullable HttpRequest lastRequest) {
         return execute(uri, HttpPost.METHOD_NAME, parameters, cookie, lastRequest);
     }

@@ -56,8 +56,8 @@ public class TenpayConfig {
 //  public static String trade_type_JSAPI = "JSAPI";
 
 
-    // 
-//    public static String submit_url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+    // 统一下单接口
+    public static String UNIFIED_ORDER = "https://api.mch.weixin.qq.com/pay/unifiedorder";
     // 关闭订单接口
 //    public static String close_url = "https://api.mch.weixin.qq.com/pay/closeorder";
     //以下是几个API的路径：

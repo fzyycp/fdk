@@ -32,9 +32,14 @@ public class HttpRequest implements Serializable {
     public String method = HttpGet.METHOD_NAME;
 
     /**
-     * 请求参数值对
+     * 请求参数值对（次要使用，如果设置了postDatas，parameters不起作用）
      */
     public List<NameValuePair> parameters = new ArrayList<>();
+
+    /**
+     * 提交数据（优先使用，如果设置了postDatas，parameters不起作用）
+     */
+    public String postDatas = "";
     /**
      * 请求头
      */
@@ -145,6 +150,15 @@ public class HttpRequest implements Serializable {
 
     public HttpRequest setHttpConfig(HttpConfig httpConfig) {
         this.httpConfig = httpConfig;
+        return this;
+    }
+
+    public String getPostDatas() {
+        return postDatas;
+    }
+
+    public HttpRequest setPostDatas(String postDatas) {
+        this.postDatas = postDatas;
         return this;
     }
 

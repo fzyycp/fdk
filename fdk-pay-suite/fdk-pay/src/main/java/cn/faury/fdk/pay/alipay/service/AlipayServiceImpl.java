@@ -23,7 +23,7 @@ public class AlipayServiceImpl implements AlipayService {
 			httpClient = HttpClient.newInstance(HttpClient.Aim.Ali);
 		}
 		
-		String url = AlipayConfig.HTTPS_GATEWAY + "?_input_charset=" + AlipayConfig.input_charset;
+		String url = AlipayConfig.HTTPS_GATEWAY + "?_input_charset=" + AlipayConfig.inputCharset;
 		
 		String queryString = Util.buildQueryString(request.getQueryParams());
 

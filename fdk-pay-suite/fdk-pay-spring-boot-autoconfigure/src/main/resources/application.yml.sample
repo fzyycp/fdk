@@ -8,4 +8,10 @@ fdk:
       cert-password:
       input-charset:
       notify-url:
-
+    alipay:
+      app-id:
+      partner:
+      private-key:
+      public-key:
+      input-charset:
+      notify-url:
