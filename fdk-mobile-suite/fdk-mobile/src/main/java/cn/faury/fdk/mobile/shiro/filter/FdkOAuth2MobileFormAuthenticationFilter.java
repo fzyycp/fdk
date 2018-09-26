@@ -4,7 +4,6 @@ import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.AssertUtil;
 import cn.faury.fdk.common.utils.SerializeUtil;
-import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.shiro.filter.oauth2.OAuth2Handler;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
@@ -125,7 +124,7 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isOAuth2Login(request) && isOAuth2LoginSubmission(request, response)) {
             // 如果OAuth2用户不存在，则先创建再执行登录
-            if (userService != null && appInfoService != null) {
+            if (userInfoService != null && appInfoService != null) {
                 try {
                     oauth2Handler(request);
 
@@ -287,14 +286,14 @@ public class FdkOAuth2MobileFormAuthenticationFilter extends FdkMobileFormAuthen
 
         String unionid = bean.getUnionid();
         // 检查用户统一标识是否已登录过
-        UserInfoBean userInfo = userService.getUserInfoByLoginName(unionid);
+        UserInfoBean userInfo = userInfoService.getUserInfoByLoginName(unionid);
         UserOAuthInfoBean userOAuthInfo = userOAuthService.getUserOAuthInfoByUnionId(unionid);
         Long userId = -1L;
         // 用户未注册过，注册一下
         if (userInfo == null) {
             AppInfoBean appInfo = appInfoService.getAppInfoBySystemCode(null, appCode);
             AssertUtil.assertNotNull(appCode,"APP不存在或已停用");
-            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,unionid,"");
+            userId = userInfoService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,0L,"register",0L,"register");
         } else {
             userId = userInfo.getUserId();
         }

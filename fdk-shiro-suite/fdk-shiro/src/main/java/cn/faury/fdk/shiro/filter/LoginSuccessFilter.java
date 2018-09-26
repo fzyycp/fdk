@@ -8,12 +8,11 @@ import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.shiro.utils.SessionUtil;
 import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
-import cn.faury.fwmf.module.api.role.service.RoleService;
+import cn.faury.fwmf.module.api.role.service.RoleInfoService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -25,10 +24,10 @@ import java.util.List;
 public class LoginSuccessFilter extends FdkCaptchaValidateAuthenticationFilter {
 
     // 用户服务
-    private UserService userService = null;
+    private UserInfoService userInfoService = null;
 
     // 角色服务
-    private RoleService roleService = null;
+    private RoleInfoService roleInfoService = null;
 
     // 系统编码
     private String saCode = "";
@@ -36,13 +35,13 @@ public class LoginSuccessFilter extends FdkCaptchaValidateAuthenticationFilter {
     /**
      * 构造函数
      *
-     * @param userService 用户服务
-     * @param roleService 角色服务
+     * @param userInfoService 用户服务
+     * @param roleInfoService 角色服务
      * @param saCode      系统编码
      */
-    public LoginSuccessFilter(UserService userService, RoleService roleService, String saCode) {
-        this.userService = userService;
-        this.roleService = roleService;
+    public LoginSuccessFilter(UserInfoService userInfoService, RoleInfoService roleInfoService, String saCode) {
+        this.userInfoService = userInfoService;
+        this.roleInfoService = roleInfoService;
         this.saCode = saCode;
     }
 
@@ -50,15 +49,15 @@ public class LoginSuccessFilter extends FdkCaptchaValidateAuthenticationFilter {
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         // 登录成功初始化:设置Session值，相当于初始化SessionUtil
         SessionUtil.setCurrentUserName(ShiroUtil.principal());
-        if (userService != null) {
-            UserInfoBean user = userService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
+        if (userInfoService != null) {
+            UserInfoBean user = userInfoService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
             if (user != null) {
                 SessionUtil.setCurrentUserName(user.getUserName());
                 SessionUtil.setCurrentUserId(user.getUserId());
                 SessionUtil.setCurrentUserInfo(user);
 
-                if (roleService != null) {
-                    List<RoleInfoBean> roles = roleService.getUserRolesByUserId(saCode, user.getUserId());
+                if (roleInfoService != null) {
+                    List<RoleInfoBean> roles = roleInfoService.getUserRolesByUserId(saCode, user.getUserId());
                     SessionUtil.setCurrentRolesInfo(roles);
                 }
             }

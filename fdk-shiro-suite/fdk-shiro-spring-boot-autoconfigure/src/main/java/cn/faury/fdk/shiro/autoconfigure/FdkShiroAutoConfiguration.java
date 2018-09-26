@@ -7,15 +7,14 @@ import cn.faury.fdk.shiro.core.*;
 import cn.faury.fdk.shiro.filter.FdkCaptchaValidateFilter;
 import cn.faury.fdk.shiro.filter.LoginSuccessFilter;
 import cn.faury.fdk.shiro.realm.FdkShiroRealm;
-import cn.faury.fwmf.module.api.role.service.RoleService;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.role.service.RoleInfoService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.Cookie;
-import org.apache.shiro.web.servlet.OncePerRequestFilter;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,11 +54,11 @@ public class FdkShiroAutoConfiguration {
 
     // 用户服务，不可以为空
     @Autowired(required = false)
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     // 角色服务，不可以为空
     @Autowired(required = false)
-    private RoleService roleService;
+    private RoleInfoService roleInfoService;
 
     @Bean
     public ShiroFilterFactoryBean shirFilter() {
@@ -68,8 +67,8 @@ public class FdkShiroAutoConfiguration {
         logger.debug("{}", "fdkShiroFilterProperties=" + fdkShiroFilterProperties);
         logger.debug("{}", "saCode=" + fdkShiroProperties.getSaCode());
         logger.debug("{}", "sessionTimeout=" + fdkShiroProperties.getSessionTimeout());
-        logger.debug("{}", "userService=" + userService);
-        logger.debug("{}", "roleService=" + roleService);
+        logger.debug("{}", "userInfoService=" + userInfoService);
+        logger.debug("{}", "roleInfoService=" + roleInfoService);
 
         Map<String, String> filterChainDefinitionMap = new HashMap<>();
         // 添加验证码过滤
@@ -116,7 +115,7 @@ public class FdkShiroAutoConfiguration {
 
     @Bean
     public FilterRegistrationBean loginSuccessFilter() {
-        LoginSuccessFilter filter = new LoginSuccessFilter(userService, roleService, fdkShiroProperties.getSaCode());
+        LoginSuccessFilter filter = new LoginSuccessFilter(userInfoService, roleInfoService, fdkShiroProperties.getSaCode());
         FilterRegistrationBean<LoginSuccessFilter> registrationBean = new FilterRegistrationBean<>(filter);
         // 关闭在spring chain中注册filter
         registrationBean.setEnabled(false);
@@ -134,8 +133,8 @@ public class FdkShiroAutoConfiguration {
     @Bean
     public FdkShiroRealm shiroRealm() {
         FdkShiroRealm shiroRealm = new FdkShiroRealm();
-        shiroRealm.setUserService(userService);
-        shiroRealm.setRoleService(roleService);
+        shiroRealm.setUserInfoService(userInfoService);
+        shiroRealm.setRoleInfoService(roleInfoService);
         shiroRealm.setSaCode(fdkShiroProperties.getSaCode());
         shiroRealm.setCredentialsMatcher(shiroCredentialsMatcher());
         return shiroRealm;

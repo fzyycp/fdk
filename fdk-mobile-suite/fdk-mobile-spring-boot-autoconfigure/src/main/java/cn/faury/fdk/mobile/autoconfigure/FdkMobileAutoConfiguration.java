@@ -11,10 +11,10 @@ import cn.faury.fdk.shiro.core.*;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.app.service.ShopRAppInfoService;
 import cn.faury.fwmf.module.api.app.service.UserRAppInfoService;
-import cn.faury.fwmf.module.api.role.service.RoleService;
+import cn.faury.fwmf.module.api.role.service.RoleInfoService;
 import cn.faury.fwmf.module.api.shop.service.ShopInfoService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import cn.faury.fwmf.module.api.user.service.UserOAuthService;
-import cn.faury.fwmf.module.api.user.service.UserService;
 import org.apache.shiro.session.SessionListener;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -52,11 +52,11 @@ public class FdkMobileAutoConfiguration {
 
     // 用户服务，不可以为空
     @Autowired(required = false)
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     // 角色服务，不可以为空
     @Autowired(required = false)
-    private RoleService roleService;
+    private RoleInfoService roleInfoService;
     // 用户第三方授权服务
     @Autowired(required = false)
     private UserOAuthService userOAuthService;
@@ -129,13 +129,13 @@ public class FdkMobileAutoConfiguration {
     public FilterRegistrationBean fdkOAuth2MobileFormAuthenticationFilter() {
         logger.debug("{}", "=====开始初始化FdkOAuth2MobileFormAuthenticationFilter=====");
         logger.debug("fdkMobileProperties={}", fdkMobileProperties);
-        logger.debug("userService={}", userService);
-        logger.debug("roleService={}", roleService);
+        logger.debug("userInfoService={}", userInfoService);
+        logger.debug("roleInfoService={}", roleInfoService);
         logger.debug("userOAuthService={}", userOAuthService);
         logger.debug("appInfoService={}", appInfoService);
         FdkOAuth2MobileFormAuthenticationFilter filter = new FdkOAuth2MobileFormAuthenticationFilter();
-        filter.setUserService(userService);
-        filter.setRoleService(roleService);
+        filter.setUserInfoService(userInfoService);
+        filter.setRoleInfoService(roleInfoService);
         filter.setUserOAuthService(userOAuthService);
         filter.setAppInfoService(appInfoService);
 
@@ -157,8 +157,8 @@ public class FdkMobileAutoConfiguration {
     public ShiroFilterFactoryBean shirFilter() {
         logger.debug("{}", "=====开始初始化ShiroFilterFactoryBean=====");
         logger.debug("fdkMobileProperties={}", fdkMobileProperties);
-        logger.debug("{}", "userService=" + userService);
-        logger.debug("{}", "roleService=" + roleService);
+        logger.debug("{}", "userInfoService=" + userInfoService);
+        logger.debug("{}", "roleInfoService=" + roleInfoService);
 
         Map<String, String> filterChainDefinitionMap = new HashMap<>();
         // 接口请求
@@ -208,7 +208,7 @@ public class FdkMobileAutoConfiguration {
         fdkMobileDbRealm.setShopRAppInfoService(shopRAppInfoService);
         fdkMobileDbRealm.setUserRAppInfoService(userRAppInfoService);
         fdkMobileDbRealm.setAppInfoService(appInfoService);
-        fdkMobileDbRealm.setUserService(userService);
+        fdkMobileDbRealm.setUserInfoService(userInfoService);
         fdkMobileDbRealm.setCredentialsMatcher(shiroCredentialsMatcher());
         return fdkMobileDbRealm;
     }

@@ -12,13 +12,13 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-mobile</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
 
     <properties>
         <fdk.common.version>0.0.9</fdk.common.version>
         <fdk.http.client.version>0.0.3</fdk.http.client.version>
-        <fdk.shiro.version>0.0.1</fdk.shiro.version>
-        <fwmf.module.user.role.api.version>0.0.1</fwmf.module.user.role.api.version>
+        <fdk.shiro.version>0.0.2</fdk.shiro.version>
+        <fwmf.module.user.role.api.version>0.0.2</fwmf.module.user.role.api.version>
         <fwmf.module.app.api.version>0.1.0</fwmf.module.app.api.version>
         <fwmf.module.shop.api.version>0.0.1</fwmf.module.shop.api.version>
     </properties>

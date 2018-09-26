@@ -1,15 +1,14 @@
 package cn.faury.fdk.mobile.shiro.filter.oauth2;
 
 import cn.faury.fdk.common.utils.AssertUtil;
-import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.mobile.shiro.filter.FdkMobileFormAuthenticationFilter;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import cn.faury.fwmf.module.api.user.bean.UserOAuthInfoBean;
 import cn.faury.fwmf.module.api.user.config.UserType;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import cn.faury.fwmf.module.api.user.service.UserOAuthService;
-import cn.faury.fwmf.module.api.user.service.UserService;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +28,7 @@ public abstract class SsoOAuth2Handler extends AdapterOAuth2Handler {
     /**
      * 用户服务协议
      */
-    protected UserService userService;
+    protected UserInfoService userInfoService;
 
     /**
      * 用户授权服务协议
@@ -58,14 +57,14 @@ public abstract class SsoOAuth2Handler extends AdapterOAuth2Handler {
         String unionid = bean.getUnionid();
 
         // 检查用户统一标识是否已登录过
-        UserInfoBean userInfo = userService.getUserInfoByLoginName(unionid);
+        UserInfoBean userInfo = userInfoService.getUserInfoByLoginName(unionid);
         UserOAuthInfoBean userOAuthInfo = userOAuthService.getUserOAuthInfoByUnionId(unionid);
         Long userId = -1L;
         // 用户未注册过，注册一下
         if (userInfo == null) {
             AppInfoBean appInfo = appRegisterService.getAppInfoBySystemCode(null, appCode);
             AssertUtil.assertNotNull(appInfo,"APP不存在或已停用");
-            userId = userService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,"init","");
+            userId = userInfoService.insertUserInfo(unionid, unionid, unionid, appInfo.getSystemId(), UserType.ENDUSER,0L,"register",0L,"register");
         } else {
             userId = userInfo.getUserId();
         }
@@ -91,19 +90,19 @@ public abstract class SsoOAuth2Handler extends AdapterOAuth2Handler {
     /**
      * 获取userService
      *
-     * @return userService
+     * @return userInfoService
      */
-    public UserService getUserService() {
-        return userService;
+    public UserInfoService getUserInfoService() {
+        return userInfoService;
     }
 
     /**
      * 设置userService
      *
-     * @param userService 值
+     * @param userInfoService 值
      */
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserInfoService(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
     }
 
     /**

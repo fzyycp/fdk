@@ -2,28 +2,23 @@ package cn.faury.fdk.mobile.shiro.realm;
 
 import cn.faury.fdk.common.utils.DateUtil;
 import cn.faury.fdk.common.utils.StringUtil;
-import cn.faury.fdk.mobile.shiro.token.AppUsernamePasswordToken;
 import cn.faury.fdk.shiro.exception.HasExpiredAccountException;
 import cn.faury.fdk.shiro.exception.NotEffectAccountException;
 import cn.faury.fdk.shiro.exception.UnauthorizedAppException;
-import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.bean.ShopRAppInfoBean;
 import cn.faury.fwmf.module.api.app.bean.UserRAppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.app.service.ShopRAppInfoService;
 import cn.faury.fwmf.module.api.app.service.UserRAppInfoService;
-import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
-import cn.faury.fwmf.module.api.role.service.RoleService;
 import cn.faury.fwmf.module.api.shop.bean.ShopInfoBean;
 import cn.faury.fwmf.module.api.shop.service.ShopInfoService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import cn.faury.fwmf.module.api.user.bean.UserPasswordBean;
 import cn.faury.fwmf.module.api.user.config.UserType;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -41,7 +36,7 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
     /**
      * 用户信息服务
      */
-    private UserService userService;
+    private UserInfoService userInfoService;
 
     /**
      * 用户授权App服务
@@ -73,14 +68,14 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
         UsernamePasswordToken upt = (UsernamePasswordToken) token;
 
         // 获取用户信息
-        UserInfoBean user = userService.getUserInfoByLoginName(upt.getUsername());
+        UserInfoBean user = userInfoService.getUserInfoByLoginName(upt.getUsername());
 
         if (user != null) {
             // 执行有效性验证
             validateStatus(user, token);
             // 执行授权验证
             validateAuth(user, token);
-            UserPasswordBean pwd = userService.getUserPasswordByUserId(user.getUserId());
+            UserPasswordBean pwd = userInfoService.getUserPasswordByUserId(user.getUserId());
             return new SimpleAuthenticationInfo(user.getLoginName(), pwd.getPassword(), getName());
         }
         throw new UnknownAccountException(String.format("当前登录用户[%s]不存在!", upt.getUsername()));
@@ -329,19 +324,19 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
     /**
      * 获取userService
      *
-     * @return userService
+     * @return userInfoService
      */
-    public UserService getUserService() {
-        return userService;
+    public UserInfoService getUserInfoService() {
+        return userInfoService;
     }
 
     /**
      * 设置userService
      *
-     * @param userService 值
+     * @param userInfoService 值
      */
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserInfoService(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
     }
 
     /**

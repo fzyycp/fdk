@@ -5,10 +5,10 @@ import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.shiro.exception.HasExpiredAccountException;
 import cn.faury.fdk.shiro.exception.NotEffectAccountException;
 import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
-import cn.faury.fwmf.module.api.role.service.RoleService;
+import cn.faury.fwmf.module.api.role.service.RoleInfoService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import cn.faury.fwmf.module.api.user.bean.UserPasswordBean;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -22,12 +22,12 @@ public class FdkShiroRealm extends AuthorizingRealm {
     /**
      * 用户信息服务
      */
-    protected UserService userService;
+    protected UserInfoService userInfoService;
 
     /**
      * 用户信息服务
      */
-    protected RoleService roleService;
+    protected RoleInfoService roleInfoService;
 
     /**
      * 业务系统编码/APP编码
@@ -54,14 +54,14 @@ public class FdkShiroRealm extends AuthorizingRealm {
         // 缓存中不存在，则从数据库查询
         String loginName = (String) principals.fromRealm(getName()).iterator().next();
 
-        UserInfoBean acc = userService == null ? null : userService.getUserInfoByLoginName(loginName);
+        UserInfoBean acc = userInfoService == null ? null : userInfoService.getUserInfoByLoginName(loginName);
 
         if (acc != null) {
 
             info = new SimpleAuthorizationInfo();
 
             // 获取用户角色
-            List<RoleInfoBean> roles = roleService == null ? null : roleService.getUserRolesByUserId(saCode, acc.getUserId());
+            List<RoleInfoBean> roles = roleInfoService == null ? null : roleInfoService.getUserRolesByUserId(saCode, acc.getUserId());
             if (roles != null && roles.size() > 0) {
                 for (RoleInfoBean role : roles) {
                     info.addRole(role.getRoleCode());
@@ -69,7 +69,7 @@ public class FdkShiroRealm extends AuthorizingRealm {
             }
 
             // 获取用户授权字符串
-            List<String> rolePerms = roleService == null ? null : roleService.getUserRolePermsByUserId(saCode, acc.getUserId());
+            List<String> rolePerms = roleInfoService == null ? null : roleInfoService.getUserRolePermsByUserId(saCode, acc.getUserId());
             if (rolePerms != null && rolePerms.size() > 0) {
                 info.addStringPermissions(rolePerms);
             }
@@ -94,14 +94,14 @@ public class FdkShiroRealm extends AuthorizingRealm {
         UsernamePasswordToken upt = (UsernamePasswordToken) token;
 
         // 获取用户信息
-        UserInfoBean user = userService == null ? null : userService.getUserInfoByLoginName(upt.getUsername());
+        UserInfoBean user = userInfoService == null ? null : userInfoService.getUserInfoByLoginName(upt.getUsername());
 
         if (user != null) {
             // 执行有效性验证
             validateStatus(user, token);
             // 执行授权验证
             validateAuth(user, token);
-            UserPasswordBean pwd = userService == null ? null : userService.getUserPasswordByUserId(user.getUserId());
+            UserPasswordBean pwd = userInfoService == null ? null : userInfoService.getUserPasswordByUserId(user.getUserId());
             return new SimpleAuthenticationInfo(user.getLoginName(), pwd.getPassword(), getName());
         }
         throw new UnknownAccountException(String.format("当前登录用户[%s]不存在!", upt.getUsername()));
@@ -255,25 +255,25 @@ public class FdkShiroRealm extends AuthorizingRealm {
      *
      * @return 用户服务
      */
-    public UserService getUserService() {
-        return userService;
+    public UserInfoService getUserInfoService() {
+        return userInfoService;
     }
 
     /**
      * 设置用户服务
      *
-     * @param userService 用户服务
+     * @param userInfoService 用户服务
      */
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserInfoService(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
     }
 
-    public RoleService getRoleService() {
-        return roleService;
+    public RoleInfoService getRoleInfoService() {
+        return roleInfoService;
     }
 
-    public FdkShiroRealm setRoleService(RoleService roleService) {
-        this.roleService = roleService;
+    public FdkShiroRealm setRoleInfoService(RoleInfoService roleInfoService) {
+        this.roleInfoService = roleInfoService;
         return this;
     }
 

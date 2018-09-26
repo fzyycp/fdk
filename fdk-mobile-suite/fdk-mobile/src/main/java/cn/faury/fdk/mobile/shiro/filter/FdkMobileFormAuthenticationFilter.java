@@ -3,7 +3,6 @@ package cn.faury.fdk.mobile.shiro.filter;
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.exception.TipsException;
 import cn.faury.fdk.common.utils.AssertUtil;
-import cn.faury.fdk.common.utils.SigAESUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.mobile.shiro.token.AppUsernamePasswordToken;
 import cn.faury.fdk.shiro.exception.IMessageAccountException;
@@ -13,10 +12,10 @@ import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.app.bean.AppInfoBean;
 import cn.faury.fwmf.module.api.app.service.AppInfoService;
 import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
-import cn.faury.fwmf.module.api.role.service.RoleService;
+import cn.faury.fwmf.module.api.role.service.RoleInfoService;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import cn.faury.fwmf.module.api.user.config.UserType;
-import cn.faury.fwmf.module.api.user.service.UserService;
+import cn.faury.fwmf.module.api.user.service.UserInfoService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
@@ -79,12 +78,12 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
     /**
      * 用户服务
      */
-    protected UserService userService;
+    protected UserInfoService userInfoService;
 
     /**
      * 角色服务
      */
-    protected RoleService roleService;
+    protected RoleInfoService roleInfoService;
 
     /**
      * App注册服务
@@ -106,7 +105,7 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         if (isGuestLogin(request) && isGuestLoginSubmission(request, response)) {
             // 如果游客用户不存在，则先创建再执行登录
-            if (userService != null && appInfoService != null) {
+            if (userInfoService != null && appInfoService != null) {
                 try {
                     AppInfoBean appInfo = appInfoService.getAppInfoBySystemCode(null, this.getAppCode(request));
                     AssertUtil.assertNotNull(appInfo, "APP不存在或已停用");
@@ -114,14 +113,14 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
                     AssertUtil.assertFalse(StringUtil.whetherYes(appInfo.getRejectGuestUser()), "该APP拒绝游客登录");
                     AssertUtil.assertNotEmpty(this.getUsername(request), "游客登录名不能为空");
                     AssertUtil.assertTrue(Pattern.matches(GUEST_USERNAME_REGEX, this.getUsername(request)), "游客登录名格式不正确");
-                    UserInfoBean ui = userService.getUserInfoByLoginName(this.getUsername(request));
+                    UserInfoBean ui = userInfoService.getUserInfoByLoginName(this.getUsername(request));
                     if (ui == null) {
                         String loginName = this.getUsername(request);
                         String password = this.getPassword(request);
 
                         // 保存用户信息
-                        Long userId = userService.insertUserInfo(loginName, loginName, password, appInfo.getSystemId(),
-                                UserType.GUEST, "system-init", "");
+                        Long userId = userInfoService.insertUserInfo(loginName, loginName, password, appInfo.getSystemId(),
+                                UserType.GUEST, 0L,"register",0L, "register");
                         AssertUtil.assertTrue(userId != null && userId > 0, "保存游客信息失败");
                     }
 
@@ -161,15 +160,15 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
         // 记录用户信息到Session，安全执行
         // 登录成功初始化:设置Session值，相当于初始化SessionUtil
         SessionUtil.setCurrentUserName(ShiroUtil.principal());
-        if (userService != null) {
-            UserInfoBean user = userService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
+        if (userInfoService != null) {
+            UserInfoBean user = userInfoService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
             if (user != null) {
                 SessionUtil.setCurrentUserName(user.getUserName());
                 SessionUtil.setCurrentUserId(user.getUserId());
                 SessionUtil.setCurrentUserInfo(user);
 
-                if (roleService != null) {
-                    List<RoleInfoBean> roles = roleService.getUserRolesByUserId(getAppCode(request), user.getUserId());
+                if (roleInfoService != null) {
+                    List<RoleInfoBean> roles = roleInfoService.getUserRolesByUserId(getAppCode(request), user.getUserId());
                     SessionUtil.setCurrentRolesInfo(roles);
                 }
             }
@@ -326,37 +325,37 @@ public class FdkMobileFormAuthenticationFilter extends FormAuthenticationFilter 
     /**
      * 获取userService
      *
-     * @return userService
+     * @return userInfoService
      */
-    public UserService getUserService() {
-        return userService;
+    public UserInfoService getUserInfoService() {
+        return userInfoService;
     }
 
     /**
      * 设置userService
      *
-     * @param userService 值
+     * @param userInfoService 值
      */
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    public void setUserInfoService(UserInfoService userInfoService) {
+        this.userInfoService = userInfoService;
     }
 
     /**
      * 获取roleService
      *
-     * @return roleService
+     * @return roleInfoService
      */
-    public RoleService getRoleService() {
-        return roleService;
+    public RoleInfoService getRoleInfoService() {
+        return roleInfoService;
     }
 
     /**
      * 设置roleService
      *
-     * @param roleService 值
+     * @param roleInfoService 值
      */
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
+    public void setRoleInfoService(RoleInfoService roleInfoService) {
+        this.roleInfoService = roleInfoService;
     }
 
     /**
