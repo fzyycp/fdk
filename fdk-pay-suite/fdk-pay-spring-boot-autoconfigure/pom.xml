@@ -12,10 +12,10 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-pay-spring-boot-autoconfigure</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
     <properties>
-        <fdk.pay.version>0.0.3</fdk.pay.version>
+        <fdk.pay.version>0.0.4</fdk.pay.version>
     </properties>
 
     <dependencies>

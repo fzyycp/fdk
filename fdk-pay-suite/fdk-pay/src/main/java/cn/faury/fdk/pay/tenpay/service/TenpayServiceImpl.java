@@ -1,6 +1,6 @@
 package cn.faury.fdk.pay.tenpay.service;
 
-import cn.faury.fdk.pay.common.HttpClient;
+import cn.faury.fdk.pay.common.FdkPayHttpClient;
 import cn.faury.fdk.pay.tenpay.TenpayConfig;
 import cn.faury.fdk.pay.tenpay.XMLParser;
 import cn.faury.fdk.pay.tenpay.listener.TenBillListener;
@@ -14,17 +14,17 @@ public class TenpayServiceImpl implements TenpayService {
 	
 	private static final Logger log = LoggerFactory.getLogger(TenpayServiceImpl.class);
 	
-	private static HttpClient httpClient;
+	private static FdkPayHttpClient fdkPayHttpClient;
 
 	@Override
 	public void doDownloadBill(TenBillRequest request,
 			TenBillListener resultListener) throws Exception {
 		
-		if (httpClient == null) {
-			httpClient = HttpClient.newInstance(HttpClient.Aim.Ten);
+		if (fdkPayHttpClient == null) {
+			fdkPayHttpClient = FdkPayHttpClient.newInstance(FdkPayHttpClient.Aim.Ten);
 		}
 		
-		String result = httpClient.doPost(TenpayConfig.DOWNLOAD_BILL_API, request);
+		String result = fdkPayHttpClient.doPost(TenpayConfig.DOWNLOAD_BILL_API, request);
 		
 		TenBillResponse response;
 

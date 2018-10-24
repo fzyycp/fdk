@@ -4,7 +4,7 @@ import cn.faury.fdk.pay.alipay.AlipayConfig;
 import cn.faury.fdk.pay.alipay.listener.AliBillListener;
 import cn.faury.fdk.pay.alipay.protocol.AliBillRequest;
 import cn.faury.fdk.pay.alipay.protocol.AliBillResponse;
-import cn.faury.fdk.pay.common.HttpClient;
+import cn.faury.fdk.pay.common.FdkPayHttpClient;
 import cn.faury.fdk.pay.common.Util;
 import cn.faury.fdk.pay.tenpay.service.TenpayServiceImpl;
 import org.slf4j.Logger;
@@ -14,20 +14,20 @@ public class AlipayServiceImpl implements AlipayService {
 
 	private static final Logger log = LoggerFactory.getLogger(TenpayServiceImpl.class);
 	
-	private static HttpClient httpClient;
+	private static FdkPayHttpClient fdkPayHttpClient;
 	
 	@Override
 	public void doDownloadBill(AliBillRequest request, AliBillListener listener) throws Exception {
 		
-		if (httpClient == null) {
-			httpClient = HttpClient.newInstance(HttpClient.Aim.Ali);
+		if (fdkPayHttpClient == null) {
+			fdkPayHttpClient = FdkPayHttpClient.newInstance(FdkPayHttpClient.Aim.Ali);
 		}
 		
 		String url = AlipayConfig.HTTPS_GATEWAY + "?_input_charset=" + AlipayConfig.inputCharset;
 		
 		String queryString = Util.buildQueryString(request.getQueryParams());
 
-		String result = httpClient.doPost(url, queryString);
+		String result = fdkPayHttpClient.doPost(url, queryString);
 
 		AliBillResponse response = AliBillResponse.build(result);
 

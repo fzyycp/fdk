@@ -1,7 +1,7 @@
 package cn.faury.fdk.pay.alipay;
 
 import cn.faury.fdk.common.utils.StringUtil;
-import cn.faury.fdk.pay.common.HttpClient;
+import cn.faury.fdk.pay.common.FdkPayHttpClient;
 import cn.faury.fdk.pay.common.Util;
 import cn.faury.fdk.pay.common.sign.RSA;
 import org.slf4j.Logger;
@@ -60,7 +60,7 @@ public class AlipayNotify {
                 + "&notify_id=" + notify_id;
         log.debug("【回调校验】【Alipay】 - 校验 veryfy_url=" + veryfy_url);
 
-        String responseTxt = HttpClient.simpleRequstFirstLine(veryfy_url);
+        String responseTxt = FdkPayHttpClient.simpleRequstFirstLine(veryfy_url);
         log.debug("【回调校验】【Alipay】 - 校验 responseTxt=" + responseTxt);
 
         return "true".equals(responseTxt);

@@ -30,9 +30,9 @@ import java.security.KeyStore;
  * HTTP 客户端工具
  *
  */
-public class HttpClient {
+public class FdkPayHttpClient {
 	
-	private static final Logger log = LoggerFactory.getLogger(HttpClient.class);
+	private static final Logger log = LoggerFactory.getLogger(FdkPayHttpClient.class);
 	
 	private RequestConfig requestConfig; //请求器的配置
     
@@ -98,11 +98,11 @@ public class HttpClient {
 	}
 
 	
-	private HttpClient() {
+	private FdkPayHttpClient() {
 		
 	}
 	
-	private HttpClient(Aim aim) throws Exception {
+	private FdkPayHttpClient(Aim aim) throws Exception {
 		
 		SSLConnectionSocketFactory sslsf = null;
 		
@@ -157,23 +157,23 @@ public class HttpClient {
 	 * @return HTTP 客户端实例
 	 * @throws Exception
 	 */
-	public static HttpClient newInstance(Aim aim) throws Exception{
-		HttpClient httpClient;
+	public static FdkPayHttpClient newInstance(Aim aim) throws Exception{
+		FdkPayHttpClient fdkPayHttpClient;
 		try {
-			httpClient = new HttpClient(aim);
+			fdkPayHttpClient = new FdkPayHttpClient(aim);
 		} catch (Exception e) {
 			log.error("实例化http客户端异常，请检查配置是否正确", e);
 			throw e;
 		}
-		return httpClient;
+		return fdkPayHttpClient;
 	}
 	
 	/**
 	 * 获取HTTP 客户端实例
 	 * @return 客户端实例
 	 */
-	public static HttpClient newInstance(){
-		return new HttpClient();
+	public static FdkPayHttpClient newInstance(){
+		return new FdkPayHttpClient();
 	}
 	
 	/**
