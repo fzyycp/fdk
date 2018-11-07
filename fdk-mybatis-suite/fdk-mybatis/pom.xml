@@ -15,7 +15,7 @@
     <version>0.0.1</version>
 
     <properties>
-        <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.common.version>0.1.0</fdk.common.version>
     </properties>
 
     <dependencies>
@@ -47,11 +47,11 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-mybatis/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-mybatis/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

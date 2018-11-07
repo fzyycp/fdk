@@ -14,9 +14,4 @@
 	<bean id="fdkCaptcha" class="cn.faury.fdk.captcha.FdkCaptcha">
 		<property name="config" ref="config"/>
 	</bean>
-
-	<bean id="captchaFilter" class="cn.faury.eb.manager.action.CaptchaFilter">
-		<constructor-arg name="fdkCaptcha" ref="fdkCaptcha"/>
-		<constructor-arg name="fdkCaptchaProperties" ref="fdkCaptchaProperties"/>
-	</bean>
 </beans>

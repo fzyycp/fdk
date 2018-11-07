@@ -144,6 +144,16 @@ public class RestResultEntry {
     /**
      * 根据输入参数生成一个返回结果集
      *
+     * @param tips    用户提示信息
+     * @return 结果对象
+     */
+    public static RestResultEntry createErrorResult(String tips) {
+        return createErrorResult(tips, tips);
+    }
+
+    /**
+     * 根据输入参数生成一个返回结果集
+     *
      * @param code    错误码
      * @param message 消息
      * @param tips    用户提示信息

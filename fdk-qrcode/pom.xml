@@ -20,11 +20,12 @@
             <version>0.0.1</version>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-qrcode/;publish=1</url>
-        </repository>
-    </distributionManagement>
+
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-qrcode/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

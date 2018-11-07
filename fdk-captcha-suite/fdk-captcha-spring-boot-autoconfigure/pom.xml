@@ -12,11 +12,11 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-captcha-spring-boot-autoconfigure</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <properties>
-        <fdk.common.version>0.0.9</fdk.common.version>
-        <fdk.captcha.version>0.0.1</fdk.captcha.version>
+        <fdk.common.version>0.1.0</fdk.common.version>
+        <fdk.captcha.version>0.0.2</fdk.captcha.version>
     </properties>
 
     <dependencies>
@@ -39,12 +39,12 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-captcha-spring-boot-autoconfigure/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-captcha-spring-boot-autoconfigure/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
 </project>

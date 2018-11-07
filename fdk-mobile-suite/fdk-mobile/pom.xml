@@ -12,13 +12,13 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-mobile</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.8</version>
 
     <properties>
-        <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.common.version>0.1.0</fdk.common.version>
         <fdk.http.client.version>0.0.3</fdk.http.client.version>
-        <fdk.shiro.version>0.0.2</fdk.shiro.version>
-        <fwmf.module.user.role.api.version>0.0.2</fwmf.module.user.role.api.version>
+        <fdk.shiro.version>0.0.4</fdk.shiro.version>
+        <fwmf.module.user.role.api.version>0.0.4</fwmf.module.user.role.api.version>
         <fwmf.module.app.api.version>0.1.0</fwmf.module.app.api.version>
         <fwmf.module.shop.api.version>0.0.1</fwmf.module.shop.api.version>
     </properties>
@@ -75,11 +75,11 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-mobile/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-mobile/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

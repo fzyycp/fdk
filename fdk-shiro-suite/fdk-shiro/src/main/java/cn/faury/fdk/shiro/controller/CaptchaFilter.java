@@ -2,15 +2,12 @@ package cn.faury.fdk.shiro.controller;
 
 import cn.faury.fdk.captcha.FdkCaptcha;
 import cn.faury.fdk.captcha.config.FdkCaptchaConfig;
-import cn.faury.fdk.shiro.core.FdkWebSessionManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
@@ -22,11 +19,14 @@ import java.io.IOException;
  */
 public class CaptchaFilter extends OncePerRequestFilter {
 
-    @Autowired
     FdkCaptcha fdkCaptcha;
 
-    @Autowired
     FdkCaptchaConfig fdkCaptchaConfig;
+
+    public CaptchaFilter(FdkCaptcha fdkCaptcha, FdkCaptchaConfig fdkCaptchaConfig) {
+        this.fdkCaptcha = fdkCaptcha;
+        this.fdkCaptchaConfig = fdkCaptchaConfig;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -48,8 +48,6 @@ public class CaptchaFilter extends OncePerRequestFilter {
         captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
         httpServletResponse.setHeader("Cache-Control", "no-store");
         httpServletResponse.setHeader("Pragma", "no-cache");
-        httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId());
-        httpServletResponse.addCookie(new Cookie(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId()));
         httpServletResponse.setDateHeader("Expires", 0);
         httpServletResponse.setContentType("image/jpeg");
         ServletOutputStream responseOutputStream =
@@ -57,5 +55,41 @@ public class CaptchaFilter extends OncePerRequestFilter {
         responseOutputStream.write(captchaChallengeAsJpeg);
         responseOutputStream.flush();
         responseOutputStream.close();
+    }
+
+    /**
+     * 获取fdkCaptcha
+     *
+     * @return fdkCaptcha
+     */
+    public FdkCaptcha getFdkCaptcha() {
+        return fdkCaptcha;
+    }
+
+    /**
+     * 设置fdkCaptcha
+     *
+     * @param fdkCaptcha 值
+     */
+    public void setFdkCaptcha(FdkCaptcha fdkCaptcha) {
+        this.fdkCaptcha = fdkCaptcha;
+    }
+
+    /**
+     * 获取fdkCaptchaConfig
+     *
+     * @return fdkCaptchaConfig
+     */
+    public FdkCaptchaConfig getFdkCaptchaConfig() {
+        return fdkCaptchaConfig;
+    }
+
+    /**
+     * 设置fdkCaptchaConfig
+     *
+     * @param fdkCaptchaConfig 值
+     */
+    public void setFdkCaptchaConfig(FdkCaptchaConfig fdkCaptchaConfig) {
+        this.fdkCaptchaConfig = fdkCaptchaConfig;
     }
 }

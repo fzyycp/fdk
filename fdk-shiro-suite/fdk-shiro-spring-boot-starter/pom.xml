@@ -12,13 +12,13 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-shiro-spring-boot-starter</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.4</version>
 
     <properties>
-        <fdk.shiro.version>0.0.2</fdk.shiro.version>
-        <fdk.shiro.spring.boot.autoconfigure.version>0.0.2</fdk.shiro.spring.boot.autoconfigure.version>
-        <fdk.captcha.spring.boot.starter.version>0.0.1</fdk.captcha.spring.boot.starter.version>
-        <fwmf.module.user.role.spring.boot.stater.version>0.0.2</fwmf.module.user.role.spring.boot.stater.version>
+        <fdk.shiro.version>0.0.4</fdk.shiro.version>
+        <fdk.shiro.spring.boot.autoconfigure.version>0.0.4</fdk.shiro.spring.boot.autoconfigure.version>
+        <fdk.captcha.spring.boot.starter.version>0.0.2</fdk.captcha.spring.boot.starter.version>
+        <fwmf.module.user.role.spring.boot.stater.version>0.0.4</fwmf.module.user.role.spring.boot.stater.version>
     </properties>
     <dependencies>
         <dependency>
@@ -43,12 +43,12 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-shiro-spring-boot-starter/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-shiro-spring-boot-starter/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
 </project>

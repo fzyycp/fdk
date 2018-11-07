@@ -11,10 +11,9 @@ import cn.faury.fdk.common.anotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
 import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
@@ -82,75 +81,32 @@ public class PropertiesUtil {
         return _ins;
     }
 
-//    /**
-//     * 初始化
-//     *
-//     * @param file 文件名
-//     * @deprecated SpringBoot jar包启动的时候file找不到文件，建议使用stream
-//     */
-//    @Deprecated
-//    public static void init(@NonNull File file) {
-//        _ins = new PropertiesUtil();
-//        _ins.loadPropertyFile(file);
-//    }
-
     /**
      * 初始化
      *
      * @param inputStream 文件流
+     * @deprecated see {@link #init(Reader)}
      */
+    @Deprecated
     public static void init(@NonNull InputStream inputStream) {
         _ins = new PropertiesUtil();
         _ins.loadPropertyFile(inputStream);
+    }
+
+    /**
+     * 初始化
+     *
+     * @param reader 文件流
+     */
+    public static void init(@NonNull Reader reader) {
+        _ins = new PropertiesUtil();
+        _ins.loadPropertyFile(reader);
     }
 
     public static void init(@NonNull Properties properties) {
         _ins = new PropertiesUtil();
         for (Entry<Object, Object> entry : properties.entrySet()) {
             _ins.properties.put(entry.getKey().toString(), entry.getValue());
-        }
-    }
-
-    /**
-     * 加载配置文件
-     *
-     * @param file 文件路径
-     */
-    private void loadPropertyFile(@NonNull File file) {
-        Properties property = new Properties();
-
-        if (file == null) {
-            throw new IllegalArgumentException(
-                    "Parameter of file can not be empty");
-        }
-        if (!file.exists()) {
-            throw new IllegalArgumentException(
-                    "Parameter of file is not exists:" + file.getAbsolutePath());
-        }
-        InputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(file);
-            property.load(inputStream);
-        } catch (Exception eOne) {
-
-            try {
-                ClassLoader loader = Thread.currentThread()
-                        .getContextClassLoader();
-                property.load(loader.getResourceAsStream(file.getAbsolutePath()));
-            } catch (IOException eTwo) {
-                throw new IllegalArgumentException(
-                        "Properties file loading failed: " + eTwo.getMessage());
-            }
-        } finally {
-            try {
-                if (inputStream != null)
-                    inputStream.close();
-            } catch (IOException ignored) {
-            }
-        }
-
-        for (Entry<Object, Object> entry : property.entrySet()) {
-            this.properties.put(entry.getKey().toString(), entry.getValue());
         }
     }
 
@@ -169,8 +125,36 @@ public class PropertiesUtil {
                     "Properties file loading failed: " + eOne.getMessage());
         } finally {
             try {
-                if (inputStream != null)
+                if (inputStream != null) {
                     inputStream.close();
+                }
+            } catch (IOException ignored) {
+            }
+        }
+
+        for (Entry<Object, Object> entry : property.entrySet()) {
+            this.properties.put(entry.getKey().toString(), entry.getValue());
+        }
+    }
+
+    /**
+     * 加载配置文件
+     *
+     * @param reader 文件流
+     */
+    private void loadPropertyFile(@NonNull Reader reader) {
+        Properties property = new Properties();
+
+        try {
+            property.load(reader);
+        } catch (Exception eOne) {
+            throw new IllegalArgumentException(
+                    "Properties file loading failed: " + eOne.getMessage());
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
             } catch (IOException ignored) {
             }
         }

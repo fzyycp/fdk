@@ -9,33 +9,33 @@
     <packaging>pom</packaging>
     <version>1.1</version>
     <modules>
-        <module>fdk-common</module>
-        <module>fdk-http-client-suite/fdk-http-client</module>
-        <module>fdk-http-client-suite/fdk-http-client-spring-boot-autoconfigure</module>
-        <module>fdk-http-client-suite/fdk-http-client-spring-boot-starter</module>
-        <module>fdk-shiro-suite/fdk-shiro</module>
-        <module>fdk-shiro-suite/fdk-shiro-spring-boot-autoconfigure</module>
-        <module>fdk-shiro-suite/fdk-shiro-spring-boot-starter</module>
-        <module>fdk-mybatis-suite/fdk-mybatis</module>
-        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-autoconfigure</module>
-        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-starter</module>
-        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb</module>
-        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-autoconfigure</module>
-        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-starter</module>
         <module>fdk-captcha-suite/fdk-captcha</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-autoconfigure</module>
         <module>fdk-captcha-suite/fdk-captcha-spring-boot-starter</module>
+        <module>fdk-common</module>
         <module>fdk-ftp-suite/fdk-ftp</module>
         <module>fdk-ftp-suite/fdk-ftp-spring-boot-autoconfigure</module>
         <module>fdk-ftp-suite/fdk-ftp-spring-boot-starter</module>
-        <module>fdk-rpc</module>
-        <module>fdk-qrcode</module>
-        <module>fdk-pay-suite/fdk-pay</module>
-        <module>fdk-pay-suite/fdk-pay-spring-boot-autoconfigure</module>
-        <module>fdk-pay-suite/fdk-pay-spring-boot-starter</module>
+        <module>fdk-http-client-suite/fdk-http-client</module>
+        <module>fdk-http-client-suite/fdk-http-client-spring-boot-autoconfigure</module>
+        <module>fdk-http-client-suite/fdk-http-client-spring-boot-starter</module>
         <module>fdk-mobile-suite/fdk-mobile</module>
         <module>fdk-mobile-suite/fdk-mobile-spring-boot-autoconfigure</module>
         <module>fdk-mobile-suite/fdk-mobile-spring-boot-starter</module>
+        <module>fdk-mybatis-suite/fdk-mybatis</module>
+        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-autoconfigure</module>
+        <module>fdk-mybatis-suite/fdk-mybatis-spring-boot-starter</module>
+        <module>fdk-pay-suite/fdk-pay</module>
+        <module>fdk-pay-suite/fdk-pay-spring-boot-autoconfigure</module>
+        <module>fdk-pay-suite/fdk-pay-spring-boot-starter</module>
+        <module>fdk-qrcode</module>
+        <module>fdk-rpc</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-autoconfigure</module>
+        <module>fdk-shiro-repository-mongodb-suite/fdk-shiro-repository-mongodb-spring-boot-starter</module>
+        <module>fdk-shiro-suite/fdk-shiro</module>
+        <module>fdk-shiro-suite/fdk-shiro-spring-boot-autoconfigure</module>
+        <module>fdk-shiro-suite/fdk-shiro-spring-boot-starter</module>
     </modules>
     <name>fdk</name>
     <url>http://www.faury.cn/</url>
@@ -86,6 +86,18 @@
     </dependencyManagement>
     <!-- 设定除中央仓repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找 -->
     <repositories>
+        <!-- 253私服 -->
+        <repository>
+            <id>releases</id>
+            <name>253 Repository</name>
+            <url>http://mvn.fanyc.cn/nexus/content/repositories/releases/</url>
+        </repository>
+        <!-- 私服 -->
+        <repository>
+            <id>rdc-releases</id>
+            <name>RDC Repository</name>
+            <url>https://repo.rdc.aliyun.com/repository/37793-release-UsV6cs/</url>
+        </repository>
         <!-- fdk私服 -->
         <repository>
             <id>fdk</id>
@@ -177,9 +189,21 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk/;publish=1</url>
+            <id>releases</id>
+            <url>http://128.0.9.253:8081/nexus/content/repositories/releases/</url>
         </repository>
     </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>rdc-releases</id>-->
+            <!--<url>https://repo.rdc.aliyun.com/repository/37793-release-UsV6cs/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

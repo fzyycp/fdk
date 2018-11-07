@@ -12,11 +12,11 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-shiro</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.4</version>
     <properties>
-        <fdk.common.version>0.0.9</fdk.common.version>
-        <fdk.captcha.version>0.0.1</fdk.captcha.version>
-        <fwmf.module.user.api.role.version>0.0.2</fwmf.module.user.api.role.version>
+        <fdk.common.version>0.1.0</fdk.common.version>
+        <fdk.captcha.version>0.0.2</fdk.captcha.version>
+        <fwmf.module.user.api.role.version>0.0.4</fwmf.module.user.api.role.version>
     </properties>
     <dependencies>
         <dependency>
@@ -68,11 +68,11 @@
         <!--</dependency>-->
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-shiro/;publish=1</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-shiro/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

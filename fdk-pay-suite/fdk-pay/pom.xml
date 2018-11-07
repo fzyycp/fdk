@@ -15,7 +15,7 @@
     <version>0.0.4</version>
 
     <properties>
-        <fdk.common.version>0.0.9</fdk.common.version>
+        <fdk.common.version>0.1.0</fdk.common.version>
         <fdk.http.client.version>0.0.3</fdk.http.client.version>
     </properties>
 
@@ -41,11 +41,12 @@
             <version>2.3.0</version>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <repository>
-            <id>bintray-faury-fdk</id>
-            <name>faury-fdk</name>
-            <url>https://api.bintray.com/maven/faury/fdk/fdk-pay/;publish=1</url>
-        </repository>
-    </distributionManagement>
+
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>bintray-faury-fdk</id>-->
+            <!--<name>faury-fdk</name>-->
+            <!--<url>https://api.bintray.com/maven/faury/fdk/fdk-pay/;publish=1</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

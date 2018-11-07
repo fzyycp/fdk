@@ -56,8 +56,8 @@ public class CaptchaController {
         captchaChallengeAsJpeg = jpegOutputStream.toByteArray();
         httpServletResponse.setHeader("Cache-Control", "no-store");
         httpServletResponse.setHeader("Pragma", "no-cache");
-        httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId());
-        httpServletResponse.addCookie(new Cookie(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId()));
+//        httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId());
+//        httpServletResponse.addCookie(new Cookie(FdkWebSessionManager.AUTHORIZATION_HEADER, httpServletRequest.getSession().getId()));
         httpServletResponse.setDateHeader("Expires", 0);
         httpServletResponse.setContentType("image/jpeg");
         ServletOutputStream responseOutputStream =

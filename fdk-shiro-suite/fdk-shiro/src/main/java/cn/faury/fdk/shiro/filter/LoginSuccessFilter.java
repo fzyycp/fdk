@@ -5,6 +5,7 @@
 package cn.faury.fdk.shiro.filter;
 
 import cn.faury.fdk.common.utils.StringUtil;
+import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import cn.faury.fdk.shiro.utils.SessionUtil;
 import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.role.bean.RoleInfoBean;
@@ -16,6 +17,8 @@ import org.apache.shiro.subject.Subject;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -49,6 +52,11 @@ public class LoginSuccessFilter extends FdkCaptchaValidateAuthenticationFilter {
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
         // 登录成功初始化:设置Session值，相当于初始化SessionUtil
         SessionUtil.setCurrentUserName(ShiroUtil.principal());
+        if (response instanceof HttpServletResponse){
+            HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+            httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, ShiroUtil.getShiroSessionId());
+            httpServletResponse.addCookie(new Cookie(FdkWebSessionManager.AUTHORIZATION_HEADER, ShiroUtil.getShiroSessionId()));
+        }
         if (userInfoService != null) {
             UserInfoBean user = userInfoService.getUserInfoByLoginName(SessionUtil.getCurrentLoginName());
             if (user != null) {
