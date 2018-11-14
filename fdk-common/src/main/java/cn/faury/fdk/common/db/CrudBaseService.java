@@ -17,6 +17,14 @@ public interface CrudBaseService<T,P> {
     public P insert(T bean);
 
     /**
+     * 新增多条记录
+     *
+     * @param beans 对象Bean列表
+     * @return 插入后的ID类别
+     */
+    public List<P> insertBatch(List<T> beans);
+
+    /**
      * 更新一条记录
      *
      * @param bean 对象Bean
@@ -41,12 +49,48 @@ public interface CrudBaseService<T,P> {
     public int deleteById(P id);
 
     /**
+     * 根据记录ID删除多条记录
+     *
+     * @param ids 要删除记录的ID列表
+     * @return 成功删除条数
+     */
+    public int deleteByIdBatch(List<P> ids);
+
+    /**
      * 根据ID获取对象Bean
      *
-     * @param id 唯一标志
+     * @param id 唯一标识
      * @return 实体对象
      */
     public T getBeanById(P id);
+
+    /**
+     * 根据ID列表获取多个对象Bean
+     *
+     * @param ids 唯一标识
+     * @return 实体对象类别
+     */
+    public List<T> getBeanByIdBatch(List<P> ids);
+
+    /**
+     * 根据所属上级主键ID，获取对象列表
+     * @param belongPrimaryId 所属上级主键ID
+     * @return 对象列表
+     */
+    default public List<T> getBeansByBelongPrimaryId(Object belongPrimaryId){
+        PageParam pageParam = new PageParam(1,Integer.MAX_VALUE);
+        PageInfo<T> page = getBeansByBelongPrimaryId(belongPrimaryId,pageParam);
+        return (List<T>) page.getList();
+    }
+
+    /**
+     * 根据所属上级主键ID，获取对象列表
+     * @param belongPrimaryId 所属上级主键ID
+     * @return 对象列表
+     */
+    default public PageInfo<T> getBeansByBelongPrimaryId(Object belongPrimaryId,PageParam pageParam){
+        throw new UnsupportedOperationException("current service do not support belong primary");
+    }
 
     /**
      * 根据参数查询记录
