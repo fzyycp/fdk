@@ -12,21 +12,16 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-shiro-repository-mongodb-spring-boot-starter</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <properties>
-        <fdk.shiro.repository.mongodb.spring.boot.autoconfigure.version>0.0.1
+        <fdk.shiro.repository.mongodb.spring.boot.autoconfigure.version>0.0.2
         </fdk.shiro.repository.mongodb.spring.boot.autoconfigure.version>
-        <fdk.shiro.repository.mongodb.version>0.0.1</fdk.shiro.repository.mongodb.version>
-        <fdk.shiro.spring.boot.starter.version>0.0.1</fdk.shiro.spring.boot.starter.version>
-        <fdk.mobile.spring.boot.starter.version>0.0.1</fdk.mobile.spring.boot.starter.version>
+        <fdk.shiro.repository.mongodb.version>0.0.2</fdk.shiro.repository.mongodb.version>
+        <fdk.shiro.spring.boot.starter.version>0.0.4</fdk.shiro.spring.boot.starter.version>
+        <fdk.mobile.spring.boot.starter.version>0.0.8</fdk.mobile.spring.boot.starter.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-shiro-repository-mongodb-spring-boot-autoconfigure</artifactId>

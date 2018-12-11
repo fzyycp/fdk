@@ -20,11 +20,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
         <!--主api依赖-->
         <dependency>
             <groupId>cn.faury.fdk</groupId>

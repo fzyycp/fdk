@@ -21,7 +21,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.0.2.RELEASE</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>cn.faury.fdk</groupId>

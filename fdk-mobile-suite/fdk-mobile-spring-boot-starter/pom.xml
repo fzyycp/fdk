@@ -20,7 +20,7 @@
         <fdk.http.client.spring.boot.starter.version>0.0.3</fdk.http.client.spring.boot.starter.version>
         <fdk.captcha.spring.boot.starter.version>0.0.2</fdk.captcha.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.starter.version>0.0.4</fwmf.module.user.role.spring.boot.starter.version>
-        <fwmf.module.app.spring.boot.starter.version>0.1.0</fwmf.module.app.spring.boot.starter.version>
+        <fwmf.module.app.spring.boot.starter.version>0.1.1</fwmf.module.app.spring.boot.starter.version>
         <fwmf.module.shop.spring.boot.starter.version>0.0.1</fwmf.module.shop.spring.boot.starter.version>
     </properties>
 

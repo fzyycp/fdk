@@ -86,17 +86,11 @@
     </dependencyManagement>
     <!-- 设定除中央仓repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找 -->
     <repositories>
-        <!-- 253私服 -->
+        <!-- TSK私服 -->
         <repository>
-            <id>releases</id>
-            <name>253 Repository</name>
-            <url>http://mvn.fanyc.cn/nexus/content/repositories/releases/</url>
-        </repository>
-        <!-- 私服 -->
-        <repository>
-            <id>rdc-releases</id>
-            <name>RDC Repository</name>
-            <url>https://repo.rdc.aliyun.com/repository/37793-release-UsV6cs/</url>
+            <id>maven-releases</id>
+            <name>TSK Repository</name>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
         </repository>
         <!-- fdk私服 -->
         <repository>
@@ -118,6 +112,12 @@
         </repository>
     </repositories>
     <pluginRepositories>
+        <!-- TSK私服 -->
+        <pluginRepository>
+            <id>maven-releases</id>
+            <name>TSK Repository</name>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
+        </pluginRepository>
         <!-- fdk私服 -->
         <pluginRepository>
             <id>fdk</id>
@@ -189,8 +189,8 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>releases</id>
-            <url>http://128.0.9.253:8081/nexus/content/repositories/releases/</url>
+            <id>maven-releases</id>
+            <url>http://mvn.fanyc.cn/repository/maven-releases</url>
         </repository>
     </distributionManagement>
     <!--<distributionManagement>-->

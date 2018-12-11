@@ -95,6 +95,7 @@ public class FdkMobileAutoConfiguration {
         if (fdkMobileProperties != null) {
             handler.setKeys(fdkMobileProperties.getWeixinOAuth2Keys());
         }
+        logger.debug("weixinOAuth2Handler:keys={}",handler.getKeys());
         return handler;
     }
 
@@ -103,7 +104,11 @@ public class FdkMobileAutoConfiguration {
         WeixinMPOAuth2Handler handler = new WeixinMPOAuth2Handler();
         if (fdkMobileProperties != null) {
             handler.setKeys(fdkMobileProperties.getWeixinmpOAuth2Keys());
+            handler.setNounionid(fdkMobileProperties.getWeixinmpNoUnionId());
         }
+        logger.debug("weixinMPOAuth2Handler:keys={}",handler.getKeys());
+        logger.debug("weixinMPOAuth2Handler:nounionid={}",handler.getNounionid());
+        logger.debug("weixinMPOAuth2Handler:nounionidList={}",handler.getNounionidList());
         return handler;
     }
 
@@ -113,6 +118,7 @@ public class FdkMobileAutoConfiguration {
         if (fdkMobileProperties != null) {
             handler.setKeys(fdkMobileProperties.getQqOAuth2Keys());
         }
+        logger.debug("qqOAuth2Handler:keys={}",handler.getKeys());
         return handler;
     }
 
@@ -122,6 +128,7 @@ public class FdkMobileAutoConfiguration {
         if (fdkMobileProperties != null) {
             handler.setKeys(fdkMobileProperties.getSinaweiboOAuth2Keys());
         }
+        logger.debug("sinaWeiboOAuth2Handler:keys={}",handler.getKeys());
         return handler;
     }
 

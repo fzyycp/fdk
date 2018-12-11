@@ -15,7 +15,7 @@
     <version>0.0.3</version>
 
     <properties>
-        <fdk.common.version>0.1.0</fdk.common.version>
+        <fdk.common.version>0.1.2</fdk.common.version>
     </properties>
 
     <dependencies>
@@ -23,7 +23,6 @@
             <groupId>cn.faury.fdk</groupId>
             <artifactId>fdk-common</artifactId>
             <version>${fdk.common.version}</version>
-            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

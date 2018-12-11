@@ -14,7 +14,7 @@
     <artifactId>fdk-shiro</artifactId>
     <version>0.0.4</version>
     <properties>
-        <fdk.common.version>0.1.0</fdk.common.version>
+        <fdk.common.version>0.1.2</fdk.common.version>
         <fdk.captcha.version>0.0.2</fdk.captcha.version>
         <fwmf.module.user.api.role.version>0.0.4</fwmf.module.user.api.role.version>
     </properties>
