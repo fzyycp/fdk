@@ -1,5 +1,6 @@
 package cn.faury.fdk.pay.tenpay;
 
+import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.http.client.HttpClient;
 import cn.faury.fdk.http.client.conf.HttpConfig;
 import cn.faury.fdk.http.client.core.HttpRequest;
@@ -14,6 +15,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -44,7 +46,15 @@ public class WXManager {
         httpRequest.setMethod(HttpPost.METHOD_NAME);
         httpRequest.setPostDatas(entity);
         HttpResponse httpResponse = httpClient.doRequest(httpRequest);
-        String content = new String(httpResponse.getByteResult());
+        logger.debug("微信统一下单响应：{}", httpResponse);
+        String content = null;
+        try {
+            logger.debug("微信统一下单响应Result-default：{}", new String(httpResponse.getByteResult()));
+            logger.debug("微信统一下单响应Result-utf8：{}", new String(httpResponse.getByteResult(), "UTF-8"));
+            content = new String(httpResponse.getByteResult(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            logger.error("编码错误：{}", e.getMessage(), e);
+        }
         return WXManager.decodeXml(content);
     }
 
@@ -129,8 +139,29 @@ public class WXManager {
         }
         sb.append("key=");
         sb.append(TenpayConfig.key);
+        logger.debug("微信支付参与签名字符串：{}", sb.toString());
+        try {
+            byte[] bytes = sb.toString().getBytes();
+            logger.debug("微信支付参与签名字符串Bytes-default：{}", bytes);
+            logger.debug("签名字符串：{}", MD5.getMessageDigest(bytes).toUpperCase());
+            bytes = sb.toString().getBytes(StringUtil.UTF8_NAME);
+            logger.debug("微信支付参与签名字符串Bytes-utf8：{}", bytes);
+            logger.debug("签名字符串：{}", MD5.getMessageDigest(bytes).toUpperCase());
+            bytes = sb.toString().getBytes(StringUtil.ASCII);
+            logger.debug("微信支付参与签名字符串Bytes-ascii：{}", bytes);
+            logger.debug("签名字符串：{}", MD5.getMessageDigest(bytes).toUpperCase());
+            bytes = sb.toString().getBytes(StringUtil.ISO8859_NAME);
+            logger.debug("微信支付参与签名字符串Bytes-iso8859：{}", bytes);
+            logger.debug("签名字符串：{}", MD5.getMessageDigest(bytes).toUpperCase());
+        } catch (UnsupportedEncodingException ignored) {
 
-        return MD5.getMessageDigest(sb.toString().getBytes()).toUpperCase();
+        }
+        try {
+            return MD5.getMessageDigest(sb.toString().getBytes(StringUtil.UTF8_NAME)).toUpperCase();
+        } catch (UnsupportedEncodingException e) {
+            logger.error("编码错误：{}", e.getMessage(), e);
+        }
+        return null;
     }
 
     public static long genTimeStamp() {
@@ -194,5 +225,23 @@ public class WXManager {
         nf.setRoundingMode(RoundingMode.DOWN);
 
         return nf.format(str);
+    }
+
+    public static void main(String[] args) throws UnsupportedEncodingException {
+//        TenpayConfig.appID = "wxdb784b787f2287b7";
+//        TenpayConfig.mchID = "1507002281";
+//        TenpayConfig.notifyUrl = "http://umall.ukee.com/umall-gateway/order/pay/wxPayAppCallback";
+//        TenpayConfig.key = "qVxTCnr19JKnRJnnBXjRUAafa1914846";
+//
+//        String outTradeNo = "20181215094401995211";
+//        double orderAmount = 0.01;
+//        String body = "微信支付订单[O20181215105958937093]";
+//        System.out.println(genAppUnifiedOrderArgs(outTradeNo, orderAmount, body));
+//        System.out.println(unifiedorderForApp(outTradeNo, orderAmount, body));
+        String sb = "appid=wxdb784b787f2287b7&body=微信支付订单[O20181215105958937093]&mch_id=1507002281&nonce_str=92cf3f7ef90630755b955924254e6ec4&notify_url=http://umall.ukee.com/umall-gateway/order/pay/wxPayAppCallback&out_trade_no=20181215094401995211&spbill_create_ip=127.0.0.1&total_fee=1&trade_type=APP&key=qVxTCnr19JKnRJnnBXjRUAafa1914846";
+        System.out.println(MD5.getMessageDigest(sb.getBytes()).toUpperCase());
+        System.out.println(MD5.getMessageDigest(sb.getBytes(StringUtil.ASCII)).toUpperCase());
+        System.out.println(MD5.getMessageDigest(sb.getBytes(StringUtil.UTF_8)).toUpperCase());
+        System.out.println(MD5.getMessageDigest(sb.getBytes(StringUtil.ISO_8859_1)).toUpperCase());
     }
 }

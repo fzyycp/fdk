@@ -230,7 +230,7 @@ public class FdkMobileDbRealm extends AuthorizingRealm {
                         if (shopInfoService != null && ura.getShopId() != null) {
                             ShopInfoBean sib = shopInfoService.getShopInfoById(ura.getShopId());
                             // 商店信息存在且未删除且启用状态则可以登录，否则无权限登录
-                            if (sib != null && "1".equals(sib.getShopState()) && !StringUtil.whetherYes(sib.getDelFlag())) {
+                            if (sib != null && StringUtil.whetherYes(sib.getShopState()) && !StringUtil.whetherYes(sib.getDelFlag())) {
                                 hasAuth = true;
                             }
                         } else {

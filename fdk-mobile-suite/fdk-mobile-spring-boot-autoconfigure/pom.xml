@@ -12,10 +12,10 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-mobile-spring-boot-autoconfigure</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
 
     <properties>
-        <fdk.mobile.version>0.0.8</fdk.mobile.version>
+        <fdk.mobile.version>0.0.9</fdk.mobile.version>
         <fdk.http.client.spring.boot.autoconfigure.version>0.0.3</fdk.http.client.spring.boot.autoconfigure.version>
         <fdk.captcha.spring.boot.autoconfigure.version>0.0.1</fdk.captcha.spring.boot.autoconfigure.version>
         <fwmf.module.user.role.spring.boot.autoconfigure.version>0.0.1</fwmf.module.user.role.spring.boot.autoconfigure.version>

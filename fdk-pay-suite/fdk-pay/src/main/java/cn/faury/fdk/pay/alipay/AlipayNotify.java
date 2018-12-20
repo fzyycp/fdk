@@ -4,6 +4,7 @@ import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.pay.common.FdkPayHttpClient;
 import cn.faury.fdk.pay.common.Util;
 import cn.faury.fdk.pay.common.sign.RSA;
+import cn.faury.fdk.pay.common.sign.RSA2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,7 +71,7 @@ public class AlipayNotify {
     public static boolean signVerfiy(Map<String, String> queryParams) {
 
         // 固定的
-        String signType = "RSA";// StringUtil.emptyDefault(queryParams.get("sign_type"),"RSA");
+        String signType = StringUtil.emptyDefault(queryParams.get("sign_type"), "RSA");
         log.debug("【回调校验】【Alipay】 - 签名验证类型：" + signType);
 
         String orgsign = queryParams.get("sign");
@@ -87,12 +88,11 @@ public class AlipayNotify {
 
         boolean pass = false;
 
-//        if (signType.equals("MD5")) {
-//            String sign = MD5.MD5Encode(queryString + AlipayConfig.privateKey, charset);
-//            pass = orgsign.equalsIgnoreCase(sign);
-//        } else if (signType.equals("RSA")) {
-        pass = RSA.verify(queryString, orgsign, AlipayConfig.aliPublicKey, charset);
-//        }
+        if (signType.equals("RSA")) {
+            pass = RSA.verify(queryString, orgsign, AlipayConfig.aliPublicKey, charset);
+        } else if ("RSA2".equals(signType)) {
+            pass = RSA2.verify(queryString, orgsign, AlipayConfig.publicKey, charset);
+        }
 
         return pass;
     }

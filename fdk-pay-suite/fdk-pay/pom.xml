@@ -12,7 +12,7 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-pay</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.6</version>
 
     <properties>
         <fdk.common.version>0.1.2</fdk.common.version>

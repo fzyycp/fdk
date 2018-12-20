@@ -2,7 +2,7 @@ package cn.faury.fdk.shiro.controller;
 
 import cn.faury.fdk.common.entry.RestResultCode;
 import cn.faury.fdk.common.entry.RestResultEntry;
-import cn.faury.fdk.common.utils.JsonUtil;
+import cn.faury.fdk.common.utils.DateUtil;
 import cn.faury.fdk.common.utils.StringUtil;
 import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import cn.faury.fdk.shiro.filter.captcha.FdkCaptchaConst;
@@ -11,7 +11,6 @@ import cn.faury.fdk.shiro.utils.ShiroUtil;
 import cn.faury.fwmf.module.api.user.bean.UserInfoBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,11 +77,20 @@ public class FdkShiroLoginController {
     public RestResultEntry currentUser(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         RestResultEntry resultEntry;
         try {
-            UserInfoBean userInfoBean = SessionUtil.getCurrentUserInfo(UserInfoBean.class);
-            Map<String, Object> result = JsonUtil.jsonToMap(JsonUtil.objectToJson(userInfoBean));
+            Map<String, Object> result = new HashMap<>();
             String sessionId = SessionUtil.getSession().getId().toString();
             result.put("S", sessionId);
-            resultEntry = RestResultEntry.createSuccessResult(Collections.singletonList(result));
+            UserInfoBean userInfoBean = SessionUtil.getCurrentJsonUserInfo(UserInfoBean.class);
+            if (userInfoBean != null) {
+                result.put("userId", userInfoBean.getUserId());
+                result.put("userName", userInfoBean.getUserName());
+                result.put("loginName", SessionUtil.getCurrentLoginName());
+                result.put("efctYmd", DateUtil.formatDate(userInfoBean.getEfctYmd()));
+                result.put("exprYmd", DateUtil.formatDate(userInfoBean.getExprYmd()));
+                result.put("insTstmp", DateUtil.formatDateTime(userInfoBean.getInsTstmp()));
+                result.put("isEnable", userInfoBean.getIsEnable());
+            }
+            resultEntry = RestResultEntry.createSuccessResult(result);
             httpServletResponse.setHeader(FdkWebSessionManager.AUTHORIZATION_HEADER, sessionId);
             logger.debug("登录成功：{}", resultEntry);
         } catch (IncorrectCredentialsException e) {

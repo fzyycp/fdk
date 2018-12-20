@@ -12,11 +12,11 @@
 
     <groupId>cn.faury.fdk</groupId>
     <artifactId>fdk-shiro-spring-boot-starter</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
 
     <properties>
-        <fdk.shiro.version>0.0.4</fdk.shiro.version>
-        <fdk.shiro.spring.boot.autoconfigure.version>0.0.4</fdk.shiro.spring.boot.autoconfigure.version>
+        <fdk.shiro.version>0.0.5</fdk.shiro.version>
+        <fdk.shiro.spring.boot.autoconfigure.version>0.0.5</fdk.shiro.spring.boot.autoconfigure.version>
         <fdk.captcha.spring.boot.starter.version>0.0.2</fdk.captcha.spring.boot.starter.version>
         <fwmf.module.user.role.spring.boot.stater.version>0.0.4</fwmf.module.user.role.spring.boot.stater.version>
     </properties>

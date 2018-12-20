@@ -1,19 +1,12 @@
 package cn.faury.fdk.shiro.utils;
 
-import cn.faury.fdk.common.utils.AssertUtil;
+import cn.faury.fdk.common.utils.JsonUtil;
 import cn.faury.fdk.common.utils.SerializeUtil;
 import cn.faury.fdk.common.utils.StringUtil;
-import cn.faury.fdk.shiro.core.FdkWebSessionManager;
 import org.apache.shiro.session.Session;
-import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
-import org.apache.shiro.web.util.WebUtils;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SessionUtil {
 
@@ -23,9 +16,19 @@ public class SessionUtil {
     public static final String SESSION_KEY_USERBEAN = "SESSION_USER_BEAN";
 
     /**
+     * Session中KEY：JSON格式用户信息
+     */
+    public static final String SESSION_KEY_USERBEAN_JSON = "SESSION_USER_BEAN_JSON";
+
+    /**
      * Session中KEY：角色信息信息
      */
     public static final String SESSION_KEY_ROLESBEAN = "SESSION_ROLES_BEAN";
+
+    /**
+     * Session中KEY：JSON格式角色信息信息
+     */
+    public static final String SESSION_KEY_ROLESBEAN_JSON = "SESSION_ROLES_BEANJSON";
 
     /**
      * Session中KEY：错误信息或正确信息传递
@@ -35,7 +38,7 @@ public class SessionUtil {
     /**
      * 获取当前用户Session ID
      */
-    public static String getCurrentSessionId(){
+    public static String getCurrentSessionId() {
         return ShiroUtil.getShiroSessionId();
     }
 
@@ -117,9 +120,22 @@ public class SessionUtil {
      * @param userInfo 用户信息Bean对象
      */
     public static void setCurrentUserInfo(Serializable userInfo) {
-        byte[] data = SerializeUtil.serialize(userInfo);
+        setCurrentJsonUserInfo(userInfo);
+//        byte[] data = SerializeUtil.serialize(userInfo);
+//        try {
+//            setSessionAtt(SESSION_KEY_USERBEAN, data);
+//        } catch (Exception ignored) {
+//        }
+    }
+
+    /**
+     * 【JSON格式】设置当前登录的用户Bean
+     *
+     * @param userInfo 用户信息Bean对象
+     */
+    public static void setCurrentJsonUserInfo(Object userInfo) {
         try {
-            setSessionAtt(SESSION_KEY_USERBEAN, data);
+            setSessionAtt(SESSION_KEY_USERBEAN_JSON, JsonUtil.objectToJson(userInfo));
         } catch (Exception ignored) {
         }
     }
@@ -130,10 +146,30 @@ public class SessionUtil {
      * @return 当前登录的用户Bean
      */
     public static <T> T getCurrentUserInfo(Class<T> clazz) {
+        if (getSessionAtt(SESSION_KEY_USERBEAN_JSON) != null){
+            return getCurrentJsonUserInfo(clazz);
+        }
+
         if (getSessionAtt(SESSION_KEY_USERBEAN) != null) {// 检查Session中是否存在
             byte[] data = getSessionAtt(SESSION_KEY_USERBEAN);
             if (data != null) {
                 return SerializeUtil.deserialize(data, clazz);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 【JSON格式】获取当前登录的用户Bean.
+     *
+     * @return 当前登录的用户Bean
+     */
+    public static <T> T getCurrentJsonUserInfo(Class<T> clazz) {
+        if (getSessionAtt(SESSION_KEY_USERBEAN_JSON) != null) {// 检查Session中是否存在
+            String data = getSessionAtt(SESSION_KEY_USERBEAN_JSON);
+            if (StringUtil.isNotEmpty(data)) {
+                return JsonUtil.jsonToObject(data, clazz);
             }
         }
 
@@ -146,9 +182,22 @@ public class SessionUtil {
      * @param roles 角色列表
      */
     public static void setCurrentRolesInfo(List<? extends Serializable> roles) {
-        byte[] data = SerializeUtil.serialize(roles);
+        setCurrentJsonRolesInfo(roles);
+//        byte[] data = SerializeUtil.serialize(roles);
+//        try {
+//            setSessionAtt(SESSION_KEY_ROLESBEAN, data);
+//        } catch (Exception ignored) {
+//        }
+    }
+
+    /**
+     * 【JSON格式】设置当前登录的角色Bean列表.
+     *
+     * @param roles 角色列表
+     */
+    public static void setCurrentJsonRolesInfo(List<?> roles) {
         try {
-            setSessionAtt(SESSION_KEY_ROLESBEAN, data);
+            setSessionAtt(SESSION_KEY_ROLESBEAN_JSON, JsonUtil.objectToJson(roles));
         } catch (Exception ignored) {
         }
     }
@@ -159,10 +208,29 @@ public class SessionUtil {
      * @return 当前登录用户的角色列表
      */
     public static <T> T getCurrentRolesInfo(Class<T> clazz) {
+        if (getSessionAtt(SESSION_KEY_ROLESBEAN_JSON) !=null){
+            return getCurrentJsonRolesInfo(clazz);
+        }
+
         if (getSessionAtt(SESSION_KEY_ROLESBEAN) != null) {// 检查Session中是否存在
             byte[] data = getSessionAtt(SESSION_KEY_ROLESBEAN);
             if (data != null) {
                 return SerializeUtil.deserialize(data, clazz);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 获取当前登录用户的角色Bean列表.
+     *
+     * @return 当前登录用户的角色列表
+     */
+    public static <T> T getCurrentJsonRolesInfo(Class<T> clazz) {
+        if (getSessionAtt(SESSION_KEY_ROLESBEAN_JSON) != null) {// 检查Session中是否存在
+            String data = getSessionAtt(SESSION_KEY_ROLESBEAN_JSON);
+            if (StringUtil.isNotEmpty(data)) {
+                return JsonUtil.jsonToObject(data, clazz);
             }
         }
         return null;
